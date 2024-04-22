@@ -1,8 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
+import Book from './Book'
+import "./featured.scss"
 
 const FeaturedProduct = () => {
+
+
   return (
-    <div>FeaturedProduct</div>
+    <div className='feature-container'>
+       <Book/>
+    </div>
   )
 }
 
