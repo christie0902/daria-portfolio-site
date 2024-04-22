@@ -71,7 +71,7 @@ export const gallery : Gallery = [
         img: '/wave.jpg'
     },
     {
-        id: 10,
+        id: 12,
         title: "Watercolor",
         des: "This is watercolor art",
         img: '/watercolor.jpg'
