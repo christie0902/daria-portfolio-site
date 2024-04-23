@@ -61,7 +61,7 @@ const Book: React.FC = () => {
 
           {/* Cover Page Close */}
           <div className="my-page cover-page back">
-            <button>
+            <button><a href="#Gallery">
               See all my works!
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -76,6 +76,7 @@ const Book: React.FC = () => {
                   d="M8 1a.5.5 0 0 1 .5.5v10.793l2.646-2.647a.5.5 0 1 1 .708.708l-3.5 3.5a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 0 1 .708-.708L7.5 12.293V1.5A.5.5 0 0 1 8 1z"
                 />
               </svg>
+              </a>
             </button>
           </div>
 

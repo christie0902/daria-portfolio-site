@@ -11,7 +11,9 @@ function App() {
     <>
      <Hero/>
      <FeaturedProduct/>
+     <section id="Gallery">
      <Gallery/>
+     </section>
      <Contact/>
     </>
   )

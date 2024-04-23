@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Yatra+One&display=swap');
+
 .feature-container {
   min-height: 100vh;
   box-sizing: border-box;
@@ -59,12 +61,15 @@
   flex-direction: column;
   justify-content: space-between;
   position: relative;
-  background-color: rgb(173, 223, 173);
+  background-color: rgb(69, 204, 102);
   background-image: repeating-linear-gradient(-26deg, rgba(255,255,255, 0.25), rgba(168, 100, 100, 0.25) 2px, transparent 3px, transparent 7px);
   background-size: 6px 8px;
   h1 {
-    font-size: 3rem; 
-    margin-top: 50%; 
+    font-size: 2.4rem; 
+    margin-top: 50%;
+    font-family: "Yatra One", system-ui;
+    color: rgb(180, 17, 118);
+    text-transform: uppercase;
   }
   img {
     width: 300px;
@@ -74,14 +79,15 @@
     transform: translateX(-50%);
   }
   p {
-    font-size: 1rem;
-    color: #555; 
+    padding-inline: 3px;
+    font-size: 1.2rem;
+    color: #000000; 
   }
 }
 
 .pagination {
   margin-inline: auto;
-  margin-top: 20px;
+  margin-top: 30px;
   display: flex;
   gap:15px;
   align-items: center;
@@ -112,7 +118,6 @@ button:hover {
 .back button {
   margin-top: 50%;
   background-color: #1e9441;
-
   color: white;
   border: none;
   padding: 20px 30px;
@@ -124,6 +129,10 @@ button:hover {
   &:hover {
     background-color: #0d381a;
     cursor: pointer;
+  }
+  & a {
+    text-decoration: none;
+    color: white;
   }
   & svg {
     vertical-align: middle; 

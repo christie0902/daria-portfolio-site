@@ -6,9 +6,12 @@ const FeaturedProduct = () => {
 
 
   return (
+    <>
+    <h1 className='section-title'>FEATURED ARTS</h1>
     <div className='feature-container'>
        <Book/>
     </div>
+    </>
   )
 }
 
