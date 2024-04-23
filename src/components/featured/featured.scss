@@ -1,10 +1,16 @@
 .feature-container {
   min-height: 100vh;
+  box-sizing: border-box;
 }
 
 .book-container {
+  margin-top: 10vh;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+  
 }
 
 .book {
@@ -12,24 +18,22 @@
   flex-direction: column;
   align-items: center;
   padding: 20px;
+  
 }
 
-.book-wrapper {
-  height: 256px;
-  width: 800px;
-}
 
 .page-content {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #f8f8f8;
+  background: linear-gradient(90deg, snow 1px, #f0f0f0);
   box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   height: 100%;
-  padding: 5px;
- 
+  padding: 10px;
+
+
   img {
     width: 80%;
     height: 60%;
@@ -42,32 +46,109 @@
 }
 
 .my-page {
-  background-color: white;
   width: 100%;
   height: 100%;
- 
 }
+
 
 .cover-page {
-  background-color: #ddb8b8;
+  padding: 20px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  background-color: rgb(173, 223, 173);
+  background-image: repeating-linear-gradient(-26deg, rgba(255,255,255, 0.25), rgba(168, 100, 100, 0.25) 2px, transparent 3px, transparent 7px);
+  background-size: 6px 8px;
+  h1 {
+    font-size: 3rem; 
+    margin-top: 50%; 
+  }
+  img {
+    width: 300px;
+    position: absolute;
+    top: -10%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  p {
+    font-size: 1rem;
+    color: #555; 
+  }
 }
 
-
-button {
-  background-color: #1e9441;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+.pagination {
+  margin-inline: auto;
+  margin-top: 20px;
+  display: flex;
+  gap:15px;
+  align-items: center;
+  justify-content: center;
+  button {
+    background-color: #00a835;
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 15px;
+    transition: background-color 0.3s ease;
+    font-size: 1rem;
+    font-weight: bold;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+  .page-no {
+    font-size: 1em;
+    font-weight: 500;
+  }
 }
 
 button:hover {
   background-color: #0d381a;
-  cursor: pointer;;
+  cursor: pointer;
 }
 
-@media only screen and (max-width:768px) {
+
+.back button {
+  margin-top: 50%;
+  background-color: #1e9441;
+
+  color: white;
+  border: none;
+  padding: 20px 30px;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 1.5rem;
+  font-weight: bold; 
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  &:hover {
+    background-color: #0d381a;
+    cursor: pointer;
+  }
+  & svg {
+    vertical-align: middle; 
+    margin-left: 10px;
+    
+  }
+}
+
+
+@media only screen and  (max-width: 768px) and (min-width: 480px) {
+  .book-container {
+    margin-top: 0vh;
+    gap: 80px;
+  }
+  .book {
+    width: 800px;
+  }
+}
+
+
+
+@media only screen and (max-width:480px) {
+  .book-container {
+    margin-top: 0vh;
+  }
   .book {
     width: 400px;
   }

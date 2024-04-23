@@ -42,8 +42,10 @@ const Book: React.FC = () => {
           onPageChange={(e) => setCurrentPage(e.data)}
         >
           {/* Cover Page Open */}
-          <div className="my-page cover-page">
-            <h1>Daria's Collection</h1>
+          <div className="my-page cover-page front">
+     
+            <img src="\name.png" alt="logo" />
+            <h1>Art Collection</h1>
             <p>
               The collection of my special arts, includes illustration,
               sketching, 3D models, logo designs
@@ -58,13 +60,13 @@ const Book: React.FC = () => {
           ))}
 
           {/* Cover Page Close */}
-          <div className="my-page cover-page">
+          <div className="my-page cover-page back">
             <button>
               See all my works!
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
+                width="24"
+                height="24"
                 fill="currentColor"
                 className="bi bi-arrow-down"
                 viewBox="0 0 16 16"
@@ -76,8 +78,8 @@ const Book: React.FC = () => {
               </svg>
             </button>
           </div>
-        </HTMLFlipBook>
 
+        </HTMLFlipBook>
 
       <div className="pagination">
         <button onClick={handlePrevClick}>Back</button>
