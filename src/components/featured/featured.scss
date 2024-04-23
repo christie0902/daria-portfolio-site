@@ -20,7 +20,6 @@
   flex-direction: column;
   align-items: center;
   padding: 20px;
-  
 }
 
 
@@ -29,11 +28,15 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(90deg, snow 1px, #f0f0f0);
-  box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.1);
+  // background: linear-gradient(90deg, snow 1px, #f0f0f0);
+  background-image: url('paper-texture.png');
+  background-position: center;
+  background-size: 160% 150%;
+  box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.15);
   overflow: hidden;
   height: 100%;
   padding: 10px;
+
 
 
   img {
