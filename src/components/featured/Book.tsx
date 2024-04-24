@@ -27,7 +27,7 @@ const Book: React.FC = () => {
           height={500}
           showCover={true}
           className="book"
-          maxShadowOpacity={false}
+          maxShadowOpacity={0}
           mobileScrollSupport={true}
           swipeDistance={50}
           useMouseEvents={true}
