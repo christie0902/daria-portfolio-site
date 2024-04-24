@@ -42,10 +42,13 @@ const Hero = () => {
       </div>
 
       <div className="right-section">
-        <video className="video" autoPlay loop muted>
-          <source src="hero-video.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
+      <div className="video-container">
+          <video className="video" autoPlay loop muted>
+            <source src="hero-video.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+          <div className="video-overlay"></div>
+        </div>
         <h2 className="title-right">ART PORTFOLIO</h2>
       </div>
 

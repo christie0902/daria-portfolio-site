@@ -19,6 +19,9 @@ $font-text: "Inika", serif;
     .navbar {
       display: flex;
       justify-content: space-between;
+      position: relative;
+        top: -20px;
+       
       .logo {
         width: 120px;
         position: relative;
@@ -59,9 +62,9 @@ $font-text: "Inika", serif;
       }
     .title-role {
         position: absolute;
-        bottom: 8%;
+        bottom: 5%;
         text-align: right;
-        right: 3%;
+        right: 10%;
         width: 350px;
         font-family: $font-main;
         font-weight: 400;
@@ -79,13 +82,30 @@ $font-text: "Inika", serif;
     height: 100vh;
     position: relative;
     overflow: hidden;
-    .video {
-      position: absolute;
-      top: -10%;
-      width: 100%;
-      height: 120%;
-      object-fit: cover;
-    }
+    .video-container {
+        position: relative;
+        width: 100%;
+        height: 100%;
+  
+        .video {
+          position: absolute;
+          top: -10%;
+          left: 0;
+          width: 100%;
+          height: 120%;
+          object-fit: cover;
+        }
+  
+        .video-overlay {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 120%;
+          background-color: rgba(0, 0, 0, 0.05);
+        }
+      }
+    
     .title-right {
       position: absolute;
       bottom: 10%;
@@ -93,6 +113,7 @@ $font-text: "Inika", serif;
       font-size: 3rem;
       font-family: $font-text;
       font-weight: lighter;
+      color: white;
     }
    
   }
