@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inika:wght@400;700&display=swap');
+
+$font-main:  "IBM Plex Sans", sans-serif;
+$font-text:  "Inika", serif;
+
+html, body {
+    scroll-behavior: smooth;
+    box-sizing: border-box;
+    margin: 0;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+
+
+.section-title {
+    font-size: 4rem;
+    text-align: center;
+    font-family: $font-main;
+}
+

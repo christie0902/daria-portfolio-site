@@ -1,0 +1,113 @@
+
+
+$font-main: "IBM Plex Sans", sans-serif;
+$font-text: "Inika", serif;
+
+.hero {
+  display: flex;
+  height: 100%;
+  width: 100vw;
+  position: relative;
+
+  .left-section {
+    flex: 1;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px;
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      .logo {
+        width: 120px;
+        position: relative;
+        top: -35px;
+        left: 0px;
+      }
+    }
+    .titles {
+      position: absolute;
+      z-index: 4;
+      top: 25%;
+      margin-left: 10%;
+      h2 {
+        margin-block: 10px;
+        font-size: 3rem;
+        font-family: $font-text;
+        font-weight: 300;
+      }
+      h1 {
+        margin-block: 10px;
+        font-size: 8rem;
+        font-family: $font-main;
+      }
+    }
+    .portfolio-link {
+        position: absolute;
+        z-index: 4;
+        bottom: 30%;
+        margin-left: 10%;
+
+        .link {
+          text-decoration: none;
+          color: black;
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+    .title-role {
+        position: absolute;
+        bottom: 8%;
+        text-align: right;
+        right: 3%;
+        width: 350px;
+        font-family: $font-main;
+        font-weight: 400;
+        font-size: 2rem;
+    }
+    .title-small p {
+        font-size: 0.7rem;
+        width: 120px;
+        font-family: $font-text;
+        font-style: normal;
+    }
+  }
+  .right-section {
+    flex: 1.5;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+    .video {
+      position: absolute;
+      top: -10%;
+      width: 100%;
+      height: 120%;
+      object-fit: cover;
+    }
+    .title-right {
+      position: absolute;
+      bottom: 10%;
+      right: 10%;
+      font-size: 3rem;
+      font-family: $font-text;
+      font-weight: lighter;
+    }
+   
+  }
+
+  .top-border {
+    height: 1px;
+  width: 100%;
+  position: absolute;
+  bottom: calc(30% + 30px);
+
+  }
+  .bottom-border {
+    height: 1px;
+     width: 100%;
+    position: absolute;
+    bottom: calc(30% - 30px);
+  }
+}

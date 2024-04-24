@@ -1,0 +1,24 @@
+$font-main:  "IBM Plex Sans", sans-serif;
+$font-text:  "Inika", serif;
+
+ul {
+    display: flex;
+    gap:20px;
+   
+    li {
+    list-style: none;
+    .nav-item {
+        text-decoration: none;
+        font-family: $font-text;
+        color: black;
+        &:hover {
+            font-weight: bold;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+    }
+    }
+    .nav-item--active {
+        font-weight: bold;
+    }
+}
