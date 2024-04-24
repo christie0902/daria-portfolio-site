@@ -1,5 +1,3 @@
-
-
 $font-main: "IBM Plex Sans", sans-serif;
 $font-text: "Inika", serif;
 
@@ -16,12 +14,22 @@ $font-text: "Inika", serif;
     flex-direction: column;
     justify-content: space-between;
     padding: 20px;
+    
+    .background-video {
+        position: absolute;
+        top: -10%;
+        left: 0;
+        width: 100%;
+        height: 120%;
+        object-fit: cover;
+        opacity: 0;
+    }
     .navbar {
       display: flex;
       justify-content: space-between;
       position: relative;
-        top: -20px;
-       
+      top: -20px;
+
       .logo {
         width: 120px;
         position: relative;
@@ -32,49 +40,60 @@ $font-text: "Inika", serif;
     .titles {
       position: absolute;
       z-index: 4;
-      top: 25%;
+      top: 20%;
       margin-left: 10%;
+      opacity: 0;
+      animation: slideIn 2s forwards;
       h2 {
         margin-block: 10px;
-        font-size: 3rem;
+        font-size: 2.5rem;
         font-family: $font-text;
         font-weight: 300;
+        animation: slideInLeft 1s forwards;
       }
       h1 {
         margin-block: 10px;
-        font-size: 8rem;
+        font-size: 6.5rem;
         font-family: $font-main;
+        animation: slideInRight 1s forwards;
+        // -webkit-text-stroke: 0.5px white;
+        text-shadow: 2px 2px 4px rgba(163, 152, 152, 0.5);
       }
     }
     .portfolio-link {
-        position: absolute;
-        z-index: 4;
-        bottom: 30%;
-        margin-left: 10%;
+      position: absolute;
+      z-index: 4;
+      bottom: 30%;
+      margin-left: 10%;
 
-        .link {
-          text-decoration: none;
-          color: black;
-          &:hover {
-            text-decoration: underline;
-          }
+      .link {
+        font-family: $font-text;
+        font-weight: 600;
+        text-decoration: none;
+        color: black;
+        &:hover {
+          text-decoration: underline;
         }
+        animation: slideInLeft 3s forwards;
       }
+    }
     .title-role {
-        position: absolute;
-        bottom: 5%;
-        text-align: right;
-        right: 10%;
-        width: 350px;
-        font-family: $font-main;
-        font-weight: 400;
-        font-size: 2rem;
+      position: absolute;
+      bottom: 5%;
+      text-align: right;
+      right: 10%;
+      width: 350px;
+      font-family: $font-main;
+      font-weight: 400;
+      font-size: 2rem;
+      opacity: 0;
+      animation: slideInBottomRight 1s forwards;
     }
     .title-small p {
-        font-size: 0.7rem;
-        width: 120px;
-        font-family: $font-text;
-        font-style: normal;
+      font-size: 0.7rem;
+      width: 120px;
+      font-family: $font-text;
+      font-style: normal;
     }
   }
   .right-section {
@@ -83,29 +102,35 @@ $font-text: "Inika", serif;
     position: relative;
     overflow: hidden;
     .video-container {
-        position: relative;
+      position: relative;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      animation: fadeInVideo 2s forwards;
+
+      .video {
+        position: absolute;
+        top: -10%;
+        left: 0;
         width: 100%;
-        height: 100%;
-  
-        .video {
-          position: absolute;
-          top: -10%;
-          left: 0;
-          width: 100%;
-          height: 120%;
-          object-fit: cover;
-        }
-  
-        .video-overlay {
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 120%;
-          background-color: rgba(0, 0, 0, 0.05);
-        }
+        height: 120%;
+        object-fit: cover;
+        opacity: 0;
+      animation: fadeInVideo 2s forwards;
       }
-    
+
+      .video-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 120%;
+        background-color: rgba(0, 0, 0, 0.03);
+        opacity: 0;
+        animation: fadeInVideo 2s forwards;
+      }
+    }
+
     .title-right {
       position: absolute;
       bottom: 10%;
@@ -114,21 +139,124 @@ $font-text: "Inika", serif;
       font-family: $font-text;
       font-weight: lighter;
       color: white;
+      animation: slideInRight 1s forwards;
     }
-   
   }
 
   .top-border {
-    height: 1px;
-  width: 100%;
-  position: absolute;
-  bottom: calc(30% + 30px);
-
+    height: 1.5px;
+    width: 100%;
+    position: absolute;
+    bottom: calc(30% + 30px);
   }
   .bottom-border {
-    height: 1px;
-     width: 100%;
+    height: 1.5px;
+    width: 100%;
     position: absolute;
     bottom: calc(30% - 30px);
   }
 }
+@keyframes slideInLeft {
+    from {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes slideInRight {
+    from {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideInBottomRight {
+    from {
+      transform: translate(50%, 100%);
+      opacity: 0;
+    }
+    to {
+      transform: translate(0, 0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes fadeInVideo {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @media only screen and (max-width: 768px) {
+    .hero {
+        width: 100%;
+        .left-section {
+            width: 100vw;
+            height: 100vh;
+            
+
+            .background-video {
+                opacity: 1;
+                z-index: 0;
+            }
+            .title-small {
+                display: none;
+              }
+              .titles {
+                background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5));
+                padding: 10px;
+                top: 20%;
+                margin-left: 5%;
+                h2 {
+                  font-size: 2rem;
+                }
+                h1 {
+                  font-size: 6rem;
+                }
+              }
+              .portfolio-link {
+                bottom: 27%;
+                margin-left: 0%;
+                background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5));
+                left: 0;
+                padding: 20px;
+                width: 100%;
+                font-weight: bold;
+              }
+              .title-role {
+                bottom: 10%;
+                right: 0%;
+                font-size: 1rem;
+                background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5));
+                width: 300px;
+                padding: 10px;
+              }
+        }
+       .right-section {
+           display:none;
+       }
+    }
+  }
+
+
+ 

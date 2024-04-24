@@ -6,6 +6,10 @@ const Hero = () => {
   return (
     <div className="hero">
       <div className="left-section">
+        <video className="background-video" autoPlay loop muted>
+          <source src="hero-video.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
         <div className="navbar">
           <img src="name.png" alt="logo" className="logo" />
           <Navigation />
@@ -42,7 +46,7 @@ const Hero = () => {
       </div>
 
       <div className="right-section">
-      <div className="video-container">
+        <div className="video-container">
           <video className="video" autoPlay loop muted>
             <source src="hero-video.mp4" type="video/mp4" />
             Your browser does not support the video tag.
@@ -53,7 +57,7 @@ const Hero = () => {
       </div>
 
       <hr className="top-border" />
-      <hr className="bottom-border"/>
+      <hr className="bottom-border" />
     </div>
   );
 };
