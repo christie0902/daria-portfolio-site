@@ -24,7 +24,7 @@ const Book: React.FC = () => {
    
         <HTMLFlipBook
           width={400}
-          height={500}
+          height={400}
           showCover={true}
           className="book"
           maxShadowOpacity={0}

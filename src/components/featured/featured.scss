@@ -4,12 +4,38 @@ $font-main:  "IBM Plex Sans", sans-serif;
 $font-text:  "Inika", serif;
 
 .feature-container {
-  min-height: 100vh;
+  min-height: 70%;
   box-sizing: border-box;
 }
 
+.guide {
+  position: absolute;
+  width: 300px;
+  height: 100px;
+  left: 28%;
+  top:130%;
+    .guide-text {
+      font-family: $font-text;
+      font-size: 2rem;
+      transform: skewY(-10deg);
+      position: absolute;
+      top: 15%;
+      left:0;
+      color: rgb(104, 105, 8);
+
+    }
+    .guide-img {
+      width: 200px;
+      position: absolute;
+      top:50%;
+      left:10%;
+      animation: moveRight 0.8s linear infinite;
+      animation-direction: alternate;
+    }
+}
+
 .book-container {
-  margin-top: 10vh;
+  margin-top: 5vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -67,14 +93,17 @@ $font-text:  "Inika", serif;
   flex-direction: column;
   justify-content: space-between;
   position: relative;
-  background-color: rgb(69, 204, 102);
-  background-image: repeating-linear-gradient(-26deg, rgba(255,255,255, 0.25), rgba(168, 100, 100, 0.25) 2px, transparent 3px, transparent 7px);
-  background-size: 6px 8px;
+  background-image: url('cover-white.png');
+  background-position: center;
+  background-size: cover;
+  // background-color: rgb(69, 204, 102);
+  // background-image: repeating-linear-gradient(-26deg, rgba(255,255,255, 0.25), rgba(168, 100, 100, 0.25) 2px, transparent 3px, transparent 7px);
+  // background-size: 6px 8px;
   h1 {
-    font-size: 2.4rem; 
-    margin-top: 50%;
-    font-family: $font-main;
-    color: rgb(180, 17, 118);
+    font-size: 2.5rem; 
+    margin-top: 45%;
+    font-family: $font-text;
+    color: rgb(47, 70, 34);
     text-transform: uppercase;
   }
   img {
@@ -85,8 +114,10 @@ $font-text:  "Inika", serif;
     transform: translateX(-50%);
   }
   p {
-    padding-inline: 3px;
-    font-size: 1.2rem;
+    padding-inline: 5px;
+    margin-inline: auto;
+    width: 70%;
+    font-size: 1.1rem;
     color: #000000;
     font-family: $font-text;
   }
@@ -94,15 +125,15 @@ $font-text:  "Inika", serif;
 
 .pagination {
   margin-inline: auto;
-  margin-top: 30px;
+  margin-top: 3%;
   display: flex;
   gap:15px;
   align-items: center;
   justify-content: center;
   font-family: $font-text;
   button {
-    background-color: #00a835;
-    color: white;
+    background-color: #eff1da;
+    color: rgb(0, 0, 0);
     border: none;
     padding: 10px 25px;
     border-radius: 15px;
@@ -125,8 +156,8 @@ button:hover {
 
 .back button {
   margin-top: 50%;
-  background-color: #1e9441;
-  color: white;
+  background-color: #dfd7ad;
+  color: rgb(0, 0, 0);
   border: none;
   padding: 20px 30px;
   border-radius: 30px;
@@ -149,6 +180,16 @@ button:hover {
   }
 }
 
+@keyframes moveRight {
+  0% {
+    left: 0;
+    transform: translateY(0);
+  }
+  100% {
+    left: 20px;
+    transform: translateY(4px);
+  }
+}
 
 @media only screen and  (max-width: 768px) and (min-width: 480px) {
   .book-container {
