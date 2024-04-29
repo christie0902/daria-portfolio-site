@@ -1,9 +1,17 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
+import LazyLoader from "../../lib/utilityComponents/LazyLoader";
 import "./about.scss";
 
 const About = () => {
+  const elemRef = useRef(null);
+  const [reference, setReference] = useState(null);
+
+  useEffect(() => {
+    setReference(elemRef.current);
+  }, [elemRef]);
+
   return (
-    <div className="about-container">
+    <div ref={elemRef} className="about-container">
       <div className="left-container">
         <div className="title-container">
           <div className="about-title">
@@ -53,25 +61,33 @@ const About = () => {
       </div>
       {/* Art display container */}
       <div className="art-display">
-        <div className="art-container sculpture">
-          <p className="art-text sculpture">Sculpture</p>
-          <img className="art-img" src="acrylic3.jpg" alt="sculpture" />
-        </div>
-        <div className="art-container digital">
-           <p className="art-text digital">Digital Art</p>
-          <img className="art-img" src="acrylic2.jpg" alt="digital art" />
-        </div>
-        <div className="art-container photography">
-           <p className="art-text photography">Photography</p>
-          <img className="art-img" src="acrylic1.jpg" alt="photography" />
-        </div>
-        <div className="art-container sketching">
-           <p className="art-text sketching">Sketch & Painting</p>
-          <img className="art-img" src="acrylic4.jpg" alt="sketch and painting" />
-        </div>
-        
+        {reference && (
+          <LazyLoader targetElement={reference}>
+            <div>
+              <div className="art-container sculpture">
+                <p className="art-text sculpture">Sculpture</p>
+                <img className="art-img" src="acrylic3.jpg" alt="sculpture" />
+              </div>
+              <div className="art-container digital">
+                <p className="art-text digital">Digital Art</p>
+                <img className="art-img" src="acrylic2.jpg" alt="digital art" />
+              </div>
+              <div className="art-container photography">
+                <p className="art-text photography">Photography</p>
+                <img className="art-img" src="acrylic1.jpg" alt="photography" />
+              </div>
+              <div className="art-container sketching">
+                <p className="art-text sketching">Sketch & Painting</p>
+                <img
+                  className="art-img"
+                  src="acrylic4.jpg"
+                  alt="sketch and painting"
+                />
+              </div>
+            </div>
+          </LazyLoader>
+        )}
         <button className="contact-button">Contact Me!</button>
-        
       </div>
     </div>
   );

@@ -98,9 +98,9 @@ $font-text: "Inika", serif;
           transition: all 0.5s ease;
         }
         .art-text {
-            font-size: 2.5rem;
-            transition: all 0.5s ease;
-            &.sculpture {
+          font-size: 2.5rem;
+          transition: all 0.5s ease;
+          &.sculpture {
             transform: translateY(150%);
           }
           &.digital {
@@ -111,7 +111,7 @@ $font-text: "Inika", serif;
             transform: translateY(100%);
           }
           &.sketching {
-            transform: translate(-150%,-70%);
+            transform: translate(-150%, -70%);
           }
         }
       }
@@ -121,21 +121,21 @@ $font-text: "Inika", serif;
           transition: all 1s ease;
         }
         .art-text {
-            font-size: 1.1rem;
-            transition: all 1s ease;
-            &.sculpture {
-                transform: translateY(0%);
-              }
-              &.digital {
-                transform: translateY(0%);
-                width: 300px;
-              }
-              &.photography {
-                transform: translateY(0%);
-              }
-              &.sketching {
-                transform: translate(0%,0%);
-              }
+          font-size: 1.1rem;
+          transition: all 1s ease;
+          &.sculpture {
+            transform: translateY(0%);
+          }
+          &.digital {
+            transform: translateY(0%);
+            width: 300px;
+          }
+          &.photography {
+            transform: translateY(0%);
+          }
+          &.sketching {
+            transform: translate(0%, 0%);
+          }
         }
       }
 
