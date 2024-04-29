@@ -45,11 +45,11 @@ const Book: React.FC = () => {
           <div className="my-page cover-page front">
      
             <img src="\name.png" alt="logo" />
-            <h1>Art Collection</h1>
-            <p>
+            <h1>Art Book</h1>
+            {/* <p>
               The collection of my special arts, includes illustration,
               sketching, 3D models, logo designs
-            </p>
+            </p> */}
           </div>
 
           {/* Pages from Gallery */}

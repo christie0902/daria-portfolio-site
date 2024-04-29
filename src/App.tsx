@@ -13,6 +13,11 @@ function App() {
     <section id="Home">
       <Hero/>
     </section>
+    
+    <section id="About">
+       <About/>
+    </section>
+
    <section id="Featured">
       <FeaturedProduct/>
     </section>
@@ -20,9 +25,7 @@ function App() {
        <Gallery/>
     </section>
 
-    <section id="About">
-       <About/>
-    </section>
+    
 
     <section id="Contact">
        <Contact/>

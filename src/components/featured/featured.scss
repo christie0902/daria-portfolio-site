@@ -13,7 +13,7 @@ $font-text:  "Inika", serif;
   width: 300px;
   height: 100px;
   left: 28%;
-  top:130%;
+  top:230%;
     .guide-text {
       font-family: $font-text;
       font-size: 2rem;
@@ -93,17 +93,17 @@ $font-text:  "Inika", serif;
   flex-direction: column;
   justify-content: space-between;
   position: relative;
-  background-image: url('cover-white.png');
+  background-image: url('cover-beige.png');
   background-position: center;
   background-size: cover;
   // background-color: rgb(69, 204, 102);
   // background-image: repeating-linear-gradient(-26deg, rgba(255,255,255, 0.25), rgba(168, 100, 100, 0.25) 2px, transparent 3px, transparent 7px);
   // background-size: 6px 8px;
   h1 {
-    font-size: 2.5rem; 
+    font-size: 3rem; 
     margin-top: 45%;
     font-family: $font-text;
-    color: rgb(47, 70, 34);
+    color: rgb(0, 0, 0);
     text-transform: uppercase;
   }
   img {
@@ -113,14 +113,14 @@ $font-text:  "Inika", serif;
     left: 50%;
     transform: translateX(-50%);
   }
-  p {
-    padding-inline: 5px;
-    margin-inline: auto;
-    width: 70%;
-    font-size: 1.1rem;
-    color: #000000;
-    font-family: $font-text;
-  }
+  // p {
+  //   padding-inline: 5px;
+  //   margin-inline: auto;
+  //   width: 70%;
+  //   font-size: 1.1rem;
+  //   color: #000000;
+  //   font-family: $font-text;
+  // }
 }
 
 .pagination {
@@ -132,7 +132,7 @@ $font-text:  "Inika", serif;
   justify-content: center;
   font-family: $font-text;
   button {
-    background-color: #eff1da;
+    // background-color: #eff1da;
     color: rgb(0, 0, 0);
     border: none;
     padding: 10px 25px;
@@ -149,7 +149,7 @@ $font-text:  "Inika", serif;
 }
 
 button:hover {
-  background-color: #0d381a;
+  background-color: #f5f2dc;
   cursor: pointer;
 }
 
