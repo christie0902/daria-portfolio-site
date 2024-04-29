@@ -2,18 +2,20 @@ $font-main: "IBM Plex Sans", sans-serif;
 $font-text: "Inika", serif;
 
 .about-container {
-  position: relative;
-  height: 100vh;
-  padding-left: 10%;
-  padding-top: 5%;
+  display: flex;
+  justify-content: space-around;
+  gap: 10%;
   .left-container {
+    position: relative;
+    height: 100vh;
+    padding-top: 5%;
     display: flex;
     flex-direction: column;
     height: 80vh;
     justify-content: space-between;
-
+    width: 40vw;
     .title-container {
-      width: 40vw;
+      width: 100%;
       display: flex;
       flex-direction: column;
       .about-title {
@@ -74,6 +76,81 @@ $font-text: "Inika", serif;
           }
         }
       }
+    }
+  }
+  .art-display {
+    position: relative;
+    top: 4rem;
+    right: 10%;
+    width: 30vw;
+    .art-container {
+      position: absolute;
+      &.sculpture {
+        top: 20%;
+        left: 10%;
+        z-index: 3;
+      }
+      &.digital {
+        top: 35%;
+        left: 40%;
+        z-index: 2;
+      }
+      &.photography {
+        top: 25%;
+        left: 70%;
+      }
+      &.sketching {
+        top: 15%;
+        left: 95%;
+      }
+      .art-img {
+        width: 150px;
+        height: 300px;
+        object-fit: cover;
+      }
+
+      .art-text {
+        font-size: 1.1rem;
+        font-family: $font-text;
+        font-weight: bold;
+        position: absolute;
+        font-style: italic;
+        &.sculpture {
+          top: 95%;
+          left: 0%;
+          z-index: 3;
+        }
+        &.digital {
+          top: -15%;
+          left: 20%;
+          z-index: 2;
+        }
+        &.photography {
+          top: 95%;
+          left: 30%;
+        }
+        &.sketching {
+          top: -15%;
+          right: -10%;
+        }
+      }
+    }
+
+    .contact-button {
+        position: absolute;
+        bottom: 0%;
+        right:-30%;
+    
+        border-radius: 0%;
+        padding-block: 8px;
+        padding-inline: 15px;
+        font-size: 1.2rem;
+        background-color: transparent;
+        border-width: 3px;
+        &:hover {
+            color:white;
+            background-color: black;
+        }
     }
   }
 }
