@@ -8,7 +8,7 @@ $font-text: "Inika", serif;
   .left-container {
     position: relative;
     height: 100vh;
-    padding-top: 5%;
+    padding-top: 2%;
     display: flex;
     flex-direction: column;
     height: 80vh;
@@ -25,6 +25,7 @@ $font-text: "Inika", serif;
         font-weight: bold;
         line-height: 95%;
         position: relative;
+        animation: slideDown 1s forwards;
       }
       .about-title::after {
         content: "";
@@ -39,6 +40,7 @@ $font-text: "Inika", serif;
         width: 100%;
         margin-top: 4%;
         font-family: $font-text;
+        animation: slideInLeft 1s forwards;
         .text-uppercase {
           text-transform: uppercase;
           font-size: 1.1rem;
@@ -48,6 +50,7 @@ $font-text: "Inika", serif;
     .bottom-container {
       width: 50vw;
       font-size: 1.2rem;
+      animation: slideInBottom 1s forwards;
       h2 {
         font-family: $font-main;
         margin: 0;
@@ -84,24 +87,79 @@ $font-text: "Inika", serif;
     right: 10%;
     width: 30vw;
     .art-container {
+      animation: fadeIn 2s ease-in backwards;
       position: absolute;
+
+      &:hover {
+        .art-img {
+          transform: scale(1.5);
+          position: relative;
+          z-index: 10;
+          transition: all 0.5s ease;
+        }
+        .art-text {
+            font-size: 2.5rem;
+            transition: all 0.5s ease;
+            &.sculpture {
+            transform: translateY(150%);
+          }
+          &.digital {
+            transform: translateY(-250%);
+            width: 300px;
+          }
+          &.photography {
+            transform: translateY(100%);
+          }
+          &.sketching {
+            transform: translate(-150%,-70%);
+          }
+        }
+      }
+      &:not(:hover) {
+        .art-img {
+          transform: scale(1);
+          transition: all 1s ease;
+        }
+        .art-text {
+            font-size: 1.1rem;
+            transition: all 1s ease;
+            &.sculpture {
+                transform: translateY(0%);
+              }
+              &.digital {
+                transform: translateY(0%);
+                width: 300px;
+              }
+              &.photography {
+                transform: translateY(0%);
+              }
+              &.sketching {
+                transform: translate(0%,0%);
+              }
+        }
+      }
+
       &.sculpture {
         top: 20%;
         left: 10%;
         z-index: 3;
+        animation-delay: 1s;
       }
       &.digital {
         top: 35%;
         left: 40%;
-        z-index: 2;
+        z-index: 4;
+        animation-delay: 1.4s;
       }
       &.photography {
         top: 25%;
         left: 70%;
+        animation-delay: 1.8s;
       }
       &.sketching {
         top: 15%;
         left: 95%;
+        animation-delay: 2.2s;
       }
       .art-img {
         width: 150px;
@@ -115,6 +173,7 @@ $font-text: "Inika", serif;
         font-weight: bold;
         position: absolute;
         font-style: italic;
+
         &.sculpture {
           top: 95%;
           left: 0%;
@@ -137,21 +196,66 @@ $font-text: "Inika", serif;
     }
 
     .contact-button {
-        position: absolute;
-        bottom: 0%;
-        right:-30%;
-    
-        border-radius: 0%;
-        padding-block: 8px;
-        padding-inline: 15px;
-        font-size: 1.2rem;
-        background-color: transparent;
-        border-width: 3px;
-        &:hover {
-            color:white;
-            background-color: black;
-        }
+      position: absolute;
+      bottom: 0%;
+      right: -30%;
+
+      border-radius: 0%;
+      padding-block: 8px;
+      padding-inline: 15px;
+      font-size: 1.2rem;
+      background-color: transparent;
+      border-width: 3px;
+      animation: slideInBottom 2s forwards;
+      &:hover {
+        color: white;
+        background-color: black;
+      }
     }
+  }
+}
+
+@keyframes slideDown {
+  from {
+    transform: translate(-100%, -50%);
+    opacity: 0;
+  }
+  to {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInBottom {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 

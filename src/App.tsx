@@ -26,10 +26,10 @@ function App() {
     </section>
 
     
-
     <section id="Contact">
        <Contact/>
     </section>
+
     </>
   )
 }
