@@ -1,185 +1,184 @@
-@import url('https://fonts.googleapis.com/css2?family=Yatra+One&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Yatra+One&display=swap");
 
-$font-main:  "IBM Plex Sans", sans-serif;
-$font-text:  "Inika", serif;
+$font-main: "IBM Plex Sans", sans-serif;
+$font-text: "Inika", serif;
 
-.feature-container {
-  min-height: 70%;
-  box-sizing: border-box;
-}
+.feature-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  height: 100vh;
+  .feature-container {
+    min-height: 80%;
+    box-sizing: border-box;
+  }
 
-.guide {
-  position: absolute;
-  width: 300px;
-  height: 100px;
-  left: 28%;
-  top:230%;
+  .guide {
+    position: absolute;
+    width: 300px;
+    height: 100px;
+    left: 30%;
+    top: 30%;
     .guide-text {
       font-family: $font-text;
       font-size: 2rem;
       transform: skewY(-10deg);
       position: absolute;
       top: 15%;
-      left:0;
+      left: 0;
       color: rgb(104, 105, 8);
-
     }
     .guide-img {
       width: 200px;
       position: absolute;
-      top:50%;
-      left:10%;
+      top: 50%;
+      left: 10%;
       animation: moveRight 0.8s linear infinite;
       animation-direction: alternate;
     }
-}
-
-.book-container {
-  margin-top: 5vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 50px;
-  
-}
-
-.book {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px;
-}
-
-
-.page-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  // background: linear-gradient(90deg, snow 1px, #f0f0f0);
-  background-image: url('paper-texture.png');
-  background-position: center;
-  background-size: 160% 150%;
-  box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.15);
-  overflow: hidden;
-  height: 100%;
-  padding: 10px;
-  font-family: $font-text;
-
-
-  img {
-    width: 80%;
-    height: 60%;
-    object-fit: contain;
-    margin-bottom: auto;
   }
-  p {
-    margin-bottom: auto;
+
+  .book-container {
+    margin-top: 1vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
   }
-}
 
-.my-page {
-  width: 100%;
-  height: 100%;
-}
+  .book {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
 
-
-.cover-page {
-  padding: 20px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  position: relative;
-  background-image: url('cover-beige.png');
-  background-position: center;
-  background-size: cover;
-  // background-color: rgb(69, 204, 102);
-  // background-image: repeating-linear-gradient(-26deg, rgba(255,255,255, 0.25), rgba(168, 100, 100, 0.25) 2px, transparent 3px, transparent 7px);
-  // background-size: 6px 8px;
-  h1 {
-    font-size: 3rem; 
-    margin-top: 45%;
+  .page-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    // background: linear-gradient(90deg, snow 1px, #f0f0f0);
+    background-image: url("paper-texture.png");
+    background-position: center;
+    background-size: 160% 150%;
+    box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+    height: 100%;
+    padding: 10px;
     font-family: $font-text;
-    color: rgb(0, 0, 0);
-    text-transform: uppercase;
-  }
-  img {
-    width: 300px;
-    position: absolute;
-    top: -10%;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-  // p {
-  //   padding-inline: 5px;
-  //   margin-inline: auto;
-  //   width: 70%;
-  //   font-size: 1.1rem;
-  //   color: #000000;
-  //   font-family: $font-text;
-  // }
-}
 
-.pagination {
-  margin-inline: auto;
-  margin-top: 3%;
-  display: flex;
-  gap:15px;
-  align-items: center;
-  justify-content: center;
-  font-family: $font-text;
-  button {
-    // background-color: #eff1da;
-    color: rgb(0, 0, 0);
-    border: none;
-    padding: 10px 25px;
-    border-radius: 15px;
-    transition: background-color 0.3s ease;
-    font-size: 1rem;
-    font-weight: bold;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    img {
+      width: 80%;
+      height: 60%;
+      object-fit: contain;
+      margin-bottom: auto;
+    }
+    p {
+      margin-bottom: auto;
+    }
   }
-  .page-no {
-    font-size: 1em;
-    font-weight: 500;
+
+  .my-page {
+    width: 100%;
+    height: 100%;
   }
-}
 
-button:hover {
-  background-color: #f5f2dc;
-  cursor: pointer;
-}
+  .cover-page {
+    padding: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    background-image: url("cover-beige.png");
+    background-position: center;
+    background-size: cover;
+    // background-color: rgb(69, 204, 102);
+    // background-image: repeating-linear-gradient(-26deg, rgba(255,255,255, 0.25), rgba(168, 100, 100, 0.25) 2px, transparent 3px, transparent 7px);
+    // background-size: 6px 8px;
+    h1 {
+      font-size: 3rem;
+      margin-top: 45%;
+      font-family: $font-text;
+      color: rgb(0, 0, 0);
+      text-transform: uppercase;
+    }
+    img {
+      width: 300px;
+      position: absolute;
+      top: -10%;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    // p {
+    //   padding-inline: 5px;
+    //   margin-inline: auto;
+    //   width: 70%;
+    //   font-size: 1.1rem;
+    //   color: #000000;
+    //   font-family: $font-text;
+    // }
+  }
 
+  .pagination {
+    margin-inline: auto;
+    margin-top: 3%;
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    justify-content: center;
+    font-family: $font-text;
+    button {
+      // background-color: #eff1da;
+      color: rgb(0, 0, 0);
+      border: none;
+      padding: 10px 25px;
+      border-radius: 15px;
+      transition: background-color 0.3s ease;
+      font-size: 1rem;
+      font-weight: bold;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+    .page-no {
+      font-size: 1em;
+      font-weight: 500;
+    }
+  }
 
-.back button {
-  margin-top: 50%;
-  background-color: #dfd7ad;
-  color: rgb(0, 0, 0);
-  border: none;
-  padding: 20px 30px;
-  border-radius: 30px;
-  cursor: pointer;
-  font-size: 1.5rem;
-  font-weight: bold; 
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-  &:hover {
-    background-color: #0d381a;
+  button:hover {
+    background-color: #f5f2dc;
     cursor: pointer;
   }
-  & a {
-    text-decoration: none;
-    color: white;
-  }
-  & svg {
-    vertical-align: middle; 
-    margin-left: 10px;
-    
+
+  .back button {
+    margin-top: 50%;
+    background-color: #f5f2dc;
+    color: rgb(0, 0, 0);
+    border: none;
+    padding: 20px 30px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    font-weight: bold;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    &:hover {
+      background-color: #0d381a;
+      cursor: pointer;
+    }
+    & a {
+      text-decoration: none;
+      color: white;
+    }
+    & svg {
+      vertical-align: middle;
+      margin-left: 10px;
+    }
   }
 }
-
 @keyframes moveRight {
   0% {
     left: 0;
@@ -191,7 +190,7 @@ button:hover {
   }
 }
 
-@media only screen and  (max-width: 768px) and (min-width: 480px) {
+@media only screen and (max-width: 768px) and (min-width: 480px) {
   .book-container {
     margin-top: 0vh;
     gap: 80px;
@@ -201,9 +200,7 @@ button:hover {
   }
 }
 
-
-
-@media only screen and (max-width:480px) {
+@media only screen and (max-width: 480px) {
   .book-container {
     margin-top: 0vh;
   }

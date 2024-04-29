@@ -6,7 +6,7 @@ const Gallery = () => {
   const [hoverIndex, setHoverIndex] = useState(-1);
 
   return (
-    <>
+    <div className="gallery-section">
     <h1 className="section-title">MY WORK</h1>
     <div className="gallery">
       {gallery.map((image: GalleryObj, index) => {
@@ -29,7 +29,7 @@ const Gallery = () => {
         );
       })}
     </div>
-  </>
+  </div>
   );
 };
 

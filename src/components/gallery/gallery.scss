@@ -1,18 +1,25 @@
-$font-main:  "IBM Plex Sans", sans-serif;
-$font-text:  "Inika", serif;
+$font-main: "IBM Plex Sans", sans-serif;
+$font-text: "Inika", serif;
 
-.gallery {
+.gallery-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+
+  .gallery {
     --s: 20vw; /* control the size */
-    --g: 20px;  /* control the gap */
-    --f: 1.5;   /* control the scale factor */
-    
+    --g: 20px; /* control the gap */
+    --f: 1.5; /* control the scale factor */
+
     display: grid;
     gap: var(--g);
-    width: calc(3*var(--s) + 2*var(--g));
+    width: calc(3 * var(--s) + 2 * var(--g));
     aspect-ratio: 1;
-    grid-template-columns: repeat(3,auto);
+    grid-template-columns: repeat(4, auto);
   }
-  
+
   .gallery > .img-container > img {
     width: 0;
     height: 0;
@@ -20,50 +27,50 @@ $font-text:  "Inika", serif;
     min-width: 100%;
     object-fit: cover;
     cursor: pointer;
-    transition: .35s linear;
+    transition: 0.35s linear;
   }
-  
+
   .gallery .img-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        position: relative;
-        .text-container{
-           font-family: $font-text;
-            opacity: 0;
-            transition: opacity 0s;
-           
-            h3 {
-                position: absolute;
-                top: 40%;
-                left: 50%;
-                background-color: #e0E6e2;
-                font-size: 3.5rem;
-                z-index: 5;
-            }
-            p {
-                position: absolute;
-                top: 60%;
-                left: 50%;
-                background-color: #e0E6e2;
-                font-size: 1.5rem;
-                z-index: 5;
-            }
-            &-active {
-                opacity: 1;
-                transition: opacity 0.5s ease-in 0.2s;
-            }
-        }
-            img:hover {
-                width:  calc(var(--s)*var(--f));
-                height: calc(var(--s)*var(--f));
-            }
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    .text-container {
+      font-family: $font-text;
+      opacity: 0;
+      transition: opacity 0s;
+
+      h3 {
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        background-color: #e0e6e2;
+        font-size: 3.5rem;
+        z-index: 5;
+      }
+      p {
+        position: absolute;
+        top: 60%;
+        left: 50%;
+        background-color: #e0e6e2;
+        font-size: 1.5rem;
+        z-index: 5;
+      }
+      &-active {
+        opacity: 1;
+        transition: opacity 0.5s ease-in 0.2s;
+      }
     }
-  
-  // body {
-  //   margin: 0;
-  //   min-height: 100vh;
-  //   display: grid;
-  //   place-content: center;
-  //   background: #ffffff;
-  // }
+    img:hover {
+      width: calc(var(--s) * var(--f));
+      height: calc(var(--s) * var(--f));
+    }
+  }
+}
+// body {
+//   margin: 0;
+//   min-height: 100vh;
+//   display: grid;
+//   place-content: center;
+//   background: #ffffff;
+// }

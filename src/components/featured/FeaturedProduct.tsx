@@ -6,7 +6,7 @@ const FeaturedProduct = () => {
 
 
   return (
-    <>
+    <div className='feature-section'>
     <h1 className='section-title'>FEATURED ART</h1>
     <div className="guide">
       <p className='guide-text'>Flip to explore!</p>
@@ -15,7 +15,7 @@ const FeaturedProduct = () => {
     <div className='feature-container'>
        <Book/>
     </div>
-    </>
+    </div>
   )
 }
 
