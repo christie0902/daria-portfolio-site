@@ -17,6 +17,7 @@ $font-text: "Inika", serif;
         justify-content: space-between;
         flex:1;
         margin-left:10%;
+        animation: fadeInLeft 2s forwards;
         h3 {
             margin-bottom: auto;
             font-size: 1.5rem;
@@ -40,6 +41,7 @@ $font-text: "Inika", serif;
         height: 100%;
         justify-content: space-between;
         align-items: center;
+        animation: fadeInBottom 2s forwards;
         img {
             width: 90%;
             max-width: 500px;
@@ -90,7 +92,20 @@ $font-text: "Inika", serif;
             resize: none;
           }
         }
-      
+        .attachment-preview {
+          margin-top: 10px;
+          display: flex;
+          gap: 3px;
+        
+          img {
+            display: block;
+            width: 100px;
+            height: 100px; 
+            object-fit: cover;
+            border-radius: 5px; 
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+          }
+        }
         .contact-button {
           display: block;
           width: 100%;
@@ -110,4 +125,26 @@ $font-text: "Inika", serif;
           }
         }
       }
+}
+
+@keyframes fadeInLeft {
+    from{
+        opacity: 0;
+        transform: translateX(-100%)
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInBottom {
+    from{
+        opacity: 0;
+        transform: translateY(100%)
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
