@@ -143,23 +143,23 @@ $font-text: "Inika", serif;
         top: 20%;
         left: 10%;
         z-index: 3;
-        animation-delay: 1s;
+        animation-delay: 0.6s;
       }
       &.digital {
         top: 35%;
         left: 40%;
         z-index: 4;
-        animation-delay: 1.4s;
+        animation-delay: 1s;
       }
       &.photography {
         top: 25%;
         left: 70%;
-        animation-delay: 1.8s;
+        animation-delay: 1.4s;
       }
       &.sketching {
         top: 15%;
         left: 95%;
-        animation-delay: 2.2s;
+        animation-delay: 1.8s;
       }
       .art-img {
         width: 150px;
@@ -197,8 +197,8 @@ $font-text: "Inika", serif;
 
     .contact-button {
       position: absolute;
-      bottom: 0%;
-      right: -30%;
+      bottom: -5%;
+      right: -36%;
 
       border-radius: 0%;
       padding-block: 8px;
