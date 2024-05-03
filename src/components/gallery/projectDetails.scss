@@ -1,0 +1,128 @@
+.modal {
+    &.fade {
+      transition: opacity 0.15s linear;
+      &.dark {
+        background-color: rgba(0, 0, 0, 0.5);
+      }
+    }
+    .modal-dialog {
+      max-width: 1200px;
+      margin: 1.75rem auto;
+    }
+    .modal-content {
+      box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+      &.dark {
+        background-color: #333;
+        color: #fff;
+      }
+      .modal-body {
+        position: relative;
+        padding: 1.25rem;
+        .btn-close {
+          position: absolute;
+          top: 0;
+          right: 0;
+          z-index: 999;
+          opacity: 0.5;
+          &.dark {
+            filter: invert(1);
+          }
+        }
+        .ajax-container {
+          .title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            &.text-white {
+              color: #fff;
+            }
+          }
+          .row {
+            margin-top: 1rem;
+            .col-md-7 {
+              .item {
+                img,
+                video {
+                  width: 100%;
+                  height: auto;
+                  border-radius: 0.25rem;
+                }
+              }
+            }
+            .col-md-5 {
+              .info-title {
+                font-size: 1.25rem;
+                font-weight: bold;
+                margin-bottom: 0.5rem;
+                &.text-white {
+                  color: #fff;
+                }
+              }
+              .project-info {
+                margin-bottom: 1.5rem;
+              }
+              .details-title {
+                font-size: 1.25rem;
+                font-weight: bold;
+                margin-bottom: 0.5rem;
+                &.text-white {
+                  color: #fff;
+                }
+              }
+              .details-list {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+                li {
+                  margin-bottom: 0.75rem;
+                  .detail-label {
+                    font-weight: bold;
+                    margin-right: 0.5rem;
+                    &.text-white {
+                      color: #fff;
+                    }
+                  }
+                  a {
+                    color: #fff;
+                    text-decoration: none;
+                    &:hover {
+                      text-decoration: underline;
+                    }
+                  }
+                }
+              }
+              .share-section {
+                margin-top: 1rem;
+                .share-label {
+                  font-weight: bold;
+                  margin-right: 0.5rem;
+                  &.text-white {
+                    color: #fff;
+                  }
+                }
+                .social-icons {
+                  list-style: none;
+                  padding: 0;
+                  margin: 0;
+                  display: flex;
+                  li {
+                    margin-right: 0.5rem;
+                    &:last-child {
+                      margin-right: 0;
+                    }
+                    a {
+                      color: #fff;
+                      text-decoration: none;
+                      font-size: 1.25rem;
+                      &:hover {
+                        opacity: 0.8;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
