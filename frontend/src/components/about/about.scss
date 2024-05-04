@@ -5,6 +5,13 @@ $font-text: "Inika", serif;
   display: flex;
   justify-content: space-around;
   gap: 10%;
+
+  @media (max-width: 1024px) {
+    flex-direction: column;
+    align-items: center;
+    gap: 5%;
+  }
+
   .left-container {
     position: relative;
     height: 100vh;
@@ -14,6 +21,11 @@ $font-text: "Inika", serif;
     height: 80vh;
     justify-content: space-between;
     width: 40vw;
+
+    @media (max-width: 1024px) {
+      width: 90%;
+    }
+
     .title-container {
       width: 100%;
       display: flex;
@@ -26,6 +38,10 @@ $font-text: "Inika", serif;
         line-height: 95%;
         position: relative;
         animation: slideDown 1s forwards;
+
+        @media (max-width: 768px) {
+          font-size: 3.5rem;
+        }
       }
       .about-title::after {
         content: "";
@@ -44,6 +60,9 @@ $font-text: "Inika", serif;
         .text-uppercase {
           text-transform: uppercase;
           font-size: 1.1rem;
+          @media (max-width: 768px) {
+            font-size: 1rem;
+          }
         }
       }
     }
@@ -54,15 +73,29 @@ $font-text: "Inika", serif;
       h2 {
         font-family: $font-main;
         margin: 0;
+        @media (max-width: 768px) {
+          font-size: 2rem;
+          margin-block: 10%;
+          }
       }
       .services-container {
         display: flex;
         flex-wrap: wrap;
         gap: 5%;
+        @media (max-width: 768px) {
+        flex-direction: column;
+         justify-content: center;
+         align-items: center;
+         width: 150%;
+         margin-left: 10%;
+        }
         .service-container {
           position: relative;
           width: 45%;
           font-family: $font-text;
+          @media (max-width: 768px) {
+           width: 100%;
+           }
           .service-number {
             border-bottom: 2px solid black;
             padding-bottom: 5px;
@@ -86,6 +119,7 @@ $font-text: "Inika", serif;
     top: 4rem;
     right: 10%;
     width: 30vw;
+
     .art-container {
       animation: fadeIn 2s ease-in backwards;
       position: absolute;
@@ -143,23 +177,23 @@ $font-text: "Inika", serif;
         top: 20%;
         left: 10%;
         z-index: 3;
-        animation-delay: 1s;
+        animation-delay: 0.6s;
       }
       &.digital {
         top: 35%;
         left: 40%;
         z-index: 4;
-        animation-delay: 1.4s;
+        animation-delay: 1s;
       }
       &.photography {
         top: 25%;
         left: 70%;
-        animation-delay: 1.8s;
+        animation-delay: 1.4s;
       }
       &.sketching {
         top: 15%;
         left: 95%;
-        animation-delay: 2.2s;
+        animation-delay: 1.8s;
       }
       .art-img {
         width: 150px;
@@ -194,11 +228,12 @@ $font-text: "Inika", serif;
         }
       }
     }
+ 
 
     .contact-button {
       position: absolute;
-      bottom: 0%;
-      right: -30%;
+      bottom: -5%;
+      right: -36%;
 
       border-radius: 0%;
       padding-block: 8px;
@@ -265,3 +300,69 @@ $font-text: "Inika", serif;
 //       white-space: nowrap;
 //     }
 //   }
+
+
+@media (max-width: 1024px) {
+  .about-container {
+  .art-display {
+    .art-container {
+        position: relative;
+      }
+     
+      &.sculpture {
+        top: 60%;
+        left: 10%;
+        z-index: 3;
+        animation-delay: 0.6s;
+      }
+      &.digital {
+        top: 35%;
+        left: 40%;
+        z-index: 4;
+        animation-delay: 1s;
+      }
+      &.photography {
+        top: 25%;
+        left: 70%;
+        animation-delay: 1.4s;
+      }
+      &.sketching {
+        top: 15%;
+        left: 95%;
+        animation-delay: 1.8s;
+      }
+      .art-img {
+        width: 150px;
+        height: 300px;
+        object-fit: cover;
+      }
+
+      .art-text {
+        font-size: 1.1rem;
+        font-family: $font-text;
+        font-weight: bold;
+        position: absolute;
+        font-style: italic;
+
+        &.sculpture {
+          top: 95%;
+          left: 0%;
+          z-index: 3;
+        }
+        &.digital {
+          top: -15%;
+          left: 20%;
+          z-index: 2;
+        }
+        &.photography {
+          top: 95%;
+          left: 30%;
+        }
+        &.sketching {
+          top: -15%;
+          right: -10%;
+        }
+      }
+    }
+  }
+}

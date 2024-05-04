@@ -65,6 +65,7 @@ $font-text: "Inika", serif;
   .feature-container {
     min-height: 80%;
     box-sizing: border-box;
+    animation: slideUp 1s forwards;
   }
 
   .guide {
@@ -243,21 +244,49 @@ $font-text: "Inika", serif;
   }
 }
 
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 @media only screen and (max-width: 768px) and (min-width: 480px) {
   .book-container {
     margin-top: 0vh;
     gap: 80px;
   }
-  .book {
-    width: 800px;
+  .guide {
+    width: 300px;
+    height: 100px;
+    left: 10%;
+    top: 30%;
   }
 }
 
 @media only screen and (max-width: 480px) {
-  .book-container {
-    margin-top: 0vh;
-  }
-  .book {
-    width: 400px;
+  .feature-section {
+     justify-content: space-between;
+     padding-top: 20%;
+    .book-container {
+      margin-top: 25%;
+    }
+
+    .guide {
+      width: 250px;
+      height: 50px;
+      left: 30%;
+      top: 15%;
+      .guide-text {
+        font-size: 1.2rem;
+      }
+      .guide-img {
+        width: 150px;
+      }
+    }
   }
 }

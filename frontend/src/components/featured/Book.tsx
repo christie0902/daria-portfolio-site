@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { gallery } from "../../store/gallery-data.js";
 import HTMLFlipBook from "react-pageflip";
 import Page from "./Page.tsx";
@@ -6,8 +6,23 @@ import Page from "./Page.tsx";
 const Book: React.FC = () => {
   const book = useRef();
   const [currentPage, setCurrentPage] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
 
   const totalPages = Math.ceil(gallery.length / 2);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  const flipBookWidth = isMobile ? 300 : 400;
+  const flipBookHeight = isMobile ? 300 : 400;
 
   const handlePrevClick = () => {
     book.current?.pageFlip().flipPrev();
@@ -21,47 +36,46 @@ const Book: React.FC = () => {
 
   return (
     <div className="book-container">
-   
-        <HTMLFlipBook
-          width={400}
-          height={400}
-          showCover={true}
-          className="book"
-          maxShadowOpacity={0}
-          mobileScrollSupport={true}
-          swipeDistance={50}
-          useMouseEvents={true}
-          usePortrait={true}
-          useLandscape={true}
-          flippingTime={500}
-          ref={(node) => {
-            if (node !== null) {
-              book.current = node;
-            }
-          }}
-          onPageChange={(e) => setCurrentPage(e.data)}
-        >
-          {/* Cover Page Open */}
-          <div className="my-page cover-page front">
-     
-            <img src="\name.png" alt="logo" />
-            <h1>Art Book</h1>
-            {/* <p>
+      <HTMLFlipBook
+        width={flipBookWidth}
+        height={flipBookHeight}
+        showCover={true}
+        className="book"
+        maxShadowOpacity={0}
+        mobileScrollSupport={true}
+        swipeDistance={50}
+        useMouseEvents={true}
+        usePortrait={true}
+        useLandscape={true}
+        flippingTime={500}
+        ref={(node) => {
+          if (node !== null) {
+            book.current = node;
+          }
+        }}
+        onPageChange={(e) => setCurrentPage(e.data)}
+      >
+        {/* Cover Page Open */}
+        <div className="my-page cover-page front">
+          <img src="\name.png" alt="logo" />
+          <h1>Art Book</h1>
+          {/* <p>
               The collection of my special arts, includes illustration,
               sketching, 3D models, logo designs
             </p> */}
+        </div>
+
+        {/* Pages from Gallery */}
+        {gallery.map((art) => (
+          <div className="my-page" key={`art ${art.id}`}>
+            <Page title={art.title} des={art.des} img={art.img} />
           </div>
+        ))}
 
-          {/* Pages from Gallery */}
-          {gallery.map((art) => (
-            <div className="my-page" key={`art ${art.id}`}>
-              <Page title={art.title} des={art.des} img={art.img} />
-            </div>
-          ))}
-
-          {/* Cover Page Close */}
-          <div className="my-page cover-page back">
-          <a href="#Gallery"><button>
+        {/* Cover Page Close */}
+        <div className="my-page cover-page back">
+          <a href="#Gallery">
+            <button>
               See all my works!
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -76,11 +90,10 @@ const Book: React.FC = () => {
                   d="M8 1a.5.5 0 0 1 .5.5v10.793l2.646-2.647a.5.5 0 1 1 .708.708l-3.5 3.5a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 0 1 .708-.708L7.5 12.293V1.5A.5.5 0 0 1 8 1z"
                 />
               </svg>
-             
-            </button> </a>
-          </div>
-
-        </HTMLFlipBook>
+            </button>{" "}
+          </a>
+        </div>
+      </HTMLFlipBook>
 
       <div className="pagination">
         <button onClick={handlePrevClick}>Back</button>
