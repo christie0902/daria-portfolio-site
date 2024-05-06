@@ -10,9 +10,13 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@types/isotope-layout": "^3.0.13",
+    "@types/react-slick": "^0.23.13",
+    "isotope-layout": "^3.0.6",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-pageflip": "^2.0.3",
+    "react-slick": "^0.30.2",
     "scss": "^0.2.4"
   },
   "devDependencies": {
