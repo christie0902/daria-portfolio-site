@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%-include('partials/head.ejs') %>
+<body>
+    <%- include('./partials/nav.ejs')%>
+
+    <div class="details content">
+        <h1><%=art.title%></h1>
+        <strong>Category:</strong> <%= art.category %>
+        <strong>Description:</strong> <%= art.description %>
+        <strong>Images:</strong>
+        <ul>
+            <% art.images.forEach(image => { %>
+                <li>
+                    <img src="<%= image %>" alt="Artwork Image" class="detail-image">
+                </li>
+            <% }); %>
+        </ul>
+        <strong>Featured Art:</strong> <%= art.featured ? "Yes" : "No" %>
+    </div>
+    <a href="/arts/<%= art.id %>"><button class="edit">Edit</button></a>
+    <a class="delete" data-doc=""<%=art.id%>><button></button></a>+
+</body>
+
+<script>
+    const remove = document.querySelector('.delete');
+    remove.addEventListener('click', e=>{
+        const endpoint= `/arts/${remove.dataset.doc}`;
+        fetch(endpoint, {
+            method: 'DELETE'
+        })
+        .then(response => response.json())
+        .then(data=> window.location.href = data.redirect())
+        .catch(err => console.log(err))
+    })
+</script>
+</html>

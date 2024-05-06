@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%-include('partials/head.ejs') %>
+  <body>
+    <%- include('./partials/nav.ejs')%>
+
+    <div class="add-art content">
+      <form action="/arts" method="post">
+        <label for="category">Category:</label>
+        <select name="category" id="category">
+          <option value="sketch-painting">Sketch & Painting</option>
+          <option value="digital">Digital Art</option>
+          <option value="photography">Photography</option>
+          <option value="sculpture">Sculpture</option>
+        </select>
+        <label for="title">Title:</label>
+        <input type="text" name="title" id="title" required />
+        <label for="des">Description:</label>
+        <input type="text" name="des" id="des" required />
+        <label for="images">Upload image:</label>
+        <input
+          type="file"
+          name="images"
+          id="images"
+          multiple
+          onChange="previewImages(event)"
+        />
+        <div class="image-preview"></div>
+        <label>Featured Art:</label>
+        <div>
+          <input type="radio" id="featured-yes" name="featured" value="yes" />
+          <label for="featured-yes">Yes</label>
+        </div>
+        <div>
+          <input
+            type="radio"
+            id="featured-no"
+            name="featured"
+            value="no"
+            checked
+          />
+          <label for="featured-no">No</label>
+        </div>
+        <button>Submit</button>
+      </form>
+    </div>
+
+    <script>
+      const previewImages = (event) => {
+        const preview = document.getElementById("image-preview");
+        preview.innerHTML = "";
+
+        const files = event.target.files;
+
+        for (let i = 0; i < files.length; i++) {
+          const file = files[i];
+
+          if (!file.type.startWith("image/")) {
+            continue;
+          }
+
+          const img = document.createElement("img");
+          img.classList.add("preview-image");
+          img.file = file;
+
+          const reader = new FileReader();
+          reader.onload = function (aImg) {
+            return (function (e) {
+              aImg.src = e.tartget.result;
+            })(img);
+            reader.readAsDataURL(file);
+
+            preview.appendChild(img);
+          };
+        }
+      };
+    </script>
+  </body>
+</html>

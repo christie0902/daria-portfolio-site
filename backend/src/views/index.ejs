@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%-include('partials/head.ejs') %>
+  <body>
+    <%- include('./partials/nav.ejs')%>
+
+    <div class="art-list content">
+        <h2>All Arts</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Category</th>
+                    <th>Description</th>
+                    <th>Featured</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% arts.forEach(art => { %>
+                    <tr>
+                        <td><%= art.title %></td>
+                        <td><%= art.category %></td>
+                        <td><%= art.description %></td>
+                        <td><%= art.featured ? "Yes" : "No" %></td>
+                        <td>
+                            <a href="/arts/<%= art.id %>"><button class="edit">Edit</button></a>
+                            <form action="/arts/<%= art.id %>?_method=DELETE" method="POST" style="display: inline;">
+                                <button type="submit" class="delete">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+    </div>
+  </body>
+</html>
