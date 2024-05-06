@@ -29,11 +29,12 @@ $font-text: "Inika", serif;
       justify-content: space-between;
       position: relative;
       top: -20px;
+      font-size: 1.3rem;
 
       .logo {
         width: 120px;
         position: relative;
-        top: -35px;
+        top: -25px;
         left: 0px;
       }
     }
@@ -41,19 +42,19 @@ $font-text: "Inika", serif;
       position: absolute;
       z-index: 4;
       top: 20%;
-      margin-left: 10%;
+      margin-left: 20%;
       opacity: 0;
       animation: slideIn 2s forwards;
       h2 {
         margin-block: 10px;
-        font-size: 2.5rem;
+        font-size: 3rem;
         font-family: $font-text;
         font-weight: 300;
         animation: slideInLeft 1s forwards;
       }
       h1 {
         margin-block: 10px;
-        font-size: 6.5rem;
+        font-size: 7rem;
         font-family: $font-main;
         animation: slideInRight 1s forwards;
         // -webkit-text-stroke: 0.5px white;

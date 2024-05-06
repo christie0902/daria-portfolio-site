@@ -5,6 +5,7 @@ import FeaturedProduct from './components/featured/FeaturedProduct'
 import Gallery from './components/gallery/Gallery'
 import Contact from './components/contact/Contact'
 import About from './components/about/About'
+import Portfolio from './components/gallery/IsotopeGallery'
 
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
     </section>
     <section id="Gallery">
        <Gallery/>
+       {/* <Portfolio classicHeader={true} darkTheme={false}/> */}
     </section>
 
     
