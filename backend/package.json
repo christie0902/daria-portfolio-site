@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "tsc -p . & node dist/server.js",
-    "build": "tsc -p .",
+    "start": "tsc -p . & node buildviews.js & node dist/server.js",
+    "build": "tsc -p . & node buildviews.js",
     "dev": "nodemon src/server.ts",
     "prod": "npm run build && npm start"
   },
@@ -19,7 +19,9 @@
     "typescript": "^5.4.5"
   },
   "devDependencies": {
+    "@types/ejs": "^3.1.5",
     "dotenv": "^16.4.5",
+    "fs-extra": "^11.2.0",
     "nodemon": "^3.1.0"
   }
 }

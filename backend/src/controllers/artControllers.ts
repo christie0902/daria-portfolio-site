@@ -1,6 +1,6 @@
-const Art = require("../models/art");
+import Art from "../models/art";
 
-const index = (req, res) => {
+const index = (req: any, res: any) => {
   Art.find()
     .sort({ createdAt: -1 })
     .then((result) => {
@@ -12,12 +12,13 @@ const index = (req, res) => {
     });
 };
 
-const add_art = (req, res) => {
+const add_art = (req: any, res: any) => {
     res.render('create', {title: 'Add Art'})
 }
 
-const post_art =(req, res) => {
+const post_art =(req: any, res: any) => {
     const art = new Art(req.body);
+
     art.save()
         .then((result) => {
             res.redirect('/');
@@ -28,7 +29,7 @@ const post_art =(req, res) => {
         });
 }
 
-const art_delete = (req, res) => {
+const art_delete = (req: any, res: any) => {
     const id = req.params.id;
     Art.findByIdAndDelete(id)
         .then((result) => {
@@ -44,7 +45,7 @@ const art_delete = (req, res) => {
         });
 }
 
-const art_details = (req, res) => {
+const art_details = (req: any, res: any) => {
     const id = req.params.id;
     Art.findById(id)
         .then((result) => {
@@ -60,7 +61,7 @@ const art_details = (req, res) => {
         });
 }
 
-module.exports = {
+export default {
     index,
     art_details,
     add_art,

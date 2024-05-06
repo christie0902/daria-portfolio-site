@@ -1,5 +1,5 @@
-const express = require('express');
-const artControllers = require('../controllers/artControllers');
+import express from 'express';
+import artControllers from '../controllers/artControllers';
 const router = express.Router();
 
 router.get('/', artControllers.index);
@@ -8,4 +8,4 @@ router.post("/", artControllers.post_art);
 router.get("/:id", artControllers.art_details);
 router.delete("/:id",artControllers.art_delete);
 
-module.exports = router;
+export default router;
