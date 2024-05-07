@@ -47,33 +47,31 @@
 
     <script>
       const previewImages = (event) => {
-        const preview = document.getElementById("image-preview");
-        preview.innerHTML = "";
-
-        const files = event.target.files;
-
-        for (let i = 0; i < files.length; i++) {
-          const file = files[i];
-
-          if (!file.type.startWith("image/")) {
-            continue;
+          const preview = document.querySelector(".image-preview");
+          preview.innerHTML = "";
+  
+          const files = event.target.files;
+  
+          for (let i = 0; i < files.length; i++) {
+              const file = files[i];
+  
+              if (!file.type.startsWith("image/")) {
+                  continue;
+              }
+  
+              const img = document.createElement("img");
+              img.classList.add("preview-image");
+              img.file = file;
+  
+              const reader = new FileReader();
+              reader.onload = function (e) {
+                  img.src = e.target.result;
+              };
+              reader.readAsDataURL(file);
+  
+              preview.appendChild(img);
           }
-
-          const img = document.createElement("img");
-          img.classList.add("preview-image");
-          img.file = file;
-
-          const reader = new FileReader();
-          reader.onload = function (aImg) {
-            return (function (e) {
-              aImg.src = e.tartget.result;
-            })(img);
-            reader.readAsDataURL(file);
-
-            preview.appendChild(img);
-          };
-        }
       };
-    </script>
+  </script>
   </body>
 </html>
