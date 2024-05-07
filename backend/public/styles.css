@@ -1,0 +1,119 @@
+body, h1, h2, h3, p, ul, ol, li {
+    margin: 0;
+    padding: 0;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+.site-title {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.site-title a {
+    color: #363333;
+    font-size: 3em;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.site-description {
+    color: #ccc;
+    font-size: 2em;
+    margin-top: 5px;
+}
+
+.nav-links {
+    width: 20vw;
+    margin-inline: auto;
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+}
+
+.nav-links li {
+    margin-right: 20px;
+}
+
+.nav-link {
+    color: #324e27;
+    text-decoration: none;
+    font-size: 1.5em;
+    transition: color 0.3s;
+}
+
+.nav-link:hover {
+    color: #555;
+    text-decoration: underline;
+}
+
+.art-list {
+    max-width: 1000px;
+    width: 70vw;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.art-list h2 {
+    margin-bottom: 2rem;
+    text-align: center;
+    font-size: 2.5rem;
+    margin-top: 5%;
+}
+
+.art-list table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.art-list th, .art-list td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: center;
+    word-wrap: break-word;
+}
+
+.art-list th {
+    background-color: #e4e4e4;
+    min-width: 100px;
+}
+
+
+.art-list td.images {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.art-list td img {
+    max-width: calc(100% / 3);
+    height: auto;
+    margin: 5px;
+}
+
+.art-list .edit, .art-list .delete {
+    padding: 5px 10px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    margin-block: 10px;
+}
+
+.art-list .edit:hover, .art-list .delete:hover {
+    background-color: #555;
+}

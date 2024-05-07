@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "tsc -p . & node buildviews.js & node dist/server.js",
+    "start": "tsc -p . & node buildviews.js & node dist/server.js & nodemon dist/server.js",
     "build": "tsc -p . & node buildviews.js",
-    "dev": "nodemon src/server.ts",
+    "dev": "tsc -w & nodemon dist/server.js",
     "prod": "npm run build && npm start"
   },
   "keywords": [],

@@ -12,6 +12,7 @@
                     <th>Title</th>
                     <th>Category</th>
                     <th>Description</th>
+                    <th>Images</th>
                     <th>Featured</th>
                     <th>Actions</th>
                 </tr>
@@ -23,6 +24,11 @@
                         <td><%= art.category %></td>
                         <td><%= art.description %></td>
                         <td><%= art.featured ? "Yes" : "No" %></td>
+                        <td><%art.images?.map(img=> {%>
+                            <img src="/<%=img%>" alt='art image'/>
+                        <% })%>
+                        
+                        </td>
                         <td>
                             <a href="/arts/<%= art.id %>"><button class="edit">Edit</button></a>
                             <form action="/arts/<%= art.id %>?_method=DELETE" method="POST" style="display: inline;">
