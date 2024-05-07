@@ -1,6 +1,7 @@
 import express from "express";
 import path from "path";
 import dotenv from "dotenv";
+import methodOverride from 'method-override';
 import { resolve } from "path";
 import mongoose from "mongoose";
 // @ts-ignore
@@ -33,9 +34,11 @@ app.set("views", resolve(__dirname, "views"));
 console.log(resolve(__dirname, "views"));
 
 // Middleware
+app.use(methodOverride('_method'));
 app.use(express.json());
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
+
 /* 
 // Serve static files from the React app
 app.use(express.static(path.join(__dirname, '../views'))); */

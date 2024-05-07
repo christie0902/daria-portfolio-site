@@ -1,37 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
+<head>
     <%-include('partials/head.ejs') %>
+</head>
 <body>
     <%- include('./partials/nav.ejs')%>
 
-    <div class="details content">
-        <h1><%=art.title%></h1>
-        <strong>Category:</strong> <%= art.category %>
-        <strong>Description:</strong> <%= art.description %>
-        <strong>Images:</strong>
-        <ul>
-            <% art.images.forEach(image => { %>
-                <li>
-                    <img src="<%= image %>" alt="Artwork Image" class="detail-image">
-                </li>
-            <% }); %>
-        </ul>
-        <strong>Featured Art:</strong> <%= art.featured ? "Yes" : "No" %>
+    <div class="edit-art content">
+        <h2>Edit Art Piece</h2>
+        <form action="/arts/<%=art.id%>?_method=PUT" method="POST">
+            <label for="category">Category:</label>
+            <select name="category" id="category">
+                <option value="sketch-painting" <%= art.category === 'sketch-painting' ? 'selected' : '' %>>Sketch & Painting</option>
+                <option value="digital" <%= art.category === 'digital' ? 'selected' : '' %>>Digital Art</option>
+                <option value="photography" <%= art.category === 'photography' ? 'selected' : '' %>>Photography</option>
+                <option value="sculpture" <%= art.category === 'sculpture' ? 'selected' : '' %>>Sculpture</option>
+            </select>
+            <label for="title">Title:</label>
+            <input type="text" name="title" id="title" value="<%= art.title %>" required />
+            <label for="des">Description:</label>
+            <input type="text" name="description" id="des" value="<%= art.description %>" required />
+            <label>Images:</label>
+            <div class="image-preview">
+                <% art.images.forEach(image => { %>
+                    <img src="/<%= image %>" alt="Artwork Image" class="preview-image">
+                <% }); %>
+            </div>
+            <div class="featured-options">
+                <label>Featured Art:</label>
+                <div>
+                    <input type="radio" id="featured-yes" name="featured" value="yes" <%= art.featured === true ? 'checked' : '' %> />
+                    <label for="featured-yes">Yes</label>
+                </div>
+                <div>
+                    <input type="radio" id="featured-no" name="featured" value="no" <%= art.featured === false ? 'checked' : '' %> />
+                    <label for="featured-no">No</label>
+                </div>
+            </div>
+            <button type="submit">Update</button>
+        </form>
     </div>
-    <a href="/arts/<%= art.id %>"><button class="edit">Edit</button></a>
-    <a class="delete" data-doc=""<%=art.id%>><button></button></a>+
-</body>
 
-<script>
-    const remove = document.querySelector('.delete');
-    remove.addEventListener('click', e=>{
-        const endpoint= `/arts/${remove.dataset.doc}`;
-        fetch(endpoint, {
-            method: 'DELETE'
-        })
-        .then(response => response.json())
-        .then(data=> window.location.href = data.redirect())
-        .catch(err => console.log(err))
-    })
-</script>
+    <script>
+        // Additional JavaScript code if needed
+    </script>
+</body>
 </html>

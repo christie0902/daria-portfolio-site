@@ -61,10 +61,29 @@ const art_details = (req: any, res: any) => {
         });
 }
 
+const update_art = (req:any, res: any) => {
+    const id = req.params.id;
+    const newData = req.body;
+    Art.findByIdAndUpdate(id, newData, {new:true})
+        .then((result) => {
+            if(!result) {
+                res.status(404).send('Art not found');
+                return;
+            }
+            res.redirect('/')
+            })
+        .catch((err)=> {
+            console.log(err);
+            res.status(500).send('Internal Server Error')
+        })
+    }
+
+
 export default {
     index,
     art_details,
     add_art,
     post_art,
-    art_delete
+    art_delete,
+    update_art
 }
