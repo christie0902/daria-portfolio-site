@@ -5,49 +5,86 @@
     <%- include('./partials/nav.ejs')%>
 
     <div class="art-list content">
-        <h2>List of Arts</h2>
-        <% if (searchQuery) { %>
-            <p class="search-result">Result for "<%= searchQuery %>" <a href="/" class="see-all">See all arts</a></p>
-        <% } %>
+      <h2>List of Arts</h2>
 
-        <form method="GET" action="/arts" class="search-bar">
-            <input type="text" name="search" placeholder="Search by title" value="<%= searchQuery %>">
-            <button type="submit">Search</button>
-        </form>
+      <!-- Search feature -->
+      <% if (searchQuery) { %>
+      <p class="search-result">
+        Result for "<%= searchQuery %>"
+        <a href="/" class="see-all">See all arts</a>
+      </p>
+      <% } %>
 
-        <table>
-            <thead>
-                <tr>
-                    <th>Title</th>
-                    <th>Category</th>
-                    <th>Description</th>
-                    <th>Featured</th>
-                    <th>Images</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                <% arts.forEach(art => { %>
-                    <tr>
-                        <td><%= art.title %></td>
-                        <td><%= art.category %></td>
-                        <td><%= art.description %></td>
-                        <td><%= art.featured ? "Yes" : "No" %></td>
-                        <td><%art.images?.map(img=> {%>
-                            <img src="/<%=img%>" alt='art image'/>
-                        <% })%>
-                        
-                        </td>
-                        <td>
-                            <a href="/arts/<%= art.id %>"><button class="edit">Edit</button></a>
-                            <form action="/arts/<%= art.id %>?_method=DELETE" method="POST" style="display: inline;">
-                                <button type="submit" class="delete">Delete</button>
-                            </form>
-                        </td>
-                    </tr>
-                <% }); %>
-            </tbody>
-        </table>
+      <form method="GET" action="/arts" class="search-bar" id="filterForm">
+        <input
+          type="text"
+          name="search"
+          placeholder="Search by title"
+          value="<%= searchQuery %>"
+        />
+        <button type="submit">Search</button>
+        <!-- Category filter -->
+        <select name="category" id="categoryFilter" class="category-select">
+            <option value="" <% if (!searchQuery && !category) { %> selected <% } %>>All Categories</option>
+            <option value="sketch-painting" <% if (category === 'sketch-painting') { %> selected <% } %>>Sketch Painting</option>
+            <option value="digital" <% if (category === 'digital') { %> selected <% } %>>Digital</option>
+            <option value="photography" <% if (category === 'photography') { %> selected <% } %>>Photography</option>
+            <option value="sculpture" <% if (category === 'sculpture') { %> selected <% } %>>Sculpture</option>
+        </select>
+
+        
+      </form>
+
+
+
+      <table>
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Category</th>
+            <th>Description</th>
+            <th>Featured</th>
+            <th>Images</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% arts.forEach(art => { %>
+          <tr>
+            <td><%= art.title %></td>
+            <td><%= art.category %></td>
+            <td><%= art.description %></td>
+            <td><%= art.featured ? "Yes" : "No" %></td>
+            <td>
+              <%art.images?.map(img=> {%>
+              <img src="/<%=img%>" alt="art image" />
+              <% })%>
+            </td>
+            <td>
+              <a href="/arts/<%= art.id %>"
+                ><button class="edit">Edit</button></a
+              >
+              <form
+                action="/arts/<%= art.id %>?_method=DELETE"
+                method="POST"
+                style="display: inline"
+              >
+                <button type="submit" class="delete">Delete</button>
+              </form>
+            </td>
+          </tr>
+          <% }); %>
+        </tbody>
+      </table>
     </div>
+
+    <script>
+        const categoryFilter = document.getElementById('categoryFilter');
+    
+        categoryFilter.addEventListener('change', function() {
+            const form = document.getElementById('filterForm');
+            form.submit();
+        });
+    </script>
   </body>
 </html>

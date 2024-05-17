@@ -3,15 +3,19 @@ import Art from "../models/art";
 const index = async (req: any, res: any) => {
     try {
       const searchQuery = req.query.search as string | undefined;
+      const category = req.query.category as string | undefined;
       let query: any = {};
   
       if (searchQuery) {
         query = { title: { $regex: searchQuery, $options: 'i' } };
       }
+      if (category && category !== '') {
+        query.category = category;
+    }
   
       const result = await Art.find(query).sort({ createdAt: -1 });
   
-      res.render("index", { title: "All Arts", arts: result, searchQuery: searchQuery });
+      res.render("index", { title: "All Arts", arts: result, searchQuery: searchQuery, category:category });
     } catch (err) {
       console.error(err);
       res.status(500).send("Internal Server Error");
