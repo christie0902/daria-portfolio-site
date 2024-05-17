@@ -6,6 +6,7 @@ import { resolve } from "path";
 import mongoose from "mongoose";
 // @ts-ignore
 import artRoutes from "./routes/artRoutes";
+import dataRoutes from "./routes/api/dataRoutes";
 
 dotenv.config();
 const app = express();
@@ -49,6 +50,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/arts", artRoutes);
+app.use("/api", dataRoutes);
 
 app.use((req, res) => {
   res.status(404).render("404", { title: " Page not found" });
