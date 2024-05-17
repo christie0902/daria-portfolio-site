@@ -32,7 +32,8 @@
             <option value="sculpture" <% if (category === 'sculpture') { %> selected <% } %>>Sculpture</option>
         </select>
 
-        
+        <input type="checkbox" id="featuredFilter"  class="checkbox-container" name="featured" <% if (featured) { %> checked <% } %>>
+        <label class="checkbox-label" for="featuredFilter">Featured Arts</label>
       </form>
 
 
@@ -80,11 +81,16 @@
 
     <script>
         const categoryFilter = document.getElementById('categoryFilter');
+        const featuredFilter = document.getElementById('featuredFilter');
     
         categoryFilter.addEventListener('change', function() {
             const form = document.getElementById('filterForm');
             form.submit();
         });
+        featuredFilter.addEventListener('change', function() {
+        const form = document.getElementById('filterForm');
+        form.submit();
+    });
     </script>
   </body>
 </html>
