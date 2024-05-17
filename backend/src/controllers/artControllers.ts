@@ -1,16 +1,22 @@
 import Art from "../models/art";
 
-const index = (req: any, res: any) => {
-  Art.find()
-    .sort({ createdAt: -1 })
-    .then((result) => {
-      res.render("index", { title: "All Arts", arts: result });
-    })
-    .catch((err) => {
-      console.log(err);
+const index = async (req: any, res: any) => {
+    try {
+      const searchQuery = req.query.search as string | undefined;
+      let query: any = {};
+  
+      if (searchQuery) {
+        query = { title: { $regex: searchQuery, $options: 'i' } };
+      }
+  
+      const result = await Art.find(query).sort({ createdAt: -1 });
+  
+      res.render("index", { title: "All Arts", arts: result, searchQuery: searchQuery });
+    } catch (err) {
+      console.error(err);
       res.status(500).send("Internal Server Error");
-    });
-};
+    }
+  };
 
 const add_art = (req: any, res: any) => {
     res.render('create', {title: 'Add Art'})

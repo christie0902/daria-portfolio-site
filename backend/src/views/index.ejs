@@ -5,7 +5,16 @@
     <%- include('./partials/nav.ejs')%>
 
     <div class="art-list content">
-        <h2>All Arts</h2>
+        <h2>List of Arts</h2>
+        <% if (searchQuery) { %>
+            <p class="search-result">Result for "<%= searchQuery %>" <a href="/" class="see-all">See all arts</a></p>
+        <% } %>
+
+        <form method="GET" action="/arts" class="search-bar">
+            <input type="text" name="search" placeholder="Search by title" value="<%= searchQuery %>">
+            <button type="submit">Search</button>
+        </form>
+
         <table>
             <thead>
                 <tr>
