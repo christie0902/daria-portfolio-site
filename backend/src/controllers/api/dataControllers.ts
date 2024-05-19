@@ -1,6 +1,6 @@
 import Art from "../../models/art";
 
-const index = async (req: any, res: any) => {
+const index = async (req: any, res: any): Promise<void> => {
     try {
         const result = await Art.find().sort({ createdAt: -1});
         res.json(result);
@@ -10,7 +10,7 @@ const index = async (req: any, res: any) => {
     }
 }
 
-const featuredArt = async (req: any, res: any) => {
+const featuredArt = async (req: any, res: any): Promise<void> => {
     try {
         const result = await Art.find({featured: true}).sort({ createdAt: -1});
         res.json(result);

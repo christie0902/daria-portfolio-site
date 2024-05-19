@@ -1,15 +1,34 @@
 import "./gallery.scss";
-import { gallery, GalleryObj } from "../../store/gallery-data.js";
-import { useState } from "react";
+// import { gallery, GalleryObj } from "../../store/gallery-data.js";
+import { useEffect, useState } from "react";
+import {Art} from "../../store/types.ts";
 
-const Gallery = () => {
+const Gallery : React.FC = () => {
+  const [arts, setArts] = useState<Art[]>([])
   const [hoverIndex, setHoverIndex] = useState(-1);
+
+  useEffect(()=>{
+    const loadArts = async () => {
+      try {
+        const response = await fetch('/api/arts');
+        if (!response.ok) {
+          throw new Error('Fail to fetch');
+        }
+        const data = await response.json();
+        setArts(data);
+      } catch(err) {
+        console.log('Error fetching data:', err);
+      }
+    }
+
+    loadArts();
+  }, [])
 
   return (
     <div className="gallery-section">
     <h1 className="section-title">MY WORK</h1>
     <div className="gallery">
-      {gallery.map((image: GalleryObj, index) => {
+      {/* {gallery.map((image: GalleryObj, index) => {
         return (
           <div className="img-container" key={`${image.title} ${index}`}>
         
@@ -27,7 +46,22 @@ const Gallery = () => {
             />
           </div>
         );
-      })}
+      })} */}
+        {arts.map((art, index) => (
+          <div className="img-container" key={`${art.title} ${index}`}>
+            <div className={`text-container ${hoverIndex === index ? "text-container-active" : ""}`}>
+              <h3>{art.title}</h3>
+              <p>{art.description}</p>
+            </div>
+            <img
+              src={art.images[0]}
+              alt={art.description}
+              onMouseEnter={() => setHoverIndex(index)}
+              onMouseLeave={() => setHoverIndex(-1)}
+              style={hoverIndex > -1 && hoverIndex !== index ? { filter: "grayscale(80%)" } : {}}
+            />
+          </div>
+        ))}
     </div>
   </div>
   );
