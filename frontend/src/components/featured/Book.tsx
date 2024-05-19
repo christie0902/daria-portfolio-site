@@ -2,13 +2,14 @@ import React, { useEffect, useRef, useState } from "react";
 import { gallery } from "../../store/gallery-data.js";
 import HTMLFlipBook from "react-pageflip";
 import Page from "./Page.tsx";
+import { Art } from "../../store/types.ts";
 
 const Book: React.FC = () => {
   const book = useRef();
   const [currentPage, setCurrentPage] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
+  const [featuredArts, setFeaturedArts] = useState<Art[]>([]);
 
-  const totalPages = Math.ceil(gallery.length / 2);
 
   useEffect(() => {
     const handleResize = () => {
@@ -16,11 +17,28 @@ const Book: React.FC = () => {
     };
     handleResize();
     window.addEventListener("resize", handleResize);
+
+    const loadFeaturedArts = async () => {
+      try {
+        const response = await fetch("/api/featured");
+        if (!response.ok) {
+          throw new Error("Fail to fetch");
+        }
+        const data = await response.json();
+        setFeaturedArts(data);
+      } catch (err) {
+        console.log("Error fetching data:", err);
+      }
+    };
+    loadFeaturedArts();
+
     return () => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
 
+
+  const totalPages = Math.ceil(featuredArts.length / 2);
   const flipBookWidth = isMobile ? 300 : 400;
   const flipBookHeight = isMobile ? 300 : 400;
 
@@ -35,6 +53,8 @@ const Book: React.FC = () => {
   };
 
   return (
+    <>
+    {featuredArts.length > 0 ?
     <div className="book-container">
       <HTMLFlipBook
         width={flipBookWidth}
@@ -66,11 +86,20 @@ const Book: React.FC = () => {
         </div>
 
         {/* Pages from Gallery */}
-        {gallery.map((art) => (
+        {/* {gallery.map((art) => (
           <div className="my-page" key={`art ${art.id}`}>
             <Page title={art.title} des={art.des} img={art.img} />
           </div>
+        ))} */}
+        <>{console.log(gallery)}</>
+         <>{console.log(featuredArts)}</>
+
+        {featuredArts?.map((art, index) => (
+          <div className="my-page" key={`${art._id} ${index}`}>          
+            <Page title={art.title} des={art.description} img={art.images[0]} />
+          </div>
         ))}
+
 
         {/* Cover Page Close */}
         <div className="my-page cover-page back">
@@ -103,6 +132,10 @@ const Book: React.FC = () => {
         <button onClick={handleNextClick}>Next page</button>
       </div>
     </div>
+  :
+  <div className="loading-wheel"> Loading plz wait...</div>
+  }
+  </>
   );
 };
 
