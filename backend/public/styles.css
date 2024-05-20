@@ -13,6 +13,10 @@ body {
     color: #333;
 }
 
+th {
+    text-align: center;
+}
+
 .site-title {
     display: flex;
     flex-direction: column;
@@ -321,6 +325,7 @@ body {
 }
 
 /* Messages style */
+
 .message-container {
     max-width: 800px;
     margin: 0 auto;
@@ -354,4 +359,57 @@ body {
     margin: auto;
   }
 
+  .notes-input {
+    width: 80%;
+    padding: 5px;
+    box-sizing: border-box;
+  }
   
+  .note-text {
+    display: inline;
+  }
+  
+  .note-form {
+    display: none;
+    margin: 5px 0;
+    gap: 5px;
+  }
+  
+  .buttons {
+    display: flex;
+    gap: 5px;
+    margin-top: 10px;
+  }
+
+  button {
+    padding: 5px 10px;
+    margin-left: 5px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #45a049;
+  }
+  
+  .cancel-button {
+    background-color: #f44336;
+  }
+  
+  .cancel-button:hover {
+    background-color: #d32f2f;
+  }
+
+  .edit-button {
+    margin-top: 5px;
+  }
+
+  .delete-button {
+    background-color: #f44336;
+  }
+
+  .delete-button:hover {
+    background-color: #d32f2f;
+  }

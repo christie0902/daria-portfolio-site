@@ -4,32 +4,118 @@
   <body>
     <%- include('./partials/nav.ejs')%>
     <div class="message-container">
-        <h1 class="message-title">All Messages</h1>
-        <table class="message-table">
-          <thead>
-            <tr>
-              <th>Title</th>
-              <th>Message</th>
-              <th>Email</th>
-              <th>Attachments</th>
-            </tr>
-          </thead>
-          <tbody>
-            <% messages.forEach(message => { %>
-              <tr>
-                <td><%= message.name %></td>
-                <td><%= message.message %></td>
-                <td><%= message.email %></td>
-                <td>
-                  <% message.attachments.forEach(attachment => { %>
-                    <img src="<%= attachment %>" alt="Attachment" class="attachment-image" class="attachment-image">
-                  <% }); %>
-                
-                </td>
-              </tr>
-            <% }); %>
-          </tbody>
-        </table>
-      </div>
+      <h1 class="message-title">All Messages</h1>
+      <table class="message-table">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Message</th>
+            <th>Email</th>
+            <th>Attachments</th>
+            <th>Notes</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% messages.forEach(message => { %>
+          <tr>
+            <td><%= message.name %></td>
+            <td><%= message.message %></td>
+            <td><%= message.email %></td>
+            <td>
+              <% message.attachments.forEach(attachment => { %>
+              <img
+                src="<%= attachment %>"
+                alt="Attachment"
+                class="attachment-image"
+                class="attachment-image"
+              />
+              <% }); %>
+            </td>
+            <td>
+              <span class="note-text"><%= message.note %></span>
+              <form
+                action="/messages/<%= message._id %>/update?_method=PUT"
+                method="POST"
+                class="note-form"
+              >
+                <input type="hidden" name="_method" value="PUT" />
+                <input
+                  type="text"
+                  name="note"
+                  value="<%= message.note %>"
+                  class="notes-input"
+                />
+                <div class="buttons">
+                  <button type="submit">Save</button>
+                  <button type="button" class="cancel-button">Cancel</button>
+                </div>
+              </form>
+            </td>
+            <td>
+              <button type="button" class="edit-button">Edit</button>
+              <button
+                class="delete-button"
+                data-message-id="<%= message._id %>"
+              >
+                Delete
+              </button>
+            </td>
+          </tr>
+          <% }); %>
+        </tbody>
+      </table>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const editButtons = document.querySelectorAll(".edit-button");
+        const cancelButtons = document.querySelectorAll(".cancel-button");
+
+        editButtons.forEach((button) => {
+          button.addEventListener("click", (event) => {
+            const row = event.target.closest("tr");
+            const noteText = row.querySelector(".note-text");
+            const noteForm = row.querySelector(".note-form");
+            const editButton = row.querySelector(".edit-button");
+
+            noteText.style.display = "none";
+            noteForm.style.display = "block";
+            editButton.style.display = "none";
+          });
+        });
+
+        cancelButtons.forEach((button) => {
+          button.addEventListener("click", (event) => {
+            const row = event.target.closest("tr");
+            const noteText = row.querySelector(".note-text");
+            const noteForm = row.querySelector(".note-form");
+            const editButton = row.querySelector(".edit-button");
+
+            noteText.style.display = "inline";
+            noteForm.style.display = "none";
+            editButton.style.display = "inline";
+          });
+        });
+      });
+
+      document.querySelectorAll(".delete-button").forEach((button) => {
+        button.addEventListener("click", async () => {
+          const messageId = button.getAttribute("data-message-id");
+          try {
+            const response = await fetch(`/messages/${messageId}/delete`, {
+              method: "DELETE",
+            });
+            if (response.ok) {
+              console.log("Message deleted successfully");
+            } else {
+              console.error("Failed to delete message");
+            }
+          } catch (error) {
+            console.error("Error deleting message:", error);
+          }
+        });
+      });
+    </script>
   </body>
 </html>
