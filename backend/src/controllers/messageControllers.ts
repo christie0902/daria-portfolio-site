@@ -1,9 +1,21 @@
 import Message from "../models/message";
+import {storage} from '../../storage/storage';
+import multer from 'multer';
+import cloudinary from 'cloudinary';
+
+cloudinary.config({
+  cloud_name: process.env.CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_KEY,
+  api_secret: process.env.CLOUDINARY_SECRET
+});
+
+const upload = multer({ storage }).array('attachment');
 
 const storeMessage = async(req: any, res: any) => {
+  let attachments: string[] = [];
     try {
-        const { name, email, message, attachments } = req.body;
-        console.log(req.body);
+      const { name, email, message, attachments} = req.body;
+
         const newMessage = new Message({
           name,
           email,
@@ -63,10 +75,33 @@ const deleteMessage = async (req: any, res: any) => {
     }
 }
 
+const uploadImage = async (req, res) => {
+  try {
+    const dataUrls = req.body.images;
+
+    if (!dataUrls || !Array.isArray(dataUrls) || dataUrls.length === 0) {
+      return res.status(400).json({ error: 'No image data provided' });
+    }
+
+    const uploadPromises = dataUrls.map(async (dataUrl) => {
+      const result = await cloudinary.uploader.upload(dataUrl);
+      return result.secure_url;
+    });
+
+    const secureUrls = await Promise.all(uploadPromises);
+
+    return res.status(200).json({ urls: secureUrls });
+  } catch (error) {
+    console.error('Error uploading image(s) to Cloudinary:', error);
+    return res.status(500).json({ error: 'Internal server error' });
+  }
+};
+
 export default {
     storeMessage,
     loadMessages,
     updateNote,
-    deleteMessage
+    deleteMessage,
+    uploadImage
   };
   

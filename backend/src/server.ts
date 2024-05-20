@@ -8,6 +8,9 @@ import mongoose from "mongoose";
 import artRoutes from "./routes/artRoutes";
 import dataRoutes from "./routes/api/dataRoutes";
 import messageRoutes from './routes/messageRoutes';
+import multer from "multer"; 
+import { v2 as cloudinary } from "cloudinary";
+import { CloudinaryStorage } from "multer-storage-cloudinary";
 
 dotenv.config();
 const app = express();
@@ -39,7 +42,8 @@ console.log(resolve(__dirname, "views"));
 app.use(methodOverride('_method'));
 app.use(express.json());
 app.use(express.static("public"));
-app.use(express.urlencoded({ extended: true }));
+app.use(express.json({limit: '50mb'}));
+app.use(express.urlencoded({ extended: true, limit: '50mb' }));
 
 /* 
 // Serve static files from the React app
@@ -57,3 +61,11 @@ app.use("/messages", messageRoutes);
 app.use((req, res) => {
   res.status(404).render("404", { title: " Page not found" });
 });
+
+const cloudinaryMsgPicUploader = multer({
+  storage: new CloudinaryStorage({
+    cloudinary, 
+    params: {folder: "daria-media", resource_type: "image"},
+  }),
+  limits: { fileSize: 1024 * 1024 }
+}).array("image")

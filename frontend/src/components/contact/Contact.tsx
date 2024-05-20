@@ -14,7 +14,8 @@ interface AttachmentPreview {
 }
 
 const Contact = () => {
-  const [attachmentPreviews, setAttachmentPreviews] = useState([]);
+  const [attachmentPreviews, setAttachmentPreviews] = useState<(string | ArrayBuffer | null)[]>([]);
+  const [attachments, setAttachments] = useState([]);
   const elemRef = useRef(null);
   const [reference, setReference] = useState(null);
 
@@ -22,39 +23,104 @@ const Contact = () => {
     setReference(elemRef.current);
   }, [elemRef]);
 
-  const handleAttachmentChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const files = event.target.files;
-    const previews: AttachmentPreview[] = [];
+  const handleAttachmentChange = async (event) => {
+    const files = Array.from(event.target.files);
+  
+    const promises = files.map(file => {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = error => reject(error);
+        reader.readAsDataURL(file);
+      });
+    });
+  
+    try {
+      const dataURLs = await Promise.all(promises);
+      setAttachments(dataURLs);
+      setAttachmentPreviews(dataURLs);
+      console.log(attachments);
+      console.log(attachmentPreviews);
+    } catch (error) {
+      console.error('Error reading file:', error);
+    }
+  };
 
-    for (let i = 0; i < files.length; i++) {
-      const file = files[i];
-      const reader = new FileReader();
 
-      reader.onloadend = () => {
-        previews.push(reader.result);
-        if (previews.length === files.length) {
-          setAttachmentPreviews(previews);
-        }
-      };
-
-      reader.readAsDataURL(file);
+  const uploadImage = async (dataUrls) => { 
+    try {
+      const response = await fetch('/api/upload-images', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ images: dataUrls })
+      });
+  
+      if (!response.ok) {
+        throw new Error('Image upload failed');
+      }
+  
+      const responseData = await response.json();
+      console.log(responseData.urls)
+      return responseData.urls;
+      
+    } catch (error) {
+      console.error('Upload failed:', error);
+      return [];
     }
   };
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
+    
     try {
+      const name = event.currentTarget.name.value;
+      const email = event.currentTarget.email.value;
+      const message = event.currentTarget.message.value;
+      const imageURLs = await Promise.all(attachments.map(dataUrl => uploadImage(dataUrl)));
+
+
+      // Upload images and collect their URLs
+      // const uploadedUrls = await Promise.all(
+      //   fileDataUrls.map(dataUrl => uploadImage(dataUrl))
+      // );
+
+      // const serializeFiles = (files) => {
+      //   files.map(file => 
+      //    ({
+      //     name: file.name,
+      //     size: file.size,
+      //     type: file.type,
+      //     lastModified: file.lastModified
+      //   })
+      //   )
+      // }
+      
+
+      // const formData = {
+      //   name,
+      //   email,
+      //   message,
+      //   // attachment: Array.from(files), //this returns an array of empty objects when stringified
+      //   //OR 
+      //   //attachment: serializeFiles(Array.from(files))
+      //   //OR
+      //   //attachments: uploadedUrls
+      // };
+
+
       const formData = {
-        name: event.currentTarget.name.value,
-        email: event.currentTarget.email.value,
-        message: event.currentTarget.message.value,
-        attachment: event.currentTarget.attachment.value
+        name,
+        email,
+        message,
+        attachments: imageURLs
       };
+
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(formData),
       });
