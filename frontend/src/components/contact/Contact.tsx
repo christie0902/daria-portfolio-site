@@ -1,6 +1,17 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, {
+  useEffect,
+  useRef,
+  useState,
+  FormEvent,
+  ChangeEvent,
+} from "react";
 import "./contact.scss";
 import LazyLoader from "../../lib/utilityComponents/LazyLoader";
+
+interface AttachmentPreview {
+  src: string;
+  alt: string;
+}
 
 const Contact = () => {
   const [attachmentPreviews, setAttachmentPreviews] = useState([]);
@@ -11,9 +22,9 @@ const Contact = () => {
     setReference(elemRef.current);
   }, [elemRef]);
 
-  const handleAttachmentChange = (event) => {
+  const handleAttachmentChange = (event: ChangeEvent<HTMLInputElement>) => {
     const files = event.target.files;
-    const previews = [];
+    const previews: AttachmentPreview[] = [];
 
     for (let i = 0; i < files.length; i++) {
       const file = files[i];
@@ -30,6 +41,34 @@ const Contact = () => {
     }
   };
 
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    try {
+      const formData = {
+        name: event.currentTarget.name.value,
+        email: event.currentTarget.email.value,
+        message: event.currentTarget.message.value,
+        attachment: event.currentTarget.attachment.value
+      };
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        console.log("Message sent successfully");
+      } else {
+        console.error("Failed to send message");
+      }
+    } catch (error) {
+      console.error("Error sending message:", error);
+    }
+  };
+
   return (
     <div ref={elemRef}>
       {reference && (
@@ -43,7 +82,7 @@ const Contact = () => {
                   WITH ME
                 </h1>
               </div>
-              <form className="contact-form">
+              <form className="contact-form" onSubmit={handleSubmit}>
                 <div className="contact-field">
                   <label htmlFor="name">Your name</label>
                   <input type="text" name="name" id="name" />
@@ -54,10 +93,11 @@ const Contact = () => {
                 </div>
                 <div className="contact-textfield">
                   <label htmlFor="message">Your message</label> <br />
-                  <textarea name="message" id="message"/>
+                  <textarea name="message" id="message" />
                 </div>
                 <div className="contact-attachment">
                   <label htmlFor="attachment">Attach image: </label>
+
                   <input
                     type="file"
                     name="attachment"

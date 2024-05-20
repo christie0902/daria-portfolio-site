@@ -7,6 +7,7 @@ import mongoose from "mongoose";
 // @ts-ignore
 import artRoutes from "./routes/artRoutes";
 import dataRoutes from "./routes/api/dataRoutes";
+import messageRoutes from './routes/messageRoutes';
 
 dotenv.config();
 const app = express();
