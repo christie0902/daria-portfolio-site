@@ -20,7 +20,18 @@ const storeMessage = async(req: any, res: any) => {
       }
 }
 
+const loadMessages = async (req: any, res: any) => {
+    try {
+        const messages = await Message.find();
+        res.render('messages', {title: 'Messages', messages});
+    } catch(err) {
+        console.log('Error loading messages', err);
+        res.status(500).json({error: 'Internal server error'});
+    }
+}
+
 export default {
     storeMessage,
+    loadMessages
   };
   

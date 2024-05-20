@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%-include('partials/head.ejs') %>
+  <body>
+    <%- include('./partials/nav.ejs')%>
+    <div class="message-container">
+        <h1 class="message-title">All Messages</h1>
+        <table class="message-table">
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Message</th>
+              <th>Email</th>
+              <th>Attachments</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% messages.forEach(message => { %>
+              <tr>
+                <td><%= message.name %></td>
+                <td><%= message.message %></td>
+                <td><%= message.email %></td>
+                <td>
+                  <% message.attachments.forEach(attachment => { %>
+                    <img src="<%= attachment %>" alt="Attachment" class="attachment-image" class="attachment-image">
+                  <% }); %>
+                
+                </td>
+              </tr>
+            <% }); %>
+          </tbody>
+        </table>
+      </div>
+  </body>
+</html>

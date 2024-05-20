@@ -52,6 +52,7 @@ app.get("/", (req, res) => {
 
 app.use("/arts", artRoutes);
 app.use("/api", dataRoutes);
+app.use("/messages", messageRoutes);
 
 app.use((req, res) => {
   res.status(404).render("404", { title: " Page not found" });
