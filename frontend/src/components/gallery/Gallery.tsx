@@ -6,7 +6,7 @@ import { Art } from "../../store/types.ts";
 const Gallery: React.FC = () => {
   const [arts, setArts] = useState<Art[]>([]);
   const [hoverIndex, setHoverIndex] = useState(-1);
-  const [selectedTab, setSelectedTab] = useState('all')
+  const [selectedTab, setSelectedTab] = useState("all");
 
   useEffect(() => {
     const loadArts = async () => {
@@ -29,14 +29,46 @@ const Gallery: React.FC = () => {
     <div className="gallery-section">
       <h1 className="section-title">MY WORK</h1>
       <div className="tabs">
-        <button className="tab-button" onClick={()=>setSelectedTab('all')}>All</button>
-        <button className="tab-button" onClick={()=>setSelectedTab('digital')}>Digital Art</button>
-        <button className="tab-button" onClick={()=>setSelectedTab('sketch-painting')}>Sketch & Painting</button>
-        <button className="tab-button" onClick={()=>setSelectedTab('photography')}>Photography</button>
-        <button className="tab-button" onClick={()=>setSelectedTab('sculpture')}>Sculpture</button>
+        <button
+          className={`tab-button ${selectedTab === "all" ? "selected" : ""}`}
+          onClick={() => setSelectedTab("all")}
+        >
+          All
+        </button>
+        <button
+          className={`tab-button ${
+            selectedTab === "digital" ? "selected" : ""
+          }`}
+          onClick={() => setSelectedTab("digital")}
+        >
+          Digital Art
+        </button>
+        <button
+          className={`tab-button ${
+            selectedTab === "sketch-painting" ? "selected" : ""
+          }`}
+          onClick={() => setSelectedTab("sketch-painting")}
+        >
+          Sketch & Painting
+        </button>
+        <button
+          className={`tab-button ${
+            selectedTab === "photography" ? "selected" : ""
+          }`}
+          onClick={() => setSelectedTab("photography")}
+        >
+          Photography
+        </button>
+        <button
+          className={`tab-button ${
+            selectedTab === "sculpture" ? "selected" : ""
+          }`}
+          onClick={() => setSelectedTab("sculpture")}
+        >
+          Sculpture
+        </button>
       </div>
       <div className="gallery">
-     
         {arts.map((art, index) => (
           <div className="img-container" key={`${art.title} ${index}`}>
             <div
