@@ -8,6 +8,23 @@ $font-text: "Inika", serif;
     align-items: center;
     height: 100%;
     
+  .tabs {
+    display: flex;
+    gap: 10px;
+    .tab-button {
+      border: none;
+      background: none;
+      font-size: 1.5rem;
+      margin-block: 1em;
+      padding-inline: 10px;
+      border-right: 2px solid black;
+      &:hover{
+        text-decoration: underline;
+        color: gray;
+        cursor: pointer;
+      }
+    }
+  }
 
   .gallery {
     --s: 20vw; /* control the size */
