@@ -11,7 +11,7 @@ const Gallery: React.FC = () => {
   useEffect(() => {
     const loadArts = async () => {
       try {
-        const response = await fetch("/api/arts");
+        const response = await fetch(`/api/arts?category=${selectedTab}`);
         if (!response.ok) {
           throw new Error("Fail to fetch");
         }
@@ -23,7 +23,7 @@ const Gallery: React.FC = () => {
     };
 
     loadArts();
-  }, []);
+  }, [selectedTab]);
 
   return (
     <div className="gallery-section">
@@ -31,30 +31,12 @@ const Gallery: React.FC = () => {
       <div className="tabs">
         <button className="tab-button" onClick={()=>setSelectedTab('all')}>All</button>
         <button className="tab-button" onClick={()=>setSelectedTab('digital')}>Digital Art</button>
-        <button className="tab-button" onClick={()=>setSelectedTab('sketch')}>Sketch & Painting</button>
+        <button className="tab-button" onClick={()=>setSelectedTab('sketch-painting')}>Sketch & Painting</button>
         <button className="tab-button" onClick={()=>setSelectedTab('photography')}>Photography</button>
         <button className="tab-button" onClick={()=>setSelectedTab('sculpture')}>Sculpture</button>
       </div>
       <div className="gallery">
-        {/* {gallery.map((image: GalleryObj, index) => {
-        return (
-          <div className="img-container" key={`${image.title} ${index}`}>
-        
-              <div className={`text-container ${hoverIndex === index ? "text-container-active" : ""}`}>
-                <h3>{image.title}</h3>
-                <p>{image.des}</p>
-              </div>
-      
-            <img
-              src={image.img}
-              alt={image.des}
-              onMouseEnter={() => setHoverIndex(index)} 
-              onMouseLeave={() => setHoverIndex(-1)}
-              style={hoverIndex > -1 && hoverIndex !== index ? { filter: "grayscale(80%)" } : {}}
-            />
-          </div>
-        );
-      })} */}
+     
         {arts.map((art, index) => (
           <div className="img-container" key={`${art.title} ${index}`}>
             <div

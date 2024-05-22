@@ -1,8 +1,10 @@
 import Art from "../../models/art";
 
 const index = async (req: any, res: any): Promise<void> => {
+    const category = req.query.category;
     try {
-        const result = await Art.find().sort({ createdAt: -1});
+        const query = category && category !== 'all' ? {category} : {};
+        const result = await Art.find(query).sort({ createdAt: -1});
         res.json(result);
     } catch (err) {
         console.log(err);
