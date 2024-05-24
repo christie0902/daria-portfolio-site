@@ -48,9 +48,34 @@ const ProjectDetailsModal: React.FC<ProjectDetailsModalProps> = ({ id, onClose }
           <>
             <h2>{art.title}</h2>
             <p>{art.description}</p>
-            {art.images.map((image, index) => (
-              <img key={index} src={image} alt={art.description} />
-            ))}
+            <table className="details-table">
+              <tbody>
+                <tr>
+                  <td>Category:</td>
+                  <td>{art.category}</td>
+                </tr>
+                <tr>
+                  <td>Medium:</td>
+                  <td>{art.medium || "N/A"}</td>
+                </tr>
+                <tr>
+                  <td>Dimension:</td>
+                  <td>{art.dimension || "N/A"}</td>
+                </tr>
+                <tr>
+                  <td>Featured:</td>
+                  <td>{art.featured ? "Yes" : "No"}</td>
+                </tr>
+                <tr>
+                  <td>Images:</td>
+                  <td>
+                    {art.images.map((image, index) => (
+                      <img key={index} src={image} alt={`Image ${index}`} />
+                    ))}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </>
         )}
       </div>

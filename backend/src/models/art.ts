@@ -11,6 +11,14 @@ const artSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    medium: {
+        type: String,
+        default: null
+    },
+    dimension: {
+        type: String,
+        default: null
+    },
     description: {
         type: String,
         required: true
