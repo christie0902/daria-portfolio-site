@@ -1,15 +1,17 @@
 import React, { useEffect, useRef, useState } from "react";
-import { gallery } from "../../store/gallery-data.js";
+// import { gallery } from "../../store/gallery-data.js";
 import HTMLFlipBook from "react-pageflip";
 import Page from "./Page.tsx";
 import { Art } from "../../store/types.ts";
+import ProjectDetailsModal from "../gallery/ProjectDetailsModal.tsx";
 
 const Book: React.FC = () => {
   const book = useRef();
   const [currentPage, setCurrentPage] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
   const [featuredArts, setFeaturedArts] = useState<Art[]>([]);
-
+  const [detailsModal, setDetailsModal] = useState(false);
+  const [artID, setArtID] = useState('');
 
   useEffect(() => {
     const handleResize = () => {
@@ -52,6 +54,15 @@ const Book: React.FC = () => {
     setCurrentPage((prevPage) => Math.min(prevPage + 1, totalPages - 1));
   };
 
+  const showDetails = (art: Art) =>{
+    setArtID(art._id);
+    setDetailsModal(true);
+  }
+
+  const onClose = () => {
+    setDetailsModal(false);
+  }
+
   return (
     <>
     {featuredArts.length > 0 ?
@@ -85,18 +96,9 @@ const Book: React.FC = () => {
             </p> */}
         </div>
 
-        {/* Pages from Gallery */}
-        {/* {gallery.map((art) => (
-          <div className="my-page" key={`art ${art.id}`}>
-            <Page title={art.title} des={art.des} img={art.img} />
-          </div>
-        ))} */}
-        <>{console.log(gallery)}</>
-         <>{console.log(featuredArts)}</>
-
         {featuredArts?.map((art, index) => (
           <div className="my-page" key={`${art._id} ${index}`}>          
-            <Page title={art.title} des={art.description} img={art.images[0]} />
+            <Page title={art.title} des={art.description} img={art.images[0]}  showDetails={() => showDetails(art)}/>
           </div>
         ))}
 
@@ -135,6 +137,7 @@ const Book: React.FC = () => {
   :
   <div className="loading-wheel"> Loading plz wait...</div>
   }
+  {detailsModal == true && <ProjectDetailsModal id={artID} onClose={onClose}/>}
   </>
   );
 };

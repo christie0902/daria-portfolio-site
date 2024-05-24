@@ -29,6 +29,7 @@ const Gallery: React.FC = () => {
   }, [selectedTab]);
 
   const showDetails = (art: Art) =>{
+    
     setArtID(art._id);
     setDetailsModal(true);
   }

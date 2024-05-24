@@ -133,6 +133,20 @@ $font-text: "Inika", serif;
     p {
       margin-bottom: auto;
     }
+    &:hover{
+      cursor: pointer;
+    }
+    button {
+      border: none;
+      font-size: 1em;
+      text-decoration: underline;
+      font-weight:600;
+      &:hover {
+        cursor: pointer;
+        background-color: none;
+        color: rgb(6, 78, 6);
+      }
+    }
   }
 
   .my-page {
@@ -167,6 +181,10 @@ $font-text: "Inika", serif;
       top: -10%;
       left: 50%;
       transform: translateX(-50%);
+    }
+
+    &:hover{
+      cursor: pointer;
     }
     // p {
     //   padding-inline: 5px;
