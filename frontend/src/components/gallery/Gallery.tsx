@@ -2,11 +2,14 @@ import "./gallery.scss";
 // import { gallery, GalleryObj } from "../../store/gallery-data.js";
 import { useEffect, useState } from "react";
 import { Art } from "../../store/types.ts";
+import ProjectDetailsModal from "./ProjectDetailsModal.tsx";
 
 const Gallery: React.FC = () => {
   const [arts, setArts] = useState<Art[]>([]);
   const [hoverIndex, setHoverIndex] = useState(-1);
   const [selectedTab, setSelectedTab] = useState("all");
+  const [detailsModal, setDetailsModal] = useState(false);
+  const [artID, setArtID] = useState('');
 
   useEffect(() => {
     const loadArts = async () => {
@@ -24,6 +27,15 @@ const Gallery: React.FC = () => {
 
     loadArts();
   }, [selectedTab]);
+
+  const showDetails = (art: Art) =>{
+    setArtID(art._id);
+    setDetailsModal(true);
+  }
+
+  const onClose = () => {
+    setDetailsModal(false);
+  }
 
   return (
     <div className="gallery-section">
@@ -70,7 +82,7 @@ const Gallery: React.FC = () => {
       </div>
       <div className="gallery">
         {arts.map((art, index) => (
-          <div className="img-container" key={`${art.title} ${index}`}>
+          <div className="img-container" key={`${art._id}`} onClick={() => showDetails(art)}>
             <div
               className={`text-container ${
                 hoverIndex === index ? "text-container-active" : ""
@@ -93,6 +105,7 @@ const Gallery: React.FC = () => {
           </div>
         ))}
       </div>
+      {detailsModal == true && <ProjectDetailsModal id={artID} onClose={onClose}/>}
     </div>
   );
 };

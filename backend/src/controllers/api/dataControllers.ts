@@ -22,7 +22,19 @@ const featuredArt = async (req: any, res: any): Promise<void> => {
     }
 }
 
+const loadDetails = async (req: any, res: any): Promise<void> => {
+    const id = req.params.id;
+    try {
+        const art = await Art.findById(id);
+        res.json(art);
+    } catch (err) {
+        console.log(err);
+        res.status(500).send('Internal Server Error')
+    }
+}
+
 export default {
     index,
-    featuredArt
+    featuredArt,
+    loadDetails
 };
