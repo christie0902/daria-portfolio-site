@@ -1,4 +1,5 @@
 import express from "express";
+import path from "path";
 import dotenv from "dotenv";
 import methodOverride from 'method-override';
 import { resolve } from "path";
@@ -7,7 +8,6 @@ import mongoose from "mongoose";
 import artRoutes from "./routes/artRoutes";
 import dataRoutes from "./routes/api/dataRoutes";
 import messageRoutes from './routes/messageRoutes';
-
 
 dotenv.config();
 const app = express();

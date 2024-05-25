@@ -1,13 +1,10 @@
 import Art from "../models/art";
-import upload from "../lib/fileUpload";
-import { Response } from "express";
 
 const index = async (req: any, res: any) => {
   try {
     const searchQuery = req.query.search as string | undefined;
     const category = req.query.category as string | undefined;
-    const featured =
-      req.query.featured === "true" || req.query.featured === "on";
+    const featured = req.query.featured === "true" || req.query.featured === "on";
     let query: any = {};
 
     if (searchQuery) {
@@ -27,7 +24,7 @@ const index = async (req: any, res: any) => {
       arts: result,
       searchQuery: searchQuery,
       category: category,
-      featured: featured,
+      featured:featured
     });
   } catch (err) {
     console.error(err);
@@ -38,29 +35,19 @@ const index = async (req: any, res: any) => {
 const add_art = (req: any, res: any) => {
   res.render("create", { title: "Add Art" });
 };
-interface MulterRequest extends Request {
-  files?: Express.Multer.File[];
-}
 
-const post_art = async (req: MulterRequest, res: Response) => {
+const post_art = (req: any, res: any) => {
   const art = new Art(req.body);
-  try {
-    const { description, title, category } = req.body;
-    if (!description || !title || !category) {
-      return res.status(400).send("Description, title, and category are required");
-    }
-    
-    // Handle file upload
-    if (req.files && Array.isArray(req.files) && req.files.length > 0) {
-      art.images = req.files.map((file: Express.Multer.File) => file.filename);
-    }
 
-    const result = await art.save();
-    res.redirect("/arts");
-  } catch (err) {
-    console.error("Error saving art:", err);
-    res.status(500).send("Internal Server Error");
-  }
+  art
+    .save()
+    .then((result) => {
+      res.redirect("/");
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).send("Internal Server Error");
+    });
 };
 
 const art_delete = (req: any, res: any) => {
