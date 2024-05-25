@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "tsc -p . & node buildviews.js & node dist/server.js & nodemon -L -e -ts,json dist/server.js",
+    "start": "tsc -p . & node buildviews.js & node dist/server.js & nodemon dist/server.js",
     "build": "tsc -p . & node buildviews.js",
     "dev": "tsc -w & nodemon dist/server.js",
     "prod": "npm run build && npm start"
@@ -18,15 +18,11 @@
     "express": "^4.19.2",
     "method-override": "^3.0.0",
     "mongoose": "^8.3.4",
-    "multer": "^1.4.5-lts.1",
-    "typescript": "^5.4.5",
-    "uuid": "^9.0.1"
+    "typescript": "^5.4.5"
   },
   "devDependencies": {
     "@types/ejs": "^3.1.5",
     "@types/method-override": "^0.0.35",
-    "@types/multer": "^1.4.11",
-    "@types/uuid": "^9.0.8",
     "dotenv": "^16.4.5",
     "fs-extra": "^11.2.0",
     "nodemon": "^3.1.0"
