@@ -56,12 +56,12 @@ const updateNote = async (req: any, res: any) => {
     }
   };
 
-const deleteMessage = async (req: any, res: any) => {
+  const deleteMessage = async (req: any, res: any) => {
     const messageId = req.params.id;
     try {
         const result = await Message.findByIdAndDelete(messageId);
         if (result) {
-            res.status(200).send('Message deleted successfully');
+            res.status(200).json({ redirect: '/messages' });
         } else {
             res.status(404).send('Message not found');
         }
@@ -70,7 +70,6 @@ const deleteMessage = async (req: any, res: any) => {
         res.status(500).send('Internal server error');
     }
 }
-
 export default {
     storeMessage,
     loadMessages,
