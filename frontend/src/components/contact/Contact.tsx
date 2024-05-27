@@ -43,6 +43,8 @@ const Contact = () => {
     }
   };
 
+
+  //Handle message submission
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
