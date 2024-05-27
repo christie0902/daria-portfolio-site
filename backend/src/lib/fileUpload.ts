@@ -23,7 +23,7 @@ const fileFilter = (req: Request, file: Express.Multer.File, cb: multer.FileFilt
   if (file.mimetype.startsWith('image/')) {
     cb(null, true);
   } else {
-    cb(new Error('Only images are allowed!'), false);
+    cb(null, false);
   }
 };
 

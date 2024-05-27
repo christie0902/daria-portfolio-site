@@ -1,6 +1,9 @@
 import Art from "../models/art";
-import upload from "../lib/fileUpload";
-import { Response } from "express";
+import { Request, Response } from 'express';
+
+interface MulterRequest extends Request {
+  files?: Express.Multer.File[];
+}
 
 const index = async (req: any, res: any) => {
   try {
@@ -38,23 +41,23 @@ const index = async (req: any, res: any) => {
 const add_art = (req: any, res: any) => {
   res.render("create", { title: "Add Art" });
 };
-interface MulterRequest extends Request {
-  files?: Express.Multer.File[];
-}
 
-const post_art = async (req: MulterRequest, res: Response) => {
-  const art = new Art(req.body);
+// POST ART FUNCTION
+const post_art = async (req: Request, res: Response) => {
+  const multerReq = req as MulterRequest;
+  const art = new Art(multerReq.body);
+  
   try {
-    const { description, title, category } = req.body;
+    const { description, title, category } = multerReq.body;
     if (!description || !title || !category) {
       return res.status(400).send("Description, title, and category are required");
     }
-    
-    // Handle file upload
-    if (req.files && Array.isArray(req.files) && req.files.length > 0) {
-      art.images = req.files.map((file: Express.Multer.File) => file.filename);
-    }
 
+    // Handle file upload
+    if (multerReq.files && Array.isArray(multerReq.files) && multerReq.files.length > 0) {
+      art.images = multerReq.files.map((file: Express.Multer.File) => file.filename);
+    }
+    
     const result = await art.save();
     res.redirect("/arts");
   } catch (err) {
@@ -71,7 +74,7 @@ const art_delete = (req: any, res: any) => {
         res.status(404).send("Art not found");
         return;
       }
-      res.json({ redirect: "/" });
+      res.redirect("/arts");
     })
     .catch((err) => {
       console.log(err);

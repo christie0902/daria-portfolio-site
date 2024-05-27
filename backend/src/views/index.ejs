@@ -62,7 +62,7 @@
             <td><%= art.featured ? "Yes" : "No" %></td>
             <td>
               <%art.images?.map(img=> {%>
-              <img src="/<%=img%>" alt="art image" />
+              <img src="/uploads/<%=img%>" alt="art image" />
               <% })%>
             </td>
             <td>
@@ -70,6 +70,7 @@
                 ><button class="edit">Edit</button></a
               >
               <form
+                id="delete-art-form"
                 action="/arts/<%= art.id %>?_method=DELETE"
                 method="POST"
                 style="display: inline"
@@ -95,6 +96,27 @@
         const form = document.getElementById('filterForm');
         form.submit();
     });
+
+    document.getElementById('delete-art-form').addEventListener('submit', function (event) {
+    event.preventDefault(); 
+    const form = event.target;
+    fetch(form.action, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: new URLSearchParams(new FormData(form)).toString(),
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data.redirect) {
+        window.location.href = data.redirect;
+      }
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+  });
     </script>
   </body>
 </html>
