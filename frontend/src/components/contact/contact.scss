@@ -32,6 +32,27 @@ $font-text: "Inika", serif;
       font-weight: 500;
       line-height: 100%;
     }
+    .success-message {
+      color: black;
+      font-size: 1.3rem;
+      text-align: center;
+      margin-top: 10px;
+      padding: 5px 10px;
+      background-color: rgba(89, 248, 89, 0.8);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      font-family: $font-text;
+    }
+
+    .error-message {
+      color: black;
+      font-size: 1.3rem;
+      text-align: center;
+      margin-top: 10px;
+      padding: 5px 10px;
+      background-color: rgba(241, 90, 52, 0.8);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      font-family: $font-text;
+    }
   }
   .contact-photo {
     flex: 1;

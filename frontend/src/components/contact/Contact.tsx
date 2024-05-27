@@ -17,6 +17,8 @@ const Contact = () => {
   const [attachmentPreviews, setAttachmentPreviews] = useState([]);
   const elemRef = useRef(null);
   const [reference, setReference] = useState(null);
+  const [successMessage, setSuccessMessage] = useState<string>("");
+  const [errorMessage, setErrorMessage] = useState<string>("");
 
   useEffect(() => {
     setReference(elemRef.current);
@@ -53,11 +55,14 @@ const Contact = () => {
 
       if (response.ok) {
         console.log("Message sent successfully");
+        setSuccessMessage("Message sent successfully!");
       } else {
         console.error("Failed to send message");
+        setErrorMessage("Failed to send message");
       }
     } catch (error) {
       console.error("Error sending message:", error);
+      setErrorMessage(`Error sending message: ${error}`);
     }
   };
 
@@ -74,7 +79,15 @@ const Contact = () => {
                   WITH ME
                 </h1>
               </div>
-              <form className="contact-form" encType="multipart/form-data" onSubmit={handleSubmit}>
+              {successMessage && (
+                <p className="success-message">{successMessage}</p>
+              )}
+              {errorMessage && <p className="error-message">{errorMessage}</p>}
+              <form
+                className="contact-form"
+                encType="multipart/form-data"
+                onSubmit={handleSubmit}
+              >
                 <div className="contact-field">
                   <label htmlFor="name">Your name</label>
                   <input type="text" name="name" id="name" />
@@ -109,6 +122,7 @@ const Contact = () => {
                 </div>
                 <button className="contact-button">Submit</button>
               </form>
+             
             </div>
             <div className="contact-photo">
               <img src="acrylic4.jpg" alt="contact" />
