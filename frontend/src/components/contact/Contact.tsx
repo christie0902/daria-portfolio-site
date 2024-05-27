@@ -44,19 +44,11 @@ const Contact = () => {
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
+    const formData = new FormData(event.currentTarget);
     try {
-      const formData = {
-        name: event.currentTarget.name.value,
-        email: event.currentTarget.email.value,
-        message: event.currentTarget.message.value,
-        attachment: event.currentTarget.attachment.value
-      };
       const response = await fetch("/api/contact", {
         method: "POST",
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
+        body: formData,
       });
 
       if (response.ok) {
@@ -82,7 +74,7 @@ const Contact = () => {
                   WITH ME
                 </h1>
               </div>
-              <form className="contact-form" onSubmit={handleSubmit}>
+              <form className="contact-form" encType="multipart/form-data" onSubmit={handleSubmit}>
                 <div className="contact-field">
                   <label htmlFor="name">Your name</label>
                   <input type="text" name="name" id="name" />
@@ -100,8 +92,8 @@ const Contact = () => {
 
                   <input
                     type="file"
-                    name="attachment"
-                    id="attachment"
+                    name="attachments"
+                    id="attachments"
                     multiple
                     onChange={handleAttachmentChange}
                   />

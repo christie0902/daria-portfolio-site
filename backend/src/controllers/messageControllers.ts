@@ -1,23 +1,31 @@
 import Message from "../models/message";
+import { Request, Response } from 'express';
 
-const storeMessage = async(req: any, res: any) => {
-    try {
-        const { name, email, message, attachments } = req.body;
-        console.log(req.body);
-        const newMessage = new Message({
-          name,
-          email,
-          message,
-          attachments
-        });
-    
-        await newMessage.save();
-    
-        res.status(201).json({ message: 'Message sent successfully' });
-      } catch (error) {
-        console.error('Error saving message:', error);
-        res.status(500).json({ error: 'Internal server error' });
-      }
+interface MulterRequest extends Request {
+  files?: Express.Multer.File[];
+}
+
+const storeMessage = async (req: Request, res: Response) => {
+  const multerReq = req as MulterRequest;
+  const newMessage = new Message(multerReq.body);
+
+  try {
+    const { name, email, message } = multerReq.body;
+    if (!name || !email|| !message) {
+      return res.status(400).send("Name, email and message are required");
+    }
+
+    if (multerReq.files && Array.isArray(multerReq.files) && multerReq.files.length > 0) {
+      newMessage.attachments = multerReq.files.map((file: Express.Multer.File) => file.filename);
+    }
+
+    await newMessage.save();
+
+    res.status(201).json({ message: 'Message sent successfully' });
+  } catch (error) {
+    console.error('Error saving message:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
 }
 
 const loadMessages = async (req: any, res: any) => {
