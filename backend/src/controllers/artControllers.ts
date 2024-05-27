@@ -1,10 +1,16 @@
 import Art from "../models/art";
+import { Request, Response } from 'express';
+
+interface MulterRequest extends Request {
+  files?: Express.Multer.File[];
+}
 
 const index = async (req: any, res: any) => {
   try {
     const searchQuery = req.query.search as string | undefined;
     const category = req.query.category as string | undefined;
-    const featured = req.query.featured === "true" || req.query.featured === "on";
+    const featured =
+      req.query.featured === "true" || req.query.featured === "on";
     let query: any = {};
 
     if (searchQuery) {
@@ -24,7 +30,7 @@ const index = async (req: any, res: any) => {
       arts: result,
       searchQuery: searchQuery,
       category: category,
-      featured:featured
+      featured: featured,
     });
   } catch (err) {
     console.error(err);
@@ -36,18 +42,28 @@ const add_art = (req: any, res: any) => {
   res.render("create", { title: "Add Art" });
 };
 
-const post_art = (req: any, res: any) => {
-  const art = new Art(req.body);
+// POST ART FUNCTION
+const post_art = async (req: Request, res: Response) => {
+  const multerReq = req as MulterRequest;
+  const art = new Art(multerReq.body);
+  
+  try {
+    const { description, title, category } = multerReq.body;
+    if (!description || !title || !category) {
+      return res.status(400).send("Description, title, and category are required");
+    }
 
-  art
-    .save()
-    .then((result) => {
-      res.redirect("/");
-    })
-    .catch((err) => {
-      console.log(err);
-      res.status(500).send("Internal Server Error");
-    });
+    // Handle file upload
+    if (multerReq.files && Array.isArray(multerReq.files) && multerReq.files.length > 0) {
+      art.images = multerReq.files.map((file: Express.Multer.File) => file.filename);
+    }
+    
+    const result = await art.save();
+    res.redirect("/arts");
+  } catch (err) {
+    console.error("Error saving art:", err);
+    res.status(500).send("Internal Server Error");
+  }
 };
 
 const art_delete = (req: any, res: any) => {
@@ -58,7 +74,7 @@ const art_delete = (req: any, res: any) => {
         res.status(404).send("Art not found");
         return;
       }
-      res.json({ redirect: "/" });
+      res.redirect("/arts");
     })
     .catch((err) => {
       console.log(err);
