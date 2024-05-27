@@ -12,7 +12,7 @@ interface PageProps {
     return (
       <div className="page-content" ref={ref} >
         <h1>{title}</h1>
-        <img src={img} alt={title} />
+        <img src={`/uploads/${img}`} alt={title} />
         <button onClick={showDetails}>See details</button>
         <p>{des}</p>
       </div>

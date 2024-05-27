@@ -93,7 +93,7 @@ const Gallery: React.FC = () => {
               <p>{art.description}</p>
             </div>
             <img
-              src={art.images[0]}
+              src={`/uploads/${art.images[0]}`}
               alt={art.description}
               onMouseEnter={() => setHoverIndex(index)}
               onMouseLeave={() => setHoverIndex(-1)}
