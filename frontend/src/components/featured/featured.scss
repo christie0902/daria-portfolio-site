@@ -135,7 +135,14 @@ $font-text: "Inika", serif;
       margin-bottom: auto;
     }
     p {
-      margin-bottom: auto;
+      margin-block: auto;
+      text-align: center;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      padding-inline: 20px;
     }
     &:hover {
       cursor: pointer;
@@ -145,6 +152,7 @@ $font-text: "Inika", serif;
       font-size: 1em;
       text-decoration: underline;
       font-weight: 600;
+      margin-bottom: 10px;
       &:hover {
         cursor: pointer;
         background-color: none;

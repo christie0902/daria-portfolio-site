@@ -42,7 +42,7 @@ const Book: React.FC = () => {
 
   const totalPages = Math.ceil(featuredArts.length / 2);
   const flipBookWidth = isMobile ? 300 : 400;
-  const flipBookHeight = isMobile ? 300 : 400;
+  const flipBookHeight = isMobile ? 300 : 450;
 
   const handlePrevClick = () => {
     book.current?.pageFlip().flipPrev();
