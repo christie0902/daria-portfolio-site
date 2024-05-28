@@ -62,6 +62,10 @@ $font-text: "Inika", serif;
   background-size: 20px 35px;
   background-position: 0 0, 0 0, 10px 18px, 10px 18px, 0 0, 10px 18px;
 
+  .section-title {
+    animation: slideDown 1s linear;
+  }
+
   .feature-container {
     min-height: 80%;
     box-sizing: border-box;
@@ -133,14 +137,14 @@ $font-text: "Inika", serif;
     p {
       margin-bottom: auto;
     }
-    &:hover{
+    &:hover {
       cursor: pointer;
     }
     button {
       border: none;
       font-size: 1em;
       text-decoration: underline;
-      font-weight:600;
+      font-weight: 600;
       &:hover {
         cursor: pointer;
         background-color: none;
@@ -183,7 +187,7 @@ $font-text: "Inika", serif;
       transform: translateX(-50%);
     }
 
-    &:hover{
+    &:hover {
       cursor: pointer;
     }
     // p {
@@ -251,6 +255,18 @@ $font-text: "Inika", serif;
     }
   }
 }
+
+@keyframes slideDown {
+  0% {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 @keyframes moveRight {
   0% {
     left: 0;
@@ -288,8 +304,8 @@ $font-text: "Inika", serif;
 
 @media only screen and (max-width: 480px) {
   .feature-section {
-     justify-content: space-between;
-     padding-top: 20%;
+    justify-content: space-between;
+    padding-top: 20%;
     .book-container {
       margin-top: 25%;
     }

@@ -13,22 +13,20 @@ const FeaturedProduct = () => {
   }, [elemRef]);
 
   return (
-
-          <div className="feature-section" ref={elemRef}>
-          {reference && (
+    <div className="feature-section" ref={elemRef}>
+      {reference && (
         <LazyLoader targetElement={reference}>
-            <h1 className="section-title">FEATURED ART</h1>
-            <div className="guide">
-              <p className="guide-text">Flip to explore!</p>
-              <img className="guide-img" src="arrow.png" alt="arrow" />
-            </div>
-            <div className="feature-container">
-              <Book />
-            </div>
-            </LazyLoader>
-                  )}
+          <h1 className="section-title">FEATURED ART</h1>
+          <div className="guide">
+            <p className="guide-text">Flip to explore!</p>
+            <img className="guide-img" src="arrow.png" alt="arrow" />
           </div>
- 
+          <div className="feature-container">
+            <Book />
+          </div>
+        </LazyLoader>
+      )}
+    </div>
   );
 };
 
