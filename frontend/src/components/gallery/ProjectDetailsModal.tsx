@@ -70,7 +70,7 @@ const ProjectDetailsModal: React.FC<ProjectDetailsModalProps> = ({ id, onClose }
                   <td>Images:</td>
                   <td>
                     {art.images.map((image, index) => (
-                      <img key={index} src={image} alt={`Image ${index}`} />
+                      <img key={index} src={`/uploads/${image}`} alt={`Image ${index}`} />
                     ))}
                   </td>
                 </tr>
