@@ -9,34 +9,43 @@ const Gallery: React.FC = () => {
   const [hoverIndex, setHoverIndex] = useState(-1);
   const [selectedTab, setSelectedTab] = useState("all");
   const [detailsModal, setDetailsModal] = useState(false);
-  const [artID, setArtID] = useState('');
+  const [artID, setArtID] = useState("");
+  const [totalPages, setTotalPages] = useState(1);
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 8;
 
   useEffect(() => {
-    const loadArts = async () => {
+    const fetchArts = async () => {
       try {
-        const response = await fetch(`/api/arts?category=${selectedTab}`);
+        const response = await fetch(
+          `/api/arts?category=${selectedTab}&page=${currentPage}&pageSize=${itemsPerPage}`
+        );
         if (!response.ok) {
           throw new Error("Fail to fetch");
         }
-        const data = await response.json();
-        setArts(data);
+        const { arts, totalPages } = await response.json();
+        setArts(arts);
+        setTotalPages(totalPages);
       } catch (err) {
         console.log("Error fetching data:", err);
       }
     };
 
-    loadArts();
-  }, [selectedTab]);
+    fetchArts();
+  }, [selectedTab, currentPage]);
 
-  const showDetails = (art: Art) =>{
-    
+  const showDetails = (art: Art) => {
     setArtID(art._id);
     setDetailsModal(true);
-  }
+  };
 
   const onClose = () => {
     setDetailsModal(false);
-  }
+  };
+
+  const paginate = (pageNumber: number) => {
+    setCurrentPage(pageNumber);
+  };
 
   return (
     <div className="gallery-section">
@@ -83,7 +92,11 @@ const Gallery: React.FC = () => {
       </div>
       <div className="gallery">
         {arts.map((art, index) => (
-          <div className="img-container" key={`${art._id}`} onClick={() => showDetails(art)}>
+          <div
+            className="img-container"
+            key={`${art._id}`}
+            onClick={() => showDetails(art)}
+          >
             <div
               className={`text-container ${
                 hoverIndex === index ? "text-container-active" : ""
@@ -106,7 +119,28 @@ const Gallery: React.FC = () => {
           </div>
         ))}
       </div>
-      {detailsModal == true && <ProjectDetailsModal id={artID} onClose={onClose}/>}
+
+      {/* Pagination */}
+      <div className="pagination">
+        {totalPages && totalPages > 1 && (
+          <ul className="pagination-list">
+            {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+              <li
+                key={page}
+                className={`pagination-item ${
+                  currentPage === page ? "active" : ""
+                }`}
+              >
+                <button onClick={() => paginate(page)}>{page}</button>
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
+
+      {detailsModal == true && (
+        <ProjectDetailsModal id={artID} onClose={onClose} />
+      )}
     </div>
   );
 };

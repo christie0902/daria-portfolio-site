@@ -2,10 +2,24 @@ import Art from "../../models/art";
 
 const index = async (req: any, res: any): Promise<void> => {
     const category = req.query.category;
+    const page = parseInt(req.query.page) || 1;
+    const pageSize = parseInt(req.query.pageSize) || 8;
+
+
     try {
         const query = category && category !== 'all' ? {category} : {};
-        const result = await Art.find(query).sort({ createdAt: -1});
-        res.json(result);
+        const skip = (page - 1) * pageSize;
+
+
+        const totalCount = await Art.countDocuments(query); // Count total documents matching the query
+        const totalPages = Math.ceil(totalCount / pageSize); // Calculate total pages
+
+        const result = await Art.find(query)
+                                .sort({ createdAt: -1 })
+                                .skip(skip)
+                                .limit(pageSize);
+
+        res.json({ arts: result, totalPages: totalPages });
     } catch (err) {
         console.log(err);
         res.status(500).send("Internal Server Error")
