@@ -8,7 +8,7 @@
 
     <div class="edit-art content">
         <h2>Edit Art Piece</h2>
-        <form action="/arts/<%=art.id%>?_method=PUT" method="POST">
+        <form action="/arts/<%=art.id%>?_method=PUT" method="POST" onsubmit="return validateForm(event)">
             <label for="category">Category:</label>
             <select name="category" id="category">
                 <option value="sketch-painting" <%= art.category === 'sketch-painting' ? 'selected' : '' %>>Sketch & Painting</option>
@@ -16,23 +16,33 @@
                 <option value="photography" <%= art.category === 'photography' ? 'selected' : '' %>>Photography</option>
                 <option value="sculpture" <%= art.category === 'sculpture' ? 'selected' : '' %>>Sculpture</option>
             </select>
+            <div class="error-message" id="category-error"></div>
+
             <label for="title">Title:</label>
             <input type="text" name="title" id="title" value="<%= art.title %>" required />
+            <div class="error-message" id="title-error"></div>
+
             <label for="des">Description:</label>
+            <input type="text" name="description" id="des" value="<%= art.description %>" required />
+            <div class="error-message" id="description-error"></div>
 
             <label for="medium">Medium:</label>
             <input type="text" name="medium" id="medium" value="<%= art.medium %>" />
+            <div class="error-message" id="medium-error"></div>
 
             <label for="dimension">Dimension:</label>
             <input type="text" name="dimension" id="dimension" value="<%= art.dimension %>" />
+            <div class="error-message" id="dimension-error"></div>
 
-            <input type="text" name="description" id="des" value="<%= art.description %>" required />
+            
             <label>Images:</label>
             <div class="image-preview">
                 <% art.images.forEach(image => { %>
                     <img src="/uploads/<%= image %>" alt="Artwork Image" class="preview-image">
                 <% }); %>
             </div>
+            <div class="error-message" id="images-error"></div>
+
             <div class="featured-options">
                 <label>Featured Art:</label>
                 <div>
@@ -43,13 +53,98 @@
                     <input type="radio" id="featured-no" name="featured" value="no" <%= art.featured === false ? 'checked' : '' %> />
                     <label for="featured-no">No</label>
                 </div>
+                <div class="error-message featured-error"></div>
             </div>
             <button type="submit">Update</button>
         </form>
     </div>
 
     <script>
-        // Additional JavaScript code if needed
+        const previewImages = (event) => {
+            const preview = document.querySelector(".image-preview");
+            preview.innerHTML = "";
+
+            const files = event.target.files;
+
+            for (let i = 0; i < files.length; i++) {
+                const file = files[i];
+
+                if (!file.type.startsWith("image/")) {
+                    continue;
+                }
+
+                const img = document.createElement("img");
+                img.classList.add("preview-image");
+                img.file = file;
+
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    img.src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+
+                preview.appendChild(img);
+            }
+        };
+        
+        const validateForm = (event) => {
+            let isValid = true;
+
+            const category = document.getElementById("category");
+            const title = document.getElementById("title");
+            const description = document.getElementById("des");
+            const images = document.getElementById("images");
+            const featuredYes = document.getElementById('featured-yes');
+            const featuredNo = document.getElementById('featured-no');
+            const featuredError = document.querySelector('.featured-error');
+
+            if (!category.value) {
+                isValid = false;
+                document.getElementById("category-error").innerText = "Category is required.";
+            } else {
+                document.getElementById("category-error").innerText = "";
+            }
+
+            if (!title.value.trim()) {
+                isValid = false;
+                document.getElementById("title-error").innerText = "Title is required.";
+            } else {
+                document.getElementById("title-error").innerText = "";
+            }
+
+            if (!description.value.trim()) {
+                isValid = false;
+                document.getElementById("description-error").innerText = "Description is required.";
+            } else {
+                document.getElementById("description-error").innerText = "";
+            }
+
+            if (!featuredYes.checked && !featuredNo.checked) {
+                isValid = false;
+                featuredError.innerText = "* Please select either 'Yes' or 'No' for Featured Art.";
+            } else {
+                featuredError.innerText = "";
+            }
+
+            return isValid;
+        };
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const featuredYes = document.getElementById('featured-yes');
+            const featuredNo = document.getElementById('featured-no');
+            const featuredError = document.querySelector('.featured-error');
+
+            const toggleFeaturedError = () => {
+                if (featuredYes.checked || featuredNo.checked) {
+                    featuredError.style.display = 'none';
+                } else {
+                    featuredError.style.display = 'block';
+                }
+            };
+
+            featuredYes.addEventListener('change', toggleFeaturedError);
+            featuredNo.addEventListener('change', toggleFeaturedError);
+        });
     </script>
 </body>
 </html>
