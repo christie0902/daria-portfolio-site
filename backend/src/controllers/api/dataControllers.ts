@@ -11,8 +11,8 @@ const index = async (req: any, res: any): Promise<void> => {
         const skip = (page - 1) * pageSize;
 
 
-        const totalCount = await Art.countDocuments(query); // Count total documents matching the query
-        const totalPages = Math.ceil(totalCount / pageSize); // Calculate total pages
+        const totalCount = await Art.countDocuments(query);
+        const totalPages = Math.ceil(totalCount / pageSize); 
 
         const result = await Art.find(query)
                                 .sort({ createdAt: -1 })

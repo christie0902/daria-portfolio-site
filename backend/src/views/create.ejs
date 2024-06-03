@@ -5,25 +5,63 @@
     <%- include('./partials/nav.ejs')%>
 
     <div class="add-art content">
+      <!-- add onsubmit="return validateForm(event)" to the form tag if want front-end validation -->
       <form action="/arts" method="post" enctype="multipart/form-data">
         <label for="category">Category:</label>
         <select name="category" id="category">
-          <option value="sketch-painting">Sketch & Painting</option>
-          <option value="digital">Digital Art</option>
-          <option value="photography">Photography</option>
-          <option value="sculpture">Sculpture</option>
+          <option value="sketch-painting" <%= formData && formData.category === 'sketch-painting' ? 'selected' : '' %>>Sketch & Painting</option>
+          <option value="digital" <%= formData && formData.category === 'digital' ? 'selected' : '' %>>Digital Art</option>
+          <option value="photography" <%= formData && formData.category === 'photography' ? 'selected' : '' %>>Photography</option>
+          <option value="sculpture" <%= formData && formData.category === 'sculpture' ? 'selected' : '' %>>Sculpture</option>
         </select>
-        <label for="title">Title:</label>
-        <input type="text" name="title" id="title" required />
+        <% if (errors && errors.category) { %>
+        <div class="error-message"><%= errors.category %></div>
+        <% } %>
 
+        <label for="title">Title:</label>
+        <input
+          type="text"
+          name="title"
+          id="title"
+          value="<%= formData && formData.title ? formData.title : '' %>"
+          required
+        />
+        <% if (errors && errors.title) { %>
+        <div class="error-message"><%= errors.title %></div>
+        <% } %>
         <label for="medium">Medium:</label>
-        <input type="text" name="medium" id="medium" />
+        <input
+          type="text"
+          name="medium"
+          id="medium"
+          value="<%= formData && formData.medium ? formData.medium : '' %>"
+        />
+        <% if (errors && errors.medium) { %>
+        <div class="error-message"><%= errors.medium %></div>
+        <% } %>
 
         <label for="dimension">Dimension:</label>
-        <input type="text" name="dimension" id="dimension" />
+        <input
+          type="text"
+          name="dimension"
+          id="dimension"
+          value="<%= formData && formData.dimension ? formData.dimension : '' %>"
+        />
+        <% if (errors && errors.dimension) { %>
+        <div class="error-message"><%= errors.dimension %></div>
+        <% } %>
 
         <label for="des">Description:</label>
-        <input type="text" name="description" id="des" required />
+        <input
+          type="text"
+          name="description"
+          id="des"
+          value="<%= formData && formData.description ? formData.description : '' %>"
+          required
+        />
+        <% if (errors && errors.description) { %>
+        <div class="error-message"><%= errors.description %></div>
+        <% } %>
 
         <label for="images">Upload image:</label>
         <input
@@ -33,22 +71,22 @@
           multiple
           onChange="previewImages(event)"
         />
+        <% if (errors && errors.images) { %>
+        <div class="error-message"><%= errors.images %></div>
+        <% } %>
         <div class="image-preview"></div>
+
         <label>Featured Art:</label>
         <div>
-          <input type="radio" id="featured-yes" name="featured" value="yes" />
+          <input type="radio" id="featured-yes" name="featured" value="yes" <%= formData && formData.featured === 'yes' ? 'checked' : '' %> />
           <label for="featured-yes">Yes</label>
         </div>
         <div>
-          <input
-            type="radio"
-            id="featured-no"
-            name="featured"
-            value="no"
-            checked
-          />
+          <input type="radio" id="featured-no" name="featured" value="no" <%=
+          formData && formData.featured === 'no' ? 'checked' : '' %> />
           <label for="featured-no">No</label>
         </div>
+        <div class="error-message featured-error"><%= errors.featured %>* Please select either "Yes" or "No" for to display this art as Featured Art</div>
         <button>Submit</button>
       </form>
     </div>
@@ -80,6 +118,71 @@
           preview.appendChild(img);
         }
       };
+
+      //Front-end Validation
+      // const validateForm = (event) => {
+      //   let isValid = true;
+      //   const category = document.getElementById("category");
+      //   const title = document.getElementById("title");
+      //   const description = document.getElementById("des");
+      //   const images = document.getElementById("images");
+
+      //   if (!category.value) {
+      //     isValid = false;
+      //     document.getElementById("category-error").innerText =
+      //       "Category is required.";
+      //   } else {
+      //     document.getElementById("category-error").innerText = "";
+      //   }
+
+      //   if (!title.value.trim()) {
+      //     isValid = false;
+      //     document.getElementById("title-error").innerText =
+      //       "Title is required.";
+      //   } else {
+      //     document.getElementById("title-error").innerText = "";
+      //   }
+
+      //   if (!description.value.trim()) {
+      //     isValid = false;
+      //     document.getElementById("description-error").innerText =
+      //       "Description is required.";
+      //   } else {
+      //     document.getElementById("description-error").innerText = "";
+      //   }
+
+      //   if (!images.files.length) {
+      //     isValid = false;
+      //     document.getElementById("images-error").innerText =
+      //       "At least one image is required.";
+      //   } else {
+      //     document.getElementById("images-error").innerText = "";
+      //   }
+
+      //   if (!isValid) {
+      //     event.preventDefault();
+      //   }
+
+      //   return isValid;
+      // };
+      document.addEventListener('DOMContentLoaded', function () {
+  const featuredYes = document.getElementById('featured-yes');
+  const featuredNo = document.getElementById('featured-no');
+  const featuredError = document.querySelector('.featured-error');
+
+  // Function to toggle visibility of featured error message
+  const toggleFeaturedError = () => {
+    if (featuredYes.checked || featuredNo.checked) {
+      featuredError.style.display = 'none';
+    } else {
+      featuredError.style.display = 'block';
+    }
+  };
+
+  // Event listeners to toggle error message visibility on radio button change
+  featuredYes.addEventListener('change', toggleFeaturedError);
+  featuredNo.addEventListener('change', toggleFeaturedError);
+});
     </script>
   </body>
 </html>

@@ -24,39 +24,60 @@ th {
     justify-content: center;
     align-items: center;
     padding: 20px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-transform: uppercase;
 }
 
 .site-title a {
-    color: #363333;
+    color: #2e7d32;
     font-size: 3em;
     text-decoration: none;
     font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    transition: color 0.3s, text-shadow 0.3s;
+}
+
+.site-title a:hover {
+    color: #032e06;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .site-description {
-    color: #ccc;
+    color: #283829;
     font-size: 2em;
     margin-top: 5px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 .nav-links {
-    width: 40vw;
-    margin-inline: auto;
+    width: 50%;
+    margin: 20px auto;
     list-style: none;
     display: flex;
     justify-content: space-around;
-    margin-top: 10px;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .nav-links li {
-    margin-right: 20px;
+    margin: 0;
 }
 
 .nav-link {
-    color: #324e27;
+    color: #388e3c;
     text-decoration: none;
     font-size: 1.5em;
-    transition: color 0.3s;
+    font-weight: bold;
+    transition: color 0.3s, text-shadow 0.3s;
+}
+
+.nav-link:hover {
+    color: #1b5e20;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 /* Search bar styles */
@@ -149,7 +170,7 @@ th {
     margin-bottom: 2rem;
     text-align: center;
     font-size: 2.5rem;
-    margin-top: 5%;
+    /* margin-top: 2%; */
 }
 
 .art-list table {
@@ -412,4 +433,10 @@ th {
 
   .delete-button:hover {
     background-color: #d32f2f;
+  }
+
+  .error-message {
+    color: red;
+    font-size: 14px;
+    margin-bottom: 10px;
   }
