@@ -440,3 +440,16 @@ th {
     font-size: 14px;
     margin-bottom: 10px;
   }
+
+  .alert {
+    border: 1px solid transparent;
+    border-radius: 4px;
+    font-family: Arial, sans-serif;
+    font-size: 1.2rem;
+    line-height: 1.5;
+  }
+  
+  /* Success alert styling */
+  .alert-success {
+    color: #3c763d;
+  }

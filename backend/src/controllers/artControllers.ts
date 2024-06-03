@@ -90,6 +90,7 @@ const post_art = async (req: Request, res: Response) => {
 
   try {
     await art.save();
+    req.flash('success', 'Art piece added successfully!');
     res.redirect("/arts");
   } catch (err) {
     console.error("Error saving art:", err);
@@ -105,6 +106,7 @@ const art_delete = (req: any, res: any) => {
         res.status(404).send("Art not found");
         return;
       }
+      req.flash('success', 'Art piece deleted successfully!');
       res.redirect("/arts");
     })
     .catch((err) => {
@@ -138,7 +140,8 @@ const update_art = (req: any, res: any) => {
         res.status(404).send("Art not found");
         return;
       }
-      res.redirect("/");
+      req.flash('success', 'Art piece updated successfully!');
+      res.redirect("/arts");
     })
     .catch((err) => {
       console.log(err);

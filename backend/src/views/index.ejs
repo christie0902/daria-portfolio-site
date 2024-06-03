@@ -5,6 +5,9 @@
     <%- include('./partials/nav.ejs')%>
 
     <div class="art-list content">
+      <% if (success) { %>
+        <div class="alert alert-success"><%= success %></div>
+      <% } %>
       <h2>List of Arts</h2>
 
       <!-- Search feature -->

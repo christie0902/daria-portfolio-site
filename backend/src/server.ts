@@ -7,6 +7,8 @@ import mongoose from "mongoose";
 import artRoutes from "./routes/artRoutes";
 import dataRoutes from "./routes/api/dataRoutes";
 import messageRoutes from './routes/messageRoutes';
+import session from 'express-session';
+import flash from 'connect-flash';
 
 
 dotenv.config();
@@ -29,6 +31,23 @@ mongoose
   .catch((err) => {
     console.log("MongoDB connection error:", err);
   });
+
+
+// Flash message
+app.use(session({
+  secret: 'test_secret_key',
+  resave: false,
+  saveUninitialized: true,
+}));
+
+app.use(flash());
+
+// Make flash messages available in templates
+app.use((req, res, next) => {
+  res.locals.success = req.flash('success');
+  res.locals.error = req.flash('error');
+  next();
+});
 
 //register view engine
 app.set("view engine", "ejs");
