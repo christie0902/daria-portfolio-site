@@ -103,23 +103,40 @@ $font-text: "Inika", serif;
       font-family: $font-text;
       opacity: 0;
       transition: opacity 0s;
-
       h3 {
         position: absolute;
-        top: 40%;
-        left: 30%;
-        background-color: #e0e6e2;
-        font-size: 2rem;
+        top: -3%;
+        left: 50%;
+        width: 50%;
+        transform: translate(-50%, -50%);
+        background-color: rgba(232, 241, 235, 0.5);
+        backdrop-filter: blur(10px);
+        padding: 10px 20px;
+        font-size: 1.5rem;
+        color: #333;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         z-index: 5;
+        text-align: center;
+        text-transform: uppercase;
       }
+      
       p {
         position: absolute;
-        top: 60%;
-        left: 30%;
-        background-color: #e0e6e2;
+        top: 90%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 80%;
+        background-color: rgba(224, 231, 227, 0.5);
+        backdrop-filter: blur(10px);
+        border-radius: 10px;
+        padding: 20px;
         font-size: 1rem;
+        color: #111111; /* Darker text for better contrast */
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow */
         z-index: 5;
+        text-align: center; /* Center text inside the element */
       }
+      
       &-active {
         opacity: 1;
         transition: opacity 0.5s ease-in 0.2s;
