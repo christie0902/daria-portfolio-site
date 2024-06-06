@@ -10,7 +10,7 @@ $font-text: "Inika", serif;
 
   // Pagination styles within the .gallery-section
   .pagination {
-    margin-top: 20px;
+    margin-top: 10px;
     display: flex;
     justify-content: center;
     z-index: 2;
@@ -68,6 +68,25 @@ $font-text: "Inika", serif;
         font-weight: bold;
         color: rgb(11, 90, 11);
       }
+
+      @media (max-width: 1280px) {
+        font-size: 1.3rem;
+      }
+
+      @media (max-width: 800px) {
+        font-size: 1.2rem;
+      }
+
+      @media (max-width: 600px) {
+        font-size: 1rem;
+        border-right: none;
+        border-bottom: 2px solid black;
+      }
+    }
+    @media (max-width: 600px) {
+      flex-direction: column;
+      align-items: flex-start;
+      margin-top: 20px;
     }
   }
 
@@ -81,6 +100,25 @@ $font-text: "Inika", serif;
     width: calc(3 * var(--s) + 2 * var(--g));
     aspect-ratio: 1;
     grid-template-columns: repeat(4, 1fr);
+
+    @media (max-width: 1280px) {
+      --s: 18vw;
+      grid-template-columns: repeat(3, 1fr);
+      width: calc(3 * var(--s) + 2 * var(--g));
+    }
+
+    @media (max-width: 800px) {
+      --s: 30vw; 
+      grid-template-columns: repeat(2, 1fr);
+      width: calc(2 * var(--s) + var(--g));
+    }
+
+    @media (max-width: 600px) {
+      --s: 40vw; 
+      grid-template-columns: 1fr;
+      width: calc(var(--s));
+      height: 550px;
+    }
   }
 
   .gallery > .img-container > img {
@@ -118,6 +156,18 @@ $font-text: "Inika", serif;
         z-index: 5;
         text-align: center;
         text-transform: uppercase;
+
+        @media (max-width: 1280px) {
+          font-size: 1.3rem;
+        }
+
+        @media (max-width: 800px) {
+          font-size: 1.2rem;
+        }
+
+        // @media (max-width: 600px) {
+        //   font-size: 1rem;
+        // }
       }
       
       p {
@@ -136,15 +186,45 @@ $font-text: "Inika", serif;
         z-index: 5;
         text-align: center; /* Center text inside the element */
       }
+      @media (max-width: 1280px) {
+        font-size: 0.9rem;
+      }
+
+      @media (max-width: 800px) {
+        font-size: 0.8rem;
+      }
+
+      @media (max-width: 600px) {
+        font-size: 0.7rem;
+      }
       
       &-active {
         opacity: 1;
         transition: opacity 0.5s ease-in 0.2s;
       }
+    
     }
     img:hover {
       width: calc(var(--s) * var(--f));
       height: calc(var(--s) * var(--f));
+    }
+  }
+  @media (max-width: 600px) {
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+
+    .tabs {
+      flex-direction: column;
+      order: 1;
+      width: 100%;
+      position: absolute;
+      top: 20%;
+    }
+
+    .gallery {
+      order: 2;
+      margin-left: 35%;
     }
   }
 }

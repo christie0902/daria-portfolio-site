@@ -12,7 +12,26 @@ const Gallery: React.FC = () => {
   const [artID, setArtID] = useState("");
   const [totalPages, setTotalPages] = useState(1);
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 8;
+  const [itemsPerPage, setItemsPerPage] = useState(8);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth <= 600) {
+        setItemsPerPage(3);
+      } else {
+        setItemsPerPage(8);
+      }
+    };
+
+    // Set the initial value
+    handleResize();
+
+    // Add event listener
+    window.addEventListener('resize', handleResize);
+
+    // Clean up the event listener on component unmount
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   useEffect(() => {
     const fetchArts = async () => {
@@ -32,7 +51,7 @@ const Gallery: React.FC = () => {
     };
 
     fetchArts();
-  }, [selectedTab, currentPage]);
+  }, [selectedTab, currentPage, itemsPerPage]);
 
   const showDetails = (art: Art) => {
     setArtID(art._id);
