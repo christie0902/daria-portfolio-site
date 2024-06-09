@@ -2,7 +2,7 @@ import Art from "../../models/art";
 
 const index = async (req: any, res: any): Promise<void> => {
     const category = req.query.category;
-    const page = parseInt(req.query.page) || 1;
+    const page = parseInt(req.query.page) ?? 1;
     const pageSize = parseInt(req.query.pageSize) || 8;
 
 
@@ -15,9 +15,10 @@ const index = async (req: any, res: any): Promise<void> => {
         const totalPages = Math.ceil(totalCount / pageSize); 
 
         const result = await Art.find(query)
-                                .sort({ createdAt: -1 })
                                 .skip(skip)
-                                .limit(pageSize);
+                                .limit(pageSize)
+                                // .sort({ createdAt: -1 });
+            
 
         res.json({ arts: result, totalPages: totalPages });
     } catch (err) {

@@ -152,7 +152,7 @@ $font-text: "Inika", serif;
       &:not(:hover) {
         .art-img {
           transform: scale(1);
-          transition: all 1s ease;
+          transition: all 0.5s ease;
         }
         .art-text {
           font-size: 1.1rem;

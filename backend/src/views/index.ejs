@@ -8,7 +8,7 @@
       <% if (success) { %>
         <div class="alert alert-success"><%= success %></div>
       <% } %>
-      <h2>List of Arts</h2>
+      <h2>List of Art</h2>
 
       <!-- Search feature -->
       <% if (searchQuery) { %>
@@ -44,24 +44,27 @@
       <table>
         <thead>
           <tr>
+            <th>#</th>
             <th>Title</th>
             <th>Category</th>
             <th>Medium</th>
             <th>Dimension</th>
-            <th>Description</th>
+            <th style="width:50%;">Description</th>
             <th>Featured</th>
             <th>Images</th>
             <th>Actions</th>
           </tr>
         </thead>
         <tbody>
+          <% let counter = ((currentPage - 1) * 5) + 1; %>
           <% arts.forEach(art => { %>
           <tr>
+            <td><%= counter++ %></td>
             <td><%= art.title %></td>
             <td><%= art.category %></td>
             <td><%= art.medium %></td>
             <td><%= art.dimension %></td>
-            <td><%= art.description %></td>
+            <td style="width:50%;"><%= art.description %></td>
             <td><%= art.featured ? "Yes" : "No" %></td>
             <td>
               <%art.images?.map(img=> {%>
@@ -85,6 +88,23 @@
           <% }); %>
         </tbody>
       </table>
+
+      <!-- Pagination -->
+      <div class="pagination">
+        <% if (currentPage > 1) { %>
+          <a href="/arts?page=<%= currentPage - 1 %>&search=<%= searchQuery %>&category=<%= category %>&featured=<%= featured %>">&laquo; Previous</a>
+        <% } else { %>
+          <a class="disabled">&laquo; Previous</a>
+        <% } %>
+        <% for (let i = 1; i <= totalPages; i++) { %>
+          <a href="/arts?page=<%= i %>&search=<%= searchQuery %>&category=<%= category %>&featured=<%= featured %>" class="<%= i === currentPage ? 'active' : '' %>"><%= i %></a>
+        <% } %>
+        <% if (currentPage < totalPages) { %>
+          <a href="/arts?page=<%= currentPage + 1 %>&search=<%= searchQuery %>&category=<%= category %>&featured=<%= featured %>">Next &raquo;</a>
+        <% } else { %>
+          <a class="disabled">Next &raquo;</a>
+        <% } %>
+      </div>
     </div>
 
     <script>

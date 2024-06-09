@@ -32,7 +32,7 @@ th {
 
 .site-title a {
     color: #2e7d32;
-    font-size: 3em;
+    font-size: 2.2em;
     text-decoration: none;
     font-weight: bold;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
@@ -46,19 +46,20 @@ th {
 
 .site-description {
     color: #283829;
-    font-size: 2em;
+    font-size: 1.5em;
     margin-top: 5px;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 .nav-links {
-    width: 50%;
-    margin: 20px auto;
+    width: 100%;
+    margin: 15px auto;
     list-style: none;
     display: flex;
     justify-content: space-around;
     background: rgba(255, 255, 255, 0.8);
-    padding: 10px;
+    padding-inline: 25%;
+    padding-block: 10px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
@@ -70,7 +71,7 @@ th {
 .nav-link {
     color: #388e3c;
     text-decoration: none;
-    font-size: 1.5em;
+    font-size: 1.3em;
     font-weight: bold;
     transition: color 0.3s, text-shadow 0.3s;
 }
@@ -151,7 +152,7 @@ th {
    margin-left: 20px;
 }
 .checkbox-label {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
 }
 
 .nav-link:hover {
@@ -160,16 +161,16 @@ th {
 }
 
 .art-list {
-    max-width: 1000px;
+    max-width: 1200px;
     width: 70vw;
     margin: 0 auto;
-    padding: 20px;
+    padding: 10px;
 }
 
 .art-list h2 {
-    margin-bottom: 2rem;
-    text-align: center;
-    font-size: 2.5rem;
+    margin-bottom: 1.2rem;
+    text-align: left;
+    font-size: 2.2rem;
     /* margin-top: 2%; */
 }
 
@@ -216,6 +217,36 @@ th {
 .art-list .edit:hover, .art-list .delete:hover {
     background-color: #555;
 }
+
+/* Pagination */
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  .pagination a {
+    margin: 0 5px;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: #1b5e20;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  .pagination a:hover {
+    background-color: #1b5e20;
+    color: white;
+  }
+  .pagination a.active {
+    background-color: #1b5e20;
+    color: white;
+    pointer-events: none;
+  }
+  .pagination a.disabled {
+    color: #ccc;
+    pointer-events: none;
+    border-color: #ccc;
+  }
 
 /* Content styles */
 .add-art {

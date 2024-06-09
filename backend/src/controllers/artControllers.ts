@@ -11,6 +11,9 @@ const index = async (req: any, res: any) => {
     const category = req.query.category as string | undefined;
     const featured =
       req.query.featured === "true" || req.query.featured === "on";
+    const page = parseInt(req.query.page) || 1;
+    const limit = 5;
+    const skip = (page - 1) * limit;
     let query: any = {};
 
     if (searchQuery) {
@@ -23,14 +26,21 @@ const index = async (req: any, res: any) => {
       query.featured = true;
     }
 
-    const result = await Art.find(query).sort({ createdAt: -1 });
+    const [arts, totalArts] = await Promise.all([
+      Art.find(query).sort({ createdAt: -1 }).skip(skip).limit(limit),
+      Art.countDocuments(query),
+    ]);
+
+    const totalPages = Math.ceil(totalArts / limit);
 
     res.render("index", {
       title: "All Arts",
-      arts: result,
+      arts: arts,
       searchQuery: searchQuery,
       category: category,
       featured: featured,
+      currentPage: page,
+      totalPages: totalPages,
     });
   } catch (err) {
     console.error(err);
