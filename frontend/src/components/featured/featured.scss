@@ -178,7 +178,7 @@ background-image:  repeating-linear-gradient(to right, #d7eebd, #d7eebd 1px, #ff
     flex-direction: column;
     justify-content: space-between;
     position: relative;
-    background-image: url("cover-beige.png");
+    background-image: url("cover-green-beige.png");
     background-position: center;
     background-size: cover;
     // background-color: rgb(69, 204, 102);
@@ -186,16 +186,20 @@ background-image:  repeating-linear-gradient(to right, #d7eebd, #d7eebd 1px, #ff
     // background-size: 6px 8px;
     h1 {
       font-size: 3rem;
-      margin-top: 45%;
+      margin-top: 25%;
       font-family: $font-text;
       color: rgb(0, 0, 0);
-      text-transform: uppercase;
+      // text-transform: uppercase;
+      background-image: url('23.png');
+      background-position: left;
+      background-size: cover;
+      transform: skewY(-5deg);
     }
     img {
       width: 300px;
       position: absolute;
-      top: -10%;
-      left: 50%;
+      top: 50%;
+      left: 70%;
       transform: translateX(-50%);
     }
 

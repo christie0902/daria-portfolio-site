@@ -13,6 +13,7 @@ const Gallery: React.FC = () => {
   const [totalPages, setTotalPages] = useState(1);
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(8);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const handleResize = () => {
@@ -45,6 +46,7 @@ const Gallery: React.FC = () => {
       } catch (err) {
         console.log("Error fetching data:", err);
       }
+      setLoading(false);
     };
 
     fetchArts();
@@ -62,6 +64,7 @@ const Gallery: React.FC = () => {
   const paginate = (pageNumber: number) => {
     setCurrentPage(pageNumber);
   };
+  
 
   return (
     <div className="gallery-section">
@@ -107,33 +110,42 @@ const Gallery: React.FC = () => {
         </button>
       </div>
       <div className="gallery">
-        {arts.map((art, index) => (
-          <div
-            className="img-container"
-            key={`${art._id}`}
-            onClick={() => showDetails(art)}
-          >
-            <div
-              className={`text-container ${
-                hoverIndex === index ? "text-container-active" : ""
-              }`}
-            >
-              <h3>{art.title}</h3>
-              <p>{art.description}</p>
+      {loading ? (
+          // Render gray containers as placeholders while loading
+          Array.from({ length: itemsPerPage }).map((_, index) => (
+            <div key={index} className="img-container placeholder">
+              <div className="placeholder-content"></div>
             </div>
-            <img
-              src={`/uploads/${art.images[0]}`}
-              alt={art.description}
-              onMouseEnter={() => setHoverIndex(index)}
-              onMouseLeave={() => setHoverIndex(-1)}
-              style={
-                hoverIndex > -1 && hoverIndex !== index
-                  ? { filter: "grayscale(80%)" }
-                  : {}
-              }
-            />
-          </div>
-        ))}
+          ))
+        ) : (
+          arts.map((art, index) => (
+            <div
+              className="img-container"
+              key={`${art._id}`}
+              onClick={() => showDetails(art)}
+            >
+              <div
+                className={`text-container ${
+                  hoverIndex === index ? "text-container-active" : ""
+                }`}
+              >
+                <h3>{art.title}</h3>
+                <p>{art.description}</p>
+              </div>
+              <img
+                src={`/uploads/${art.images[0]}`}
+                alt={art.description}
+                onMouseEnter={() => setHoverIndex(index)}
+                onMouseLeave={() => setHoverIndex(-1)}
+                style={
+                  hoverIndex > -1 && hoverIndex !== index
+                    ? { filter: "grayscale(80%)" }
+                    : {}
+                }
+              />
+            </div>
+          ))
+        )}
       </div>
 
       {/* Pagination */}
