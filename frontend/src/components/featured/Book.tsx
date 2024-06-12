@@ -1,9 +1,10 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, useContext } from "react";
 // import { gallery } from "../../store/gallery-data.js";
 import HTMLFlipBook from "react-pageflip";
 import Page from "./Page.tsx";
 import { Art } from "../../store/types.ts";
 import ProjectDetailsModal from "../gallery/ProjectDetailsModal.tsx";
+import ThemeContext from "../../lib/utilityComponents/themeContext.ts";
 
 const Book: React.FC = () => {
   const book = useRef();
@@ -12,6 +13,7 @@ const Book: React.FC = () => {
   const [featuredArts, setFeaturedArts] = useState<Art[]>([]);
   const [detailsModal, setDetailsModal] = useState(false);
   const [artID, setArtID] = useState('');
+  const { theme } = useContext(ThemeContext);
 
   useEffect(() => {
     const handleResize = () => {
@@ -90,10 +92,6 @@ const Book: React.FC = () => {
         <div className="my-page cover-page front">
           <img src="\name.png" alt="logo" />
           <h1>Art Book</h1>
-          {/* <p>
-              The collection of my special arts, includes illustration,
-              sketching, 3D models, logo designs
-            </p> */}
         </div>
 
         {featuredArts?.map((art, index) => (
@@ -128,14 +126,14 @@ const Book: React.FC = () => {
 
       <div className="pagination">
         <button onClick={handlePrevClick}>Back</button>
-        <p className="page-no">
+        <p className={`page-no ${theme === "dark" ? "dark-mode" : ""}`}>
           Page {currentPage * 2 + 1} & {currentPage * 2 + 2} of {totalPages * 2}
         </p>
         <button onClick={handleNextClick}>Next page</button>
       </div>
     </div>
   :
-  <div className="loading-wheel"> Loading plz wait...</div>
+  <div className="loading-wheel"> Loading please wait...</div>
   }
   {detailsModal == true && <ProjectDetailsModal id={artID} onClose={onClose}/>}
   </>

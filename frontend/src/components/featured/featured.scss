@@ -11,6 +11,7 @@ $font-text: "Inika", serif;
   height: 100vh;
   background-color: #ffffff;
   opacity: 1;
+
   // background-image: linear-gradient(
   //     30deg,
   //     #fff9f3 12%,
@@ -62,10 +63,29 @@ $font-text: "Inika", serif;
   // background-size: 20px 35px;
   // background-position: 0 0, 0 0, 10px 18px, 10px 18px, 0 0, 10px 18px;
   background-color: #ffffff;
-opacity: 0.8;
-background-size: 20px 20px;
-background-image:  repeating-linear-gradient(to right, #d7eebd, #d7eebd 1px, #ffffff 1px, #ffffff);
+  opacity: 0.8;
+  background-size: 20px 20px;
+  background-image: repeating-linear-gradient(
+    to right,
+    #d7eebd,
+    #d7eebd 1px,
+    #ffffff 1px,
+    #ffffff
+  );
 
+  &.dark-mode {
+    background-color: #000000;
+    opacity: 1;
+    background-size: 20px 20px;
+    background-image: repeating-linear-gradient(
+      to right,
+      #3f623f,
+      #3f623f 1px,
+      #000000 1px,
+      #000000
+    );
+    color: white;
+  }
   .section-title {
     animation: slideDown 1s linear;
   }
@@ -90,6 +110,9 @@ background-image:  repeating-linear-gradient(to right, #d7eebd, #d7eebd 1px, #ff
       top: 15%;
       left: 0;
       color: rgb(104, 105, 8);
+      &.dark-mode {
+        color: rgb(245, 236, 185);
+      }
     }
     .guide-img {
       width: 200px;
@@ -190,7 +213,7 @@ background-image:  repeating-linear-gradient(to right, #d7eebd, #d7eebd 1px, #ff
       font-family: $font-text;
       color: rgb(0, 0, 0);
       // text-transform: uppercase;
-      background-image: url('23.png');
+      background-image: url("23.png");
       background-position: left;
       background-size: cover;
       transform: skewY(-5deg);
@@ -238,6 +261,9 @@ background-image:  repeating-linear-gradient(to right, #d7eebd, #d7eebd 1px, #ff
     .page-no {
       font-size: 1em;
       font-weight: 500;
+      &.dark-mode {
+        color: rgb(255, 255, 252);
+      }
     }
   }
 
