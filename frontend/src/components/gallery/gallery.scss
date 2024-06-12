@@ -7,6 +7,10 @@ $font-text: "Inika", serif;
   justify-content: center;
   align-items: center;
   height: 100%;
+  &.dark-mode {
+    background-color: rgb(14, 13, 13);
+    color: white;
+  }
 
   // Pagination styles within the .gallery-section
   .pagination {
@@ -59,14 +63,19 @@ $font-text: "Inika", serif;
       margin-block: 1em;
       padding-inline: 10px;
       border-right: 2px solid black;
+
+      &.dark-mode {
+        color: white;
+      }
+
       &:hover {
-        text-decoration: underline;
+        text-decoration: overline;
         color: gray;
         cursor: pointer;
       }
       &.selected {
         font-weight: bold;
-        color: rgb(11, 90, 11);
+        text-decoration:overline;
       }
 
       @media (max-width: 1280px) {

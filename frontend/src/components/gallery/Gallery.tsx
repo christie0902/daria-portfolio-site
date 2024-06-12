@@ -1,8 +1,8 @@
 import "./gallery.scss";
-// import { gallery, GalleryObj } from "../../store/gallery-data.js";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { Art } from "../../store/types.ts";
 import ProjectDetailsModal from "./ProjectDetailsModal.tsx";
+import ThemeContext from "../../lib/utilityComponents/themeContext.ts";
 
 const Gallery: React.FC = () => {
   const [arts, setArts] = useState<Art[]>([]);
@@ -14,6 +14,7 @@ const Gallery: React.FC = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(8);
   const [loading, setLoading] = useState(true);
+  const { theme } = useContext(ThemeContext);
 
   useEffect(() => {
     const handleResize = () => {
@@ -67,11 +68,11 @@ const Gallery: React.FC = () => {
   
 
   return (
-    <div className="gallery-section">
+    <div className={`gallery-section ${theme === "dark" ? "dark-mode" : ""}`}>
       <h1 className="section-title">MY WORK</h1>
       <div className="tabs">
         <button
-          className={`tab-button ${selectedTab === "all" ? "selected" : ""}`}
+          className={`tab-button ${selectedTab === "all" ? "selected" : ""} ${theme === "dark" ? "dark-mode" : ""}`}
           onClick={() => setSelectedTab("all")}
         >
           All
@@ -79,7 +80,7 @@ const Gallery: React.FC = () => {
         <button
           className={`tab-button ${
             selectedTab === "digital" ? "selected" : ""
-          }`}
+          } ${theme === "dark" ? "dark-mode" : ""}`}
           onClick={() => setSelectedTab("digital")}
         >
           Digital Art
@@ -87,7 +88,7 @@ const Gallery: React.FC = () => {
         <button
           className={`tab-button ${
             selectedTab === "sketch-painting" ? "selected" : ""
-          }`}
+          } ${theme === "dark" ? "dark-mode" : ""}`}
           onClick={() => setSelectedTab("sketch-painting")}
         >
           Sketch & Painting
@@ -95,7 +96,7 @@ const Gallery: React.FC = () => {
         <button
           className={`tab-button ${
             selectedTab === "photography" ? "selected" : ""
-          }`}
+          } ${theme === "dark" ? "dark-mode" : ""}`}
           onClick={() => setSelectedTab("photography")}
         >
           Photography
@@ -103,7 +104,7 @@ const Gallery: React.FC = () => {
         <button
           className={`tab-button ${
             selectedTab === "sculpture" ? "selected" : ""
-          }`}
+          } ${theme === "dark" ? "dark-mode" : ""}`}
           onClick={() => setSelectedTab("sculpture")}
         >
           Sculpture
