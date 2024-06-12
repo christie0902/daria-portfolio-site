@@ -7,6 +7,11 @@ $font-text: "Inika", serif;
   width: 100vw;
   position: relative;
 
+  &.dark-mode {
+    background-color: black;
+    color: white;
+  }
+
   .left-section {
     flex: 1;
     position: relative;
@@ -14,27 +19,28 @@ $font-text: "Inika", serif;
     flex-direction: column;
     justify-content: space-between;
     padding: 20px;
+
     
     .background-video {
-        position: absolute;
-        top: -10%;
-        left: 0;
-        width: 100%;
-        height: 120%;
-        object-fit: cover;
-        opacity: 0;
+      position: absolute;
+      top: -10%;
+      left: 0;
+      width: 100%;
+      height: 120%;
+      object-fit: cover;
+      opacity: 0;
     }
     .navbar {
       display: flex;
       justify-content: space-between;
       position: relative;
-      top: -20px;
+      top: -10px;
       font-size: 1.3rem;
 
       .logo {
-        width: 120px;
+        width: 150px;
         position: relative;
-        top: -25px;
+        top: -40px;
         left: 0px;
       }
     }
@@ -45,12 +51,17 @@ $font-text: "Inika", serif;
       margin-left: 20%;
       opacity: 0;
       animation: slideIn 2s forwards;
+
       h2 {
         margin-block: 10px;
         font-size: 3rem;
         font-family: $font-text;
         font-weight: 300;
         animation: slideInLeft 1s forwards;
+
+        &.dark-mode {
+          color: rgb(185, 180, 180);
+        }
       }
       h1 {
         margin-block: 10px;
@@ -76,25 +87,37 @@ $font-text: "Inika", serif;
           text-decoration: underline;
         }
         animation: slideInLeft 3s forwards;
+
+        &.dark-mode {
+          color: rgb(185, 180, 180);
+        }
       }
     }
-    .title-role {
+    .title-role p {
       position: absolute;
-      bottom: 5%;
+      bottom: 2%;
       text-align: right;
       right: 10%;
       width: 350px;
       font-family: $font-main;
       font-weight: 400;
-      font-size: 2rem;
+      font-size: 1.5rem;
       opacity: 0;
       animation: slideInBottomRight 1s forwards;
+
+      &.dark-mode {
+        color: white;
+      }
     }
     .title-small p {
       font-size: 0.7rem;
       width: 120px;
       font-family: $font-text;
       font-style: normal;
+      
+      &.dark-mode {
+        color: white;
+      }
     }
   }
   .right-section {
@@ -102,6 +125,7 @@ $font-text: "Inika", serif;
     height: 100vh;
     position: relative;
     overflow: hidden;
+
     .video-container {
       position: relative;
       width: 100%;
@@ -117,7 +141,7 @@ $font-text: "Inika", serif;
         height: 120%;
         object-fit: cover;
         opacity: 0;
-      animation: fadeInVideo 2s forwards;
+        animation: fadeInVideo 2s forwards;
       }
 
       .video-overlay {
@@ -157,107 +181,161 @@ $font-text: "Inika", serif;
     bottom: calc(30% - 30px);
   }
 }
+
+.toggle-dark-mode {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 10px 20px;
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.8
+  );
+  color: black;
+  cursor: pointer;
+  z-index: 9999;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+
+  transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  }
+
+  &.dark-mode {
+    background-color: rgba(
+      0,
+      0,
+      0,
+      0.8
+    ); 
+    color: white;
+
+    &:hover {
+      background-color: rgba(
+        255,
+        255,
+        255,
+        0.8
+      );
+      color: black;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+  }
+}
+
 @keyframes slideInLeft {
-    from {
-      transform: translateX(-100%);
-      opacity: 0;
-    }
-    to {
-      transform: translateX(0);
-      opacity: 1;
-    }
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
   }
-  
-  @keyframes slideInRight {
-    from {
-      transform: translateX(100%);
-      opacity: 0;
-    }
-    to {
-      transform: translateX(0);
-      opacity: 1;
-    }
+  to {
+    transform: translateX(0);
+    opacity: 1;
   }
+}
 
-  @keyframes slideInBottomRight {
-    from {
-      transform: translate(50%, 100%);
-      opacity: 0;
-    }
-    to {
-      transform: translate(0, 0);
-      opacity: 1;
-    }
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
   }
-
-  @keyframes slideIn {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
+  to {
+    transform: translateX(0);
+    opacity: 1;
   }
+}
 
-  @keyframes fadeInVideo {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
+@keyframes slideInBottomRight {
+  from {
+    transform: translate(50%, 100%);
+    opacity: 0;
   }
+  to {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+}
 
-  @media only screen and (max-width: 768px) {
-    .hero {
-        width: 100%;
-        .left-section {
-            width: 100vw;
-            height: 100vh;
-            
+@keyframes slideIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
 
-            .background-video {
-                opacity: 1;
-                z-index: 0;
-            }
-            .title-small {
-                display: none;
-              }
-              .titles {
-                background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5));
-                padding: 10px;
-                top: 20%;
-                margin-left: 5%;
-                h2 {
-                  font-size: 2rem;
-                }
-                h1 {
-                  font-size: 6rem;
-                }
-              }
-              .portfolio-link {
-                bottom: 27%;
-                margin-left: 0%;
-                background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5));
-                left: 0;
-                padding: 20px;
-                width: 100%;
-                font-weight: bold;
-              }
-              .title-role {
-                bottom: 10%;
-                right: 0%;
-                font-size: 1rem;
-                background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5));
-                width: 300px;
-                padding: 10px;
-              }
+@keyframes fadeInVideo {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .hero {
+    width: 100%;
+    .left-section {
+      width: 100vw;
+      height: 100vh;
+
+      .background-video {
+        opacity: 1;
+        z-index: 0;
+      }
+      .title-small {
+        display: none;
+      }
+      .titles {
+        background: linear-gradient(
+          rgba(255, 255, 255, 0.5),
+          rgba(255, 255, 255, 0.5)
+        );
+        padding: 10px;
+        top: 20%;
+        margin-left: 5%;
+        h2 {
+          font-size: 2rem;
         }
-       .right-section {
-           display:none;
-       }
+        h1 {
+          font-size: 6rem;
+        }
+      }
+      .portfolio-link {
+        bottom: 27%;
+        margin-left: 0%;
+        background: linear-gradient(
+          rgba(255, 255, 255, 0.5),
+          rgba(255, 255, 255, 0.5)
+        );
+        left: 0;
+        padding: 20px;
+        width: 100%;
+        font-weight: bold;
+      }
+      .title-role {
+        bottom: 10%;
+        right: 0%;
+        font-size: 1rem;
+        background: linear-gradient(
+          rgba(255, 255, 255, 0.5),
+          rgba(255, 255, 255, 0.5)
+        );
+        width: 300px;
+        padding: 10px;
+      }
+    }
+    .right-section {
+      display: none;
     }
   }
-
-
- 
+}

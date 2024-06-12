@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext } from "react";
+import ThemeContext from "../../lib/utilityComponents/themeContext";
 
 interface NavItemProps {
   title: string;
@@ -7,24 +8,27 @@ interface NavItemProps {
   section: string;
 }
 
+
 const NavItem: React.FC<NavItemProps> = ({
   title,
   currentPage,
   setCurrentPage,
   section,
 }) => {
+const { theme} = useContext(ThemeContext);
+
   return (
     <li>
-      <a
-        href={`#${section}`}
-        onClick={() => setCurrentPage(title)}
-        className={`nav-item ${
-          currentPage === title ? "nav-item--active" : ""
-        }`}
-      >
-        {title}
-      </a>
-    </li>
+    <a
+      href={`#${section}`}
+      onClick={() => setCurrentPage(title)}
+      className={`nav-item ${
+        currentPage === title ? "nav-item--active" : ""
+      } ${theme === 'dark' ? 'nav-item--dark-mode' : ''}`}
+    >
+      {title}
+    </a>
+  </li>
   );
 };
 

@@ -18,6 +18,13 @@ ul {
         }
     }
     }
+
+    &.nav-dark-mode {
+        .nav-item {
+            color: white;
+        }
+    }
+
     .nav-item--active {
         font-weight: bold;
     }

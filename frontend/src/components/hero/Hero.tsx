@@ -1,25 +1,37 @@
-import React from "react";
+import React, {useContext} from "react";
 import "./hero.scss";
 import Navigation from "../navigation/Navigation";
+import ThemeContext from "../../lib/utilityComponents/themeContext";
 
 const Hero = () => {
+  const { theme, setTheme } = useContext(ThemeContext);
+
+  const toggleDarkMode = () => {
+    setTheme(theme === 'dark' ? 'light' : 'dark');
+  };
+
   return (
-    <div className="hero">
+    <div className={`hero ${theme === 'dark' ? 'dark-mode' : ''}`}>
+      <div className={`toggle-dark-mode ${theme === 'dark' ? 'dark-mode' : ''}`} onClick={toggleDarkMode}>
+        {/* Toggle button for dark mode */}
+        {theme === 'dark' ? 'Light Mode' : 'Dark Mode'}
+      </div>
       <div className="left-section">
         <video className="background-video" autoPlay loop muted>
           <source src="hero-video.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
         <div className="navbar">
-          <img src="name.png" alt="logo" className="logo" />
-          <Navigation />
+          {theme === 'dark' ? <img src="logo-dark-mode.png" alt="logo" className="logo" /> :<img src="name.png" alt="logo" className="logo" />}
+          
+          <Navigation/>
         </div>
         <div className="titles">
-          <h2>DARIA ALEXANDER</h2>
+          <h2 className={`${theme === 'dark' ? 'dark-mode' : ''}`}>DARIA ALEXANDER</h2>
           <h1>CREATIVE.</h1>
         </div>
         <div className="portfolio-link">
-          <a href="#Featured" className="link">
+          <a href="#Featured" className={`link ${theme === 'dark' ? 'dark-mode' : ''}`}>
             CHECK MY PORTFOLIO
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -37,11 +49,11 @@ const Hero = () => {
             </svg>
           </a>
         </div>
-        <div className="title-role">
-          <p>ARTIST, ILLUSTRATOR & DESIGNER</p>
+        <div className="title-role" >
+          <p className={`${theme === 'dark' ? 'dark-mode' : ''}`}>ARTIST, ILLUSTRATOR & DESIGNER</p>
         </div>
         <div className="title-small">
-          <p>WELCOME TO MY ART WORLD</p>
+          <p className={`${theme === 'dark' ? 'dark-mode' : ''}`}>WELCOME TO MY ART WORLD</p>
         </div>
       </div>
 

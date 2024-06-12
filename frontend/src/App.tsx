@@ -1,47 +1,44 @@
-import { useEffect, useRef, useState } from 'react'
-import './App.scss'
-import Hero from './components/hero/Hero'
-import FeaturedProduct from './components/featured/FeaturedProduct'
-import Gallery from './components/gallery/Gallery'
-import Contact from './components/contact/Contact'
-import About from './components/about/About'
-import Portfolio from './components/gallery/IsotopeGallery'
+import { useEffect, useRef, useState } from "react";
+import "./App.scss";
+import Hero from "./components/hero/Hero";
+import FeaturedProduct from "./components/featured/FeaturedProduct";
+import Gallery from "./components/gallery/Gallery";
+import Contact from "./components/contact/Contact";
+import About from "./components/about/About";
+import ThemeContext, { ThemeContextType } from "./lib/utilityComponents/themeContext";
 
 
 function App() {
   const elemRef = useRef(null);
   const [reference, setReference] = useState(null);
+  const [theme, setTheme] = useState<string>('light');
 
   useEffect(() => {
     setReference(elemRef.current);
   }, [elemRef]);
 
-
   return (
-    <>
-    <section id="Home">
-      <Hero/>
-    </section>
-    
-    <section id="About" ref={elemRef}>
-       <About reference={reference}/>
-    </section>
+    <ThemeContext.Provider value={ { theme, setTheme } }>
+      <section id="Home">
+        <Hero />
+      </section>
 
-   <section id="Featured">
-      <FeaturedProduct/>
-    </section>
-    <section id="Gallery">
-       <Gallery/>
-       {/* <Portfolio classicHeader={true} darkTheme={false}/> */}
-    </section>
+      <section id="About" ref={elemRef}>
+        <About reference={reference} />
+      </section>
 
-    
-    <section id="Contact">
-       <Contact/>
-    </section>
+      <section id="Featured">
+        <FeaturedProduct />
+      </section>
+      <section id="Gallery">
+        <Gallery />
+      </section>
 
-    </>
-  )
+      <section id="Contact">
+        <Contact />
+      </section>
+    </ThemeContext.Provider>
+  );
 }
 
-export default App
+export default App;
