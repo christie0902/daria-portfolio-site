@@ -66,6 +66,7 @@ $font-text: "Inika", serif;
 
       &.dark-mode {
         color: white;
+        border-right: 2px solid white;
       }
 
       &:hover {
