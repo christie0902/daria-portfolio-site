@@ -74,16 +74,10 @@ $font-text: "Inika", serif;
   );
 
   &.dark-mode {
-    background-color: #000000;
-    opacity: 1;
-    background-size: 20px 20px;
-    background-image: repeating-linear-gradient(
-      to right,
-      #3f623f,
-      #3f623f 1px,
-      #000000 1px,
-      #000000
-    );
+    background-color: #0e0d0d;
+opacity: 1;
+
+background-image: none;
     color: white;
   }
   .section-title {

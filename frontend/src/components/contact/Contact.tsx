@@ -3,10 +3,11 @@ import React, {
   useRef,
   useState,
   FormEvent,
-  ChangeEvent,
+  ChangeEvent, useContext
 } from "react";
 import "./contact.scss";
 import LazyLoader from "../../lib/utilityComponents/LazyLoader";
+import ThemeContext from "../../lib/utilityComponents/themeContext";
 
 interface AttachmentPreview {
   src: string;
@@ -19,6 +20,7 @@ const Contact = () => {
   const [reference, setReference] = useState(null);
   const [successMessage, setSuccessMessage] = useState<string>("");
   const [errorMessage, setErrorMessage] = useState<string>("");
+  const { theme } = useContext(ThemeContext);
 
   useEffect(() => {
     setReference(elemRef.current);
@@ -72,7 +74,7 @@ const Contact = () => {
     <div ref={elemRef}>
       {reference && (
         <LazyLoader targetElement={reference}>
-          <div className="contact-section">
+          <div className={`contact-section ${theme === "dark" ? "dark-mode" : ""}`}>
             <div className="contact-left-section">
               <div className="contact-title">
                 <h3>Daria Alexander</h3>
@@ -122,14 +124,14 @@ const Contact = () => {
                     />
                   ))}
                 </div>
-                <button className="contact-button">Submit</button>
+                <button className={`contact-button ${theme === "dark" ? "dark-mode" : ""}`}>Submit</button>
               </form>
              
             </div>
             <div className="contact-photo">
               <img src="acrylic4.jpg" alt="contact" />
-              <div className="contact-info">
-                <p>Email: daria@levitsky.info</p>
+              <div className="contact-info" >
+                <p className={`${theme === "dark" ? "dark-mode" : ""}`}>Email: daria@levitsky.info</p>
               </div>
             </div>
           </div>
