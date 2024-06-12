@@ -1,19 +1,22 @@
-import React from "react";
+import React, { useContext } from "react";
 import LazyLoader from "../../lib/utilityComponents/LazyLoader";
 import "./about.scss";
+import ThemeContext from "../../lib/utilityComponents/themeContext";
 
 interface AboutProps {
   reference: HTMLDivElement | null;
 }
 
-const About: React.FC<AboutProps> = ({reference}) => {
-
+const About: React.FC<AboutProps> = ({ reference }) => {
+  const { theme } = useContext(ThemeContext);
 
   return (
     <>
       {reference && (
         <LazyLoader targetElement={reference}>
-          <div className="about-container">
+          <div
+            className={`about-container ${theme === "dark" ? "dark-mode" : ""}`}
+          >
             <div className="left-container">
               <div className="title-container">
                 <div className="about-title">
@@ -22,11 +25,19 @@ const About: React.FC<AboutProps> = ({reference}) => {
                   ME
                 </div>
                 <div className="text-container">
-                  <p className="text-uppercase">
+                  <p
+                    className={`text-uppercase ${
+                      theme === "dark" ? "dark-mode" : ""
+                    }`}
+                  >
                     Welcome to my creative corner! I'm a freelance artist
                     passionate about bringing imagination to life through art.
                   </p>
-                  <p className="text-lowercase">
+                  <p
+                    className={`text-lowercase ${
+                      theme === "dark" ? "dark-mode" : ""
+                    }`}
+                  >
                     With a love for colors, textures, and storytelling, I
                     specialize in [mention your specialties, e.g., acrylic
                     paintings, digital illustrations, etc.]. Join me on this
@@ -37,27 +48,77 @@ const About: React.FC<AboutProps> = ({reference}) => {
               </div>
 
               <div className="bottom-container">
-                <h2>MY SERVICES</h2>
+                <h2 className={`${theme === "dark" ? "dark-mode" : ""}`}>
+                  MY SERVICES
+                </h2>
                 <div className="services-container">
                   <div className="service-container">
-                    <p className="service-number">01</p>
+                    <p
+                      className={`service-number ${
+                        theme === "dark" ? "dark-mode" : ""
+                      }`}
+                    >
+                      01
+                    </p>
                     <img src="\painting-icon-black.png" alt="painting-icon" />
-                    <p className="service-title">Sketch & Painting</p>
+                    <p
+                      className={`service-title ${
+                        theme === "dark" ? "dark-mode" : ""
+                      }`}
+                    >
+                      Sketch & Painting
+                    </p>
                   </div>
                   <div className="service-container">
-                    <p className="service-number">02</p>
+                    <p
+                      className={`service-number ${
+                        theme === "dark" ? "dark-mode" : ""
+                      }`}
+                    >
+                      02
+                    </p>
                     <img src="\digital-icon-black.png" alt="painting-icon" />
-                    <p className="service-title">Digital Art</p>
+                    <p
+                      className={`service-title ${
+                        theme === "dark" ? "dark-mode" : ""
+                      }`}
+                    >
+                      Digital Art
+                    </p>
                   </div>
                   <div className="service-container">
-                    <p className="service-number">03</p>
+                    <p
+                      className={`service-number ${
+                        theme === "dark" ? "dark-mode" : ""
+                      }`}
+                    >
+                      03
+                    </p>
                     <img src="\camera-icon-black.png" alt="painting-icon" />
-                    <p className="service-title">Photography</p>
+                    <p
+                      className={`service-title ${
+                        theme === "dark" ? "dark-mode" : ""
+                      }`}
+                    >
+                      Photography
+                    </p>
                   </div>
                   <div className="service-container">
-                    <p className="service-number">04</p>
+                    <p
+                      className={`service-number ${
+                        theme === "dark" ? "dark-mode" : ""
+                      }`}
+                    >
+                      04
+                    </p>
                     <img src="\sculpture-icon-black.png" alt="painting-icon" />
-                    <p className="service-title">Sculpture</p>
+                    <p
+                      className={`service-title ${
+                        theme === "dark" ? "dark-mode" : ""
+                      }`}
+                    >
+                      Sculpture
+                    </p>
                   </div>
                 </div>
               </div>
@@ -95,12 +156,14 @@ const About: React.FC<AboutProps> = ({reference}) => {
                 </div>
               </div>
 
-              <a href="#Contact"><button className="contact-button">Contact Me!</button></a>
+              <a href="#Contact">
+                <button className="contact-button">Contact Me!</button>
+              </a>
             </div>
           </div>
         </LazyLoader>
       )}
-      </>
+    </>
   );
 };
 

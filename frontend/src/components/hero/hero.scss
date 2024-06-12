@@ -8,8 +8,8 @@ $font-text: "Inika", serif;
   position: relative;
 
   &.dark-mode {
-    background-color: black;
-    color: white;
+    background-color:  rgb(14, 13, 13);;
+    color:  rgb(247, 230, 230);
   }
 
   .left-section {
@@ -106,7 +106,7 @@ $font-text: "Inika", serif;
       animation: slideInBottomRight 1s forwards;
 
       &.dark-mode {
-        color: white;
+        color: rgb(247, 230, 230);
       }
     }
     .title-small p {
@@ -116,7 +116,7 @@ $font-text: "Inika", serif;
       font-style: normal;
       
       &.dark-mode {
-        color: white;
+        color: rgb(247, 230, 230);
       }
     }
   }
@@ -209,22 +209,17 @@ $font-text: "Inika", serif;
   }
 
   &.dark-mode {
-    background-color: rgba(
-      0,
-      0,
-      0,
-      0.8
-    ); 
-    color: white;
+    background-color: rgba(255, 255, 255, 0.8); 
+    color: black;
 
     &:hover {
-      background-color: rgba(
-        255,
-        255,
-        255,
+      background-color:rgba(
+        0,
+        0,
+        0,
         0.8
-      );
-      color: black;
+      ); 
+      color: rgb(247, 230, 230);
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     }
   }
