@@ -60,7 +60,7 @@ const About: React.FC<AboutProps> = ({ reference }) => {
                     >
                       01
                     </p>
-                    <img src="\painting-icon-black.png" alt="painting-icon" />
+                    {theme==="dark" ? <img src="\painting-icon-white.png" alt="painting-icon" /> : <img src="\painting-icon-black.png" alt="painting-icon" />}
                     <p
                       className={`service-title ${
                         theme === "dark" ? "dark-mode" : ""
@@ -77,7 +77,8 @@ const About: React.FC<AboutProps> = ({ reference }) => {
                     >
                       02
                     </p>
-                    <img src="\digital-icon-black.png" alt="painting-icon" />
+                    {theme==="dark" ? <img src="\digital-icon-white.png" alt="painting-icon" /> : <img src="\digital-icon-black.png" alt="painting-icon" />}
+                    
                     <p
                       className={`service-title ${
                         theme === "dark" ? "dark-mode" : ""
@@ -94,7 +95,7 @@ const About: React.FC<AboutProps> = ({ reference }) => {
                     >
                       03
                     </p>
-                    <img src="\camera-icon-black.png" alt="painting-icon" />
+                    {theme==="dark" ?  <img src="\camera-icon-white.png" alt="painting-icon" /> :  <img src="\camera-icon-black.png" alt="painting-icon" />}
                     <p
                       className={`service-title ${
                         theme === "dark" ? "dark-mode" : ""
@@ -111,7 +112,7 @@ const About: React.FC<AboutProps> = ({ reference }) => {
                     >
                       04
                     </p>
-                    <img src="\sculpture-icon-black.png" alt="painting-icon" />
+                    {theme==="dark" ?   <img src="\sculpture-icon-white.png" alt="painting-icon" /> :   <img src="\sculpture-icon-black.png" alt="painting-icon" />}
                     <p
                       className={`service-title ${
                         theme === "dark" ? "dark-mode" : ""
@@ -155,7 +156,6 @@ const About: React.FC<AboutProps> = ({ reference }) => {
                   />
                 </div>
               </div>
-
     
             </div>
           </div>
