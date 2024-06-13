@@ -5,6 +5,7 @@ $font-text: "Inika", serif;
   display: flex;
   justify-content: space-around;
   gap: 10%;
+  height: 100vh;
 
   &.dark-mode {
     background-color: rgb(14, 13, 13);
@@ -19,11 +20,10 @@ $font-text: "Inika", serif;
 
   .left-container {
     position: relative;
-    // height: 100vh;
     padding-top: 2%;
     display: flex;
     flex-direction: column;
-    height: 80vh;
+    // height: 80vh;
     justify-content: space-between;
     width: 40vw;
 
@@ -45,7 +45,7 @@ $font-text: "Inika", serif;
         animation: slideDown 1s forwards;
 
         @media (max-width: 768px) {
-          font-size: 3.5rem;
+          font-size: 3rem;
         }
       }
       .about-title::after {
@@ -70,10 +70,14 @@ $font-text: "Inika", serif;
             color: rgb(247, 230, 230);
           }
           @media (max-width: 768px) {
-            font-size: 1rem;
+            font-size: 0.9em;
           }
         }
         .text-lowercase {
+          @media (max-width: 768px) {
+            font-size: 0.9em;
+          }
+        
           &.dark-mode {
             color: rgb(247, 230, 230);
           }
@@ -92,7 +96,7 @@ $font-text: "Inika", serif;
           color: rgb(247, 230, 230);
         }
         @media (max-width: 768px) {
-          font-size: 2rem;
+          font-size: 1.5rem;
           margin-block: 10%;
         }
       }
@@ -104,8 +108,8 @@ $font-text: "Inika", serif;
           flex-direction: column;
           justify-content: center;
           align-items: center;
-          width: 150%;
-          margin-left: 10%;
+          width: 120%;
+          margin-left: 20%;
         }
         .service-container {
           position: relative;
@@ -119,6 +123,9 @@ $font-text: "Inika", serif;
             border-bottom: 2px solid black;
             padding-bottom: 5px;
             font-size: 1.3rem;
+            @media (max-width: 768px) {
+              padding-bottom: 0px;
+            }
             &.dark-mode {
               color: rgb(247, 230, 230);
               border-bottom: 2px solid white;
@@ -131,7 +138,7 @@ $font-text: "Inika", serif;
             right: 0px;
           }
           .service-title {
-            font-size: 1.3rem;
+            font-size: 0.8em;
             &.dark-mode {
               color: rgb(247, 230, 230);
             }
@@ -197,6 +204,10 @@ $font-text: "Inika", serif;
             transform: translate(0%, 0%);
           }
         }
+
+        @media (max-width: 768px) {
+          display: none;
+        }
       }
 
       &.sculpture {
@@ -255,23 +266,23 @@ $font-text: "Inika", serif;
       }
     }
 
-    .contact-button {
-      position: absolute;
-      bottom: -5%;
-      right: -36%;
+    // .contact-button {
+    //   position: absolute;
+    //   bottom: -5%;
+    //   right: -36%;
 
-      border-radius: 0%;
-      padding-block: 8px;
-      padding-inline: 15px;
-      font-size: 1.2rem;
-      background-color: transparent;
-      border-width: 3px;
-      animation: slideInBottom 2s forwards;
-      &:hover {
-        color: white;
-        background-color: black;
-      }
-    }
+    //   border-radius: 0%;
+    //   padding-block: 8px;
+    //   padding-inline: 15px;
+    //   font-size: 1.2rem;
+    //   background-color: transparent;
+    //   border-width: 3px;
+    //   animation: slideInBottom 2s forwards;
+    //   &:hover {
+    //     color: white;
+    //     background-color: black;
+    //   }
+    // }
   }
 }
 
@@ -390,3 +401,4 @@ $font-text: "Inika", serif;
     }
   }
 }
+

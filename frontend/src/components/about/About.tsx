@@ -156,9 +156,7 @@ const About: React.FC<AboutProps> = ({ reference }) => {
                 </div>
               </div>
 
-              <a href="#Contact">
-                <button className="contact-button">Contact Me!</button>
-              </a>
+    
             </div>
           </div>
         </LazyLoader>

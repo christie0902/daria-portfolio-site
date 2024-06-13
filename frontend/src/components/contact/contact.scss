@@ -5,9 +5,9 @@ $font-text: "Inika", serif;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 5%;
+  padding-inline: 5%;
   width: 100vw;
-  height: 80vh;
+  height: 100vh;
   margin-inline: auto;
   margin-block: auto;
   gap: 5%;
@@ -65,7 +65,7 @@ $font-text: "Inika", serif;
     display: flex;
     flex-direction: column;
     height: 100%;
-    justify-content: space-between;
+    justify-content: center;
     align-items: left;
     animation: fadeInBottom 2s forwards;
     img {
@@ -220,7 +220,9 @@ $font-text: "Inika", serif;
     height: 100%;
     justify-content: center;
     align-items: center;
+    width: 80%;
     .contact-left-section {
+      margin-left: 0;
       h3 {
         font-size: 1rem;
         font-weight: 300;
@@ -230,6 +232,7 @@ $font-text: "Inika", serif;
       }
     }
     .contact-photo {
+     
       flex: 1;
       display: flex;
       flex-direction: column;
@@ -238,11 +241,13 @@ $font-text: "Inika", serif;
       align-items: center;
       animation: fadeInBottom 2s forwards;
       img {
+        margin-left: 0;
         width: 90%;
         max-width: 300px;
         margin-top: 20%;
       }
       p {
+        margin-left: 0;
         font-size: 1.2rem;
       }
     }
