@@ -6,10 +6,14 @@ $font-text: "Inika", serif;
   height: 100%;
   width: 100vw;
   position: relative;
+  overflow-y: hidden;
 
   &.dark-mode {
     background-color:  rgb(14, 13, 13);;
     color:  #f7f2f2;
+    @media only screen and (max-width: 768px) {
+     color: black;
+    }
   }
 
   .left-section {
@@ -36,13 +40,19 @@ $font-text: "Inika", serif;
       position: relative;
       top: -10px;
       font-size: 1.3rem;
+      @media only screen and (max-width: 768px) {
+        justify-content: left;
+       }
 
       .logo {
         width: 150px;
         position: relative;
         top: -40px;
         left: 0px;
+        @media only screen and (max-width: 768px) {
+         display: none;
       }
+    }
     }
     .titles {
       position: absolute;
@@ -61,6 +71,9 @@ $font-text: "Inika", serif;
 
         &.dark-mode {
           color: rgb(185, 180, 180);
+          @media only screen and (max-width: 768px) {
+            color: black;
+           }
         }
       }
       h1 {
@@ -90,12 +103,15 @@ $font-text: "Inika", serif;
 
         &.dark-mode {
           color: rgb(185, 180, 180);
+          @media only screen and (max-width: 768px) {
+            color: black;
+           }
         }
       }
     }
     .title-role p {
       position: absolute;
-      bottom: 2%;
+      bottom: 5%;
       text-align: right;
       right: 10%;
       width: 350px;
@@ -104,9 +120,15 @@ $font-text: "Inika", serif;
       font-size: 1.5rem;
       opacity: 0;
       animation: slideInBottomRight 1s forwards;
+      color: white;
 
       &.dark-mode {
         color: rgb(247, 230, 230);
+        
+        @media only screen and (max-width: 768px) {
+          color: black;
+         }
+
       }
     }
     .title-small p {
@@ -279,6 +301,7 @@ $font-text: "Inika", serif;
 @media only screen and (max-width: 768px) {
   .hero {
     width: 100%;
+    height: 100vh;
     .left-section {
       width: 100vw;
       height: 100vh;
@@ -297,7 +320,7 @@ $font-text: "Inika", serif;
         );
         padding: 10px;
         top: 20%;
-        margin-left: 5%;
+        margin-left: 0;
         h2 {
           font-size: 2rem;
         }
@@ -306,7 +329,7 @@ $font-text: "Inika", serif;
         }
       }
       .portfolio-link {
-        bottom: 27%;
+        bottom: 31%;
         margin-left: 0%;
         background: linear-gradient(
           rgba(255, 255, 255, 0.5),

@@ -21,6 +21,10 @@ html, body {
   section {
     height: 100vh;
     scroll-snap-align: center;
+    
+  @media (max-width: 768px) {
+    height: 100%;
+  }
   }
 
 .section-title {

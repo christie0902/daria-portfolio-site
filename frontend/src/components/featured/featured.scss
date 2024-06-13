@@ -147,6 +147,12 @@ $font-text: "Inika", serif;
     height: 100%;
     padding: 10px;
     font-family: $font-text;
+    
+    h1 {
+      &.dark-mode {
+        color: rgb(0, 0, 0);
+      }
+    }
 
     img {
       width: 80%;
@@ -163,6 +169,9 @@ $font-text: "Inika", serif;
       overflow: hidden;
       text-overflow: ellipsis;
       padding-inline: 20px;
+      &.dark-mode {
+        color: rgb(0, 0, 0);
+      }
     }
     &:hover {
       cursor: pointer;

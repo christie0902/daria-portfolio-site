@@ -5,12 +5,17 @@ $font-text: "Inika", serif;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-inline: 5%;
+  padding-inline: 10%;
   width: 100vw;
   height: 100vh;
   margin-inline: auto;
   margin-block: auto;
   gap: 5%;
+
+  @media (max-width: 768px) {
+    height: 100%;
+    margin-inline: 0;
+  }
 
   &.dark-mode {
     background-color: rgb(14, 13, 13);
@@ -22,7 +27,7 @@ $font-text: "Inika", serif;
     flex-direction: column;
     justify-content: space-between;
     flex: 1;
-    margin-left: 10%;
+    margin-left: 0%;
     animation: fadeInLeft 2s forwards;
     h3 {
       margin-bottom: auto;

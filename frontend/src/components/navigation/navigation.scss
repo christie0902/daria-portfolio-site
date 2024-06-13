@@ -1,31 +1,78 @@
-$font-main:  "IBM Plex Sans", sans-serif;
-$font-text:  "Inika", serif;
+$font-main: "IBM Plex Sans", sans-serif;
+$font-text: "Inika", serif;
 
-ul {
-    display: flex;
-    gap:20px;
-   
-    li {
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  position: relative;
+}
+
+.hamburger-menu {
+  display: none;
+  font-size: 2rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: inherit;
+}
+
+.nav-items {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  font-family: $font-text;
+  a {
+    text-decoration: none;
+    color: #333;
+    color: black;
+    &:hover {
+      font-weight: bold;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+  }
+}
+
+.nav-dark-mode {
+  //   background-color: #333;
+  a {
+    color: #fff;
+  }
+  @media only screen and (max-width: 768px) {
+    background-color: transparent;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .hamburger-menu {
+    display: block;
+  }
+
+  .nav-items {
+    display: none;
     list-style: none;
-    .nav-item {
-        text-decoration: none;
-        font-family: $font-text;
-        color: black;
-        &:hover {
-            font-weight: bold;
-            text-decoration: underline;
-            cursor: pointer;
-        }
+    flex-direction: column;
+    justify-content: start;
+    background-color: inherit;
+    position: absolute;
+    width: 25vw;
+    height: 16vh;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    & a {
+      color: #333;
+      text-decoration: none;
     }
-    }
+  }
 
-    &.nav-dark-mode {
-        .nav-item {
-            color: white;
-        }
+  .nav-items.open {
+    display: flex;
+    top: -20%;
+    left: 90%;
+    gap: 10px;
+    & a {
+      font-size: 1rem;
+      font-style: bold;
     }
-
-    .nav-item--active {
-        font-weight: bold;
-    }
+  }
 }
