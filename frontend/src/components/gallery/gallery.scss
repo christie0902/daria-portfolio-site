@@ -157,7 +157,10 @@ $font-text: "Inika", serif;
     justify-content: center;
     align-items: center;
     position: relative;
-    overflow: hidden;
+    @media (max-width: 800px) {
+      overflow: hidden;
+    }
+    
 
     &.placeholder {
       background-color: #e0e0e0;
