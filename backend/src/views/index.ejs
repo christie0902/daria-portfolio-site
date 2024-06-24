@@ -3,6 +3,12 @@
   <%-include('partials/head.ejs') %>
   <body>
     <%- include('./partials/nav.ejs')%>
+    <div>
+      <% if (user) { %>
+          <p>Welcome, <%= user.username %>!</p>
+          <a href="/logout">Logout</a>
+      <% } %>
+    </div>
 
     <div class="art-list content">
       <% if (success) { %>
@@ -18,7 +24,7 @@
       </p>
       <% } %>
 
-      <form method="GET" action="admin/arts" class="search-bar" id="filterForm">
+      <form method="GET" action="/admin/arts" class="search-bar" id="filterForm">
         <input
           type="text"
           name="search"
@@ -72,12 +78,12 @@
               <% })%>
             </td>
             <td>
-              <a href="admin/arts/<%= art.id %>"
+              <a href="/admin/arts/<%= art.id %>"
                 ><button class="edit">Edit</button></a
               >
               <form
                 id="delete-art-form"
-                action="admin/arts/<%= art.id %>?_method=DELETE"
+                action="/admin/arts/<%= art.id %>?_method=DELETE"
                 method="POST"
                 style="display: inline"
               >
@@ -92,15 +98,15 @@
       <!-- Pagination -->
       <div class="pagination">
         <% if (currentPage > 1) { %>
-          <a href="/arts?page=<%= currentPage - 1 %>&search=<%= searchQuery %>&category=<%= category %>&featured=<%= featured %>">&laquo; Previous</a>
+          <a href="/admin/arts?page=<%= currentPage - 1 %>&search=<%= searchQuery %>&category=<%= category %>&featured=<%= featured %>">&laquo; Previous</a>
         <% } else { %>
           <a class="disabled">&laquo; Previous</a>
         <% } %>
         <% for (let i = 1; i <= totalPages; i++) { %>
-          <a href="admin/arts?page=<%= i %>&search=<%= searchQuery %>&category=<%= category %>&featured=<%= featured %>" class="<%= i === currentPage ? 'active' : '' %>"><%= i %></a>
+          <a href="/admin/arts?page=<%= i %>&search=<%= searchQuery %>&category=<%= category %>&featured=<%= featured %>" class="<%= i === currentPage ? 'active' : '' %>"><%= i %></a>
         <% } %>
         <% if (currentPage < totalPages) { %>
-          <a href="admin/arts?page=<%= currentPage + 1 %>&search=<%= searchQuery %>&category=<%= category %>&featured=<%= featured %>">Next &raquo;</a>
+          <a href="/admin/arts?page=<%= currentPage + 1 %>&search=<%= searchQuery %>&category=<%= category %>&featured=<%= featured %>">Next &raquo;</a>
         <% } else { %>
           <a class="disabled">Next &raquo;</a>
         <% } %>

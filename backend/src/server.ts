@@ -67,19 +67,14 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, '../views'))); */
 
 // Routes
-app.get("/", (req, res) => {
-  res.redirect("admin/arts");
+app.get("/admin", (req, res) => {
+  res.redirect("/admin/arts");
 });
 
-app.use("/admin/arts", artRoutes);
+app.use("/admin/arts", ensureAuthenticated, artRoutes);
 app.use("/api", dataRoutes);
-app.use("/messages", messageRoutes);
+app.use("/messages", ensureAuthenticated, messageRoutes);
 app.use(authRoutes);
-
-// Protected route
-app.get('/admin/arts', ensureAuthenticated, (req, res) => {
-  res.render('index', { user: req.session.user });
-});
 
 app.use((req, res) => {
   res.status(404).render("404", { title: " Page not found" });

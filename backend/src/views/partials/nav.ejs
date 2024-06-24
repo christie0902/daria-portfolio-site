@@ -3,15 +3,10 @@
         <a href="/" class="logo">Admin Hub</a>
         <p class="site-description">Art Display Management System</p>
     </div>
-    <div>
-        <% if (user) { %>
-            <p>Welcome, <%= user.username %>!</p>
-            <a href="/logout">Logout</a>
-        <% } %>
-    </div>
+
     <ul class="nav-links">
-        <li><a href="/" class="nav-link">Art List</a></li>
-        <li><a href="admin/arts/add" class="nav-link">Add Art</a></li>
+        <li><a href="/admin" class="nav-link">Art List</a></li>
+        <li><a href="/admin/arts/add" class="nav-link">Add Art</a></li>
         <li><a href="/messages" class="nav-link">Messages</a></li>
     </ul>
 </nav>

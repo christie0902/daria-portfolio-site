@@ -8,7 +8,7 @@
 
     <div class="edit-art content">
         <h2>Edit Art Piece</h2>
-        <form action="admin/arts/<%=art.id%>?_method=PUT" method="POST" onsubmit="return validateForm(event)">
+        <form action="/admin/arts/<%=art.id%>?_method=PUT" method="POST" onsubmit="return validateForm(event)">
             <label for="category">Category:</label>
             <select name="category" id="category">
                 <option value="sketch-painting" <%= art.category === 'sketch-painting' ? 'selected' : '' %>>Sketch & Painting</option>

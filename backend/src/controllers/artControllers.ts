@@ -14,6 +14,7 @@ const index = async (req: any, res: any) => {
     const page = parseInt(req.query.page) || 1;
     const limit = 5;
     const skip = (page - 1) * limit;
+    const user = req.session.user;
     let query: any = {};
 
     if (searchQuery) {
@@ -41,6 +42,7 @@ const index = async (req: any, res: any) => {
       featured: featured,
       currentPage: page,
       totalPages: totalPages,
+      user: user
     });
   } catch (err) {
     console.error(err);
