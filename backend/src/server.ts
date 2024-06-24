@@ -7,8 +7,10 @@ import mongoose from "mongoose";
 import artRoutes from "./routes/artRoutes";
 import dataRoutes from "./routes/api/dataRoutes";
 import messageRoutes from './routes/messageRoutes';
+import authRoutes from './routes/authRoutes';
 import session from 'express-session';
 import flash from 'connect-flash';
+import { ensureAuthenticated } from './middleware/auth';
 
 
 dotenv.config();
@@ -66,12 +68,18 @@ app.use(express.static(path.join(__dirname, '../views'))); */
 
 // Routes
 app.get("/", (req, res) => {
-  res.redirect("/arts");
+  res.redirect("admin/arts");
 });
 
-app.use("/arts", artRoutes);
+app.use("/admin/arts", artRoutes);
 app.use("/api", dataRoutes);
 app.use("/messages", messageRoutes);
+app.use(authRoutes);
+
+// Protected route
+app.get('/admin/arts', ensureAuthenticated, (req, res) => {
+  res.render('index', { user: req.session.user });
+});
 
 app.use((req, res) => {
   res.status(404).render("404", { title: " Page not found" });

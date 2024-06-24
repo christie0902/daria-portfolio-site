@@ -9,10 +9,10 @@ $font-text: "Inika", serif;
   overflow-y: hidden;
 
   &.dark-mode {
-    background-color:  rgb(14, 13, 13);;
-    color:  #f7f2f2;
+    background-color: rgb(14, 13, 13);
+    color: #f7f2f2;
     @media only screen and (max-width: 768px) {
-     color: black;
+      color: black;
     }
   }
 
@@ -24,7 +24,6 @@ $font-text: "Inika", serif;
     justify-content: space-between;
     padding: 20px;
 
-    
     .background-video {
       position: absolute;
       top: -10%;
@@ -42,7 +41,7 @@ $font-text: "Inika", serif;
       font-size: 1.3rem;
       @media only screen and (max-width: 768px) {
         justify-content: left;
-       }
+      }
 
       .logo {
         width: 150px;
@@ -50,9 +49,9 @@ $font-text: "Inika", serif;
         top: -40px;
         left: 0px;
         @media only screen and (max-width: 768px) {
-         display: none;
+          display: none;
+        }
       }
-    }
     }
     .titles {
       position: absolute;
@@ -73,7 +72,7 @@ $font-text: "Inika", serif;
           color: rgb(185, 180, 180);
           @media only screen and (max-width: 768px) {
             color: black;
-           }
+          }
         }
       }
       h1 {
@@ -105,7 +104,7 @@ $font-text: "Inika", serif;
           color: rgb(185, 180, 180);
           @media only screen and (max-width: 768px) {
             color: black;
-           }
+          }
         }
       }
     }
@@ -124,11 +123,10 @@ $font-text: "Inika", serif;
 
       &.dark-mode {
         color: rgb(247, 230, 230);
-        
+
         @media only screen and (max-width: 768px) {
           color: black;
-         }
-
+        }
       }
     }
     .title-small p {
@@ -136,7 +134,7 @@ $font-text: "Inika", serif;
       width: 120px;
       font-family: $font-text;
       font-style: normal;
-      
+
       &.dark-mode {
         color: rgb(247, 230, 230);
       }
@@ -209,12 +207,7 @@ $font-text: "Inika", serif;
   top: 20px;
   right: 20px;
   padding: 10px 20px;
-  background-color: rgba(
-    255,
-    255,
-    255,
-    0.8
-  );
+  background-color: rgba(255, 255, 255, 0.8);
   color: black;
   cursor: pointer;
   z-index: 9999;
@@ -231,16 +224,11 @@ $font-text: "Inika", serif;
   }
 
   &.dark-mode {
-    background-color: rgba(255, 255, 255, 0.8); 
+    background-color: rgba(255, 255, 255, 0.8);
     color: black;
 
     &:hover {
-      background-color:rgba(
-        0,
-        0,
-        0,
-        0.8
-      ); 
+      background-color: rgba(0, 0, 0, 0.8);
       color: rgb(247, 230, 230);
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     }

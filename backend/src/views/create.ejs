@@ -6,7 +6,7 @@
 
     <div class="add-art content">
       <!-- add onsubmit="return validateForm(event)" to the form tag if want front-end validation -->
-      <form action="/arts" method="post" enctype="multipart/form-data">
+      <form action="admin/arts" method="post" enctype="multipart/form-data">
         <label for="category">Category:</label>
         <select name="category" id="category">
           <option value="sketch-painting" <%= formData && formData.category === 'sketch-painting' ? 'selected' : '' %>>Sketch & Painting</option>
