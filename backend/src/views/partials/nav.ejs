@@ -1,7 +1,15 @@
 <nav class="navbar">
-    <div class="site-title">
-        <a href="/" class="logo">Admin Hub</a>
-        <p class="site-description">Art Display Management System</p>
+    <div class="top-bar">
+        <div class="site-title">
+            <a href="/admin" class="logo">Admin Hub</a>
+            <p class="site-description">Art Display Management System</p>
+        </div>
+        <div class="profile">
+            <% if (user) { %>
+                <p class="profile-title">Welcome Daria!</p>
+                <a href="/logout" class="profile-logout">Logout</a>
+            <% } %>
+        </div>
     </div>
 
     <ul class="nav-links">

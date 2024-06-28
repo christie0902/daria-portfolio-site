@@ -3,12 +3,6 @@
   <%-include('partials/head.ejs') %>
   <body>
     <%- include('./partials/nav.ejs')%>
-    <div>
-      <% if (user) { %>
-          <p>Welcome, <%= user.username %>!</p>
-          <a href="/logout">Logout</a>
-      <% } %>
-    </div>
 
     <div class="art-list content">
       <% if (success) { %>

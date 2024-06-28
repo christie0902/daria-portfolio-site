@@ -31,7 +31,8 @@ const storeMessage = async (req: Request, res: Response) => {
 const loadMessages = async (req: any, res: any) => {
     try {
         const messages = await Message.find();
-        res.render('messages', {title: 'Messages', messages});
+        const user = req.session.user;
+        res.render('messages', {title: 'Messages', messages, user: user});
     } catch(err) {
         console.log('Error loading messages', err);
         res.status(500).json({error: 'Internal server error'});

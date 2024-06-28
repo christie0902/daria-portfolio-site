@@ -17,16 +17,49 @@ th {
     text-align: center;
 }
 
+.top-bar {
+    display: flex;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    
+}
+
+.profile {
+    display: flex;
+    /* flex-direction: column; */
+    align-items: flex-start;
+    padding: 20px;
+   
+}
+
+.profile-title {
+    font-size: 1em;
+    margin-bottom: 10px;
+}
+
+.profile-logout {
+    color: #388e3c;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s, text-shadow 0.3s;
+    margin-left: 10px;
+}
+
+.profile-logout:hover {
+    color: #1b5e20;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
 .site-title {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    justify-content: center;
-    align-items: center;
+    justify-content: left;
+    align-items: flex-start;
     padding: 20px;
-    background: rgba(255, 255, 255, 0.8);
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    flex: 2;
+    margin-left: auto;
     text-transform: uppercase;
 }
 

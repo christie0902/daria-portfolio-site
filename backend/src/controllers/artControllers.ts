@@ -55,7 +55,8 @@ const index = async (req: any, res: any) => {
 const add_art = (req: any, res: any) => {
   const formData = {};
   const errors = {};
-  res.render("create", { title: "Add Art", formData: formData, errors: errors });
+  const user = req.session.user;
+  res.render("create", { title: "Add Art", formData: formData, errors: errors, user: user });
 };
 
 // POST ART FUNCTION
@@ -63,6 +64,7 @@ const post_art = async (req: Request, res: Response) => {
   const multerReq = req as MulterRequest;
   const { description, title, category, medium, dimension, featured } = multerReq.body;
   const errors: { [key: string]: string } = {};
+  const user = req.session.user;
 
   if (!description) {
     errors["description"] = "* Description is required.";
@@ -78,7 +80,7 @@ const post_art = async (req: Request, res: Response) => {
   }
 
   if (Object.keys(errors).length > 0) {
-    return res.render("create", { title: "Add Art", errors: errors, formData: multerReq.body });
+    return res.render("create", { title: "Add Art", errors: errors, formData: multerReq.body, user: user });
   }
 
   if (featured !== "yes" && featured !== "no") {
@@ -128,6 +130,7 @@ const art_delete = (req: any, res: any) => {
 };
 
 const art_details = (req: any, res: any) => {
+  const user = req.session.user;
   const id = req.params.id;
   Art.findById(id)
     .then((result) => {
@@ -135,7 +138,7 @@ const art_details = (req: any, res: any) => {
         res.status(404).send("Art not found");
         return;
       }
-      res.render("details", { title: "Art Details", art: result });
+      res.render("details", { title: "Art Details", art: result, user: user });
     })
     .catch((err) => {
       console.log(err);
@@ -146,6 +149,7 @@ const art_details = (req: any, res: any) => {
 const update_art = (req: any, res: any) => {
   const id = req.params.id;
   const newData = req.body;
+
   Art.findByIdAndUpdate(id, newData, { new: true })
     .then((result) => {
       if (!result) {
