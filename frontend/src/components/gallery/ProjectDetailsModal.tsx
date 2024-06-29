@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import './projectDetails.scss';
 import { Art } from "../../store/types.ts";
 

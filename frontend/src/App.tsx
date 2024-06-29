@@ -5,7 +5,7 @@ import FeaturedProduct from "./components/featured/FeaturedProduct";
 import Gallery from "./components/gallery/Gallery";
 import Contact from "./components/contact/Contact";
 import About from "./components/about/About";
-import ThemeContext, { ThemeContextType } from "./lib/utilityComponents/themeContext";
+import ThemeContext from "./lib/utilityComponents/themeContext";
 
 
 function App() {

@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import { useState, useContext } from "react";
 import "./navigation.scss";
 import NavItem from "./NavItem";
 import ThemeContext from "../../lib/utilityComponents/themeContext";

@@ -1,6 +1,6 @@
 import { createContext, Dispatch, SetStateAction } from 'react';
 
-export interface ThemeContextType {
+export type ThemeContextType = {
     theme: string;
     setTheme: Dispatch<SetStateAction<string>>;
   }

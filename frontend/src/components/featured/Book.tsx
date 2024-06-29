@@ -7,7 +7,7 @@ import ProjectDetailsModal from "../gallery/ProjectDetailsModal.tsx";
 import ThemeContext from "../../lib/utilityComponents/themeContext.ts";
 
 const Book: React.FC = () => {
-  const book = useRef();
+  const book = useRef<any>();
   const [currentPage, setCurrentPage] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
   const [featuredArts, setFeaturedArts] = useState<Art[]>([]);
@@ -47,13 +47,17 @@ const Book: React.FC = () => {
   const flipBookHeight = isMobile ? 300 : 450;
 
   const handlePrevClick = () => {
-    book.current?.pageFlip().flipPrev();
-    setCurrentPage((prevPage) => Math.max(prevPage - 1, 0));
+    if (book && book.current){
+      book.current.pageFlip().flipPrev();
+      setCurrentPage((prevPage) => Math.max(prevPage - 1, 0));
+    }
   };
 
   const handleNextClick = () => {
-    book.current?.pageFlip().flipNext();
-    setCurrentPage((prevPage) => Math.min(prevPage + 1, totalPages - 1));
+    if (book && book.current){
+      book.current.pageFlip().flipNext();
+      setCurrentPage((prevPage) => Math.min(prevPage + 1, totalPages - 1));
+    }
   };
 
   const showDetails = (art: Art) =>{
@@ -69,6 +73,7 @@ const Book: React.FC = () => {
     <>
     {featuredArts.length > 0 ?
     <div className="book-container">
+       {/* @ts-ignore */}
       <HTMLFlipBook
         width={flipBookWidth}
         height={flipBookHeight}
@@ -79,14 +84,16 @@ const Book: React.FC = () => {
         swipeDistance={50}
         useMouseEvents={true}
         usePortrait={true}
-        useLandscape={true}
         flippingTime={500}
+        showPageCorners={undefined}
+
+        
         ref={(node) => {
           if (node !== null) {
             book.current = node;
           }
         }}
-        onPageChange={(e) => setCurrentPage(e.data)}
+        onFlip={(e) => setCurrentPage(e.data)}
       >
         {/* Cover Page Open */}
         <div className="my-page cover-page front">
@@ -96,7 +103,7 @@ const Book: React.FC = () => {
 
         {featuredArts?.map((art, index) => (
           <div className="my-page" key={`${art._id} ${index}`}>          
-            <Page title={art.title} des={art.description} img={art.images[0]}  showDetails={() => showDetails(art)}/>
+            <Page art={art} title={art.title} des={art.description} img={art.images[0]}  showDetails={() => showDetails(art)}/>
           </div>
         ))}
 

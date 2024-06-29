@@ -1,11 +1,10 @@
-import React, { useEffect, useRef, useState, useContext } from "react";
+import { useEffect, useRef, useState, useContext } from "react";
 import Book from "./Book";
 import LazyLoader from "../../lib/utilityComponents/LazyLoader";
 import "./featured.scss";
 import ThemeContext from "../../lib/utilityComponents/themeContext";
 
 const FeaturedProduct = () => {
-  const [attachmentPreviews, setAttachmentPreviews] = useState([]);
   const elemRef = useRef(null);
   const [reference, setReference] = useState(null);
   const { theme } = useContext(ThemeContext);

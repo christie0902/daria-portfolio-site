@@ -15,7 +15,7 @@ const NavItem: React.FC<NavItemProps> = ({
   setCurrentPage,
   section,
 }) => {
-const { theme} = useContext(ThemeContext);
+const {theme} = useContext(ThemeContext);
 
   return (
     <li>

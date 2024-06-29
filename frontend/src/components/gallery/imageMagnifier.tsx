@@ -16,7 +16,7 @@ interface ImageMagnifierProps extends HTMLAttributes<HTMLDivElement> {
     magnifierHeight = 100,
     magnifierWidth = 100,
     zoomLevel = 1.5,
-    ...props
+    //...props
   }) => {
    const [[x, y], setXY] = useState([0, 0]);
   const [[imgWidth, imgHeight], setSize] = useState([0, 0]);

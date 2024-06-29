@@ -1,4 +1,4 @@
-import React, {
+import {
   useEffect,
   useRef,
   useState,
@@ -9,10 +9,10 @@ import "./contact.scss";
 import LazyLoader from "../../lib/utilityComponents/LazyLoader";
 import ThemeContext from "../../lib/utilityComponents/themeContext";
 
-interface AttachmentPreview {
+/* interface AttachmentPreview {
   src: string;
   alt: string;
-}
+} */
 
 const Contact = () => {
   const [attachmentPreviews, setAttachmentPreviews] = useState([]);
@@ -28,22 +28,25 @@ const Contact = () => {
 
   const handleAttachmentChange = (event: ChangeEvent<HTMLInputElement>) => {
     const files = event.target.files;
-    const previews: AttachmentPreview[] = [];
+    //const previews: AttachmentPreview[] = [];
+    const previews: any[] = [];
 
-    for (let i = 0; i < files.length; i++) {
-      const file = files[i];
-      const reader = new FileReader();
+    if(files && files.length > 0){
+      for (let i = 0; i < files.length; i++) {
+        const file = files[i];
+        const reader = new FileReader();
 
-      reader.onloadend = () => {
-        previews.push(reader.result);
-        if (previews.length === files.length) {
-          setAttachmentPreviews(previews);
+        reader.onloadend = () => {
+          previews.push(reader.result);
+          if (previews.length === files.length) {
+            setAttachmentPreviews(previews);
+          }
+        };
+
+          reader.readAsDataURL(file);
         }
       };
-
-      reader.readAsDataURL(file);
     }
-  };
 
 
   //Handle message submission

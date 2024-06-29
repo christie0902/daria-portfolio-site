@@ -1,4 +1,4 @@
-import React, {useContext} from "react";
+import {useContext} from "react";
 import "./hero.scss";
 import Navigation from "../navigation/Navigation";
 import ThemeContext from "../../lib/utilityComponents/themeContext";
