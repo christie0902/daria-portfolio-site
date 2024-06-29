@@ -105,7 +105,7 @@ const post_art = async (req: Request, res: Response) => {
   try {
     await art.save();
     req.flash('success', 'Art piece added successfully!');
-    res.redirect("admin/arts");
+    res.redirect("/admin/arts");
   } catch (err) {
     console.error("Error saving art:", err);
     res.status(500).send("Internal Server Error");
@@ -121,7 +121,7 @@ const art_delete = (req: any, res: any) => {
         return;
       }
       req.flash('success', 'Art piece deleted successfully!');
-      res.redirect("admin/arts");
+      res.redirect("/admin/arts");
     })
     .catch((err) => {
       console.log(err);
@@ -157,7 +157,7 @@ const update_art = (req: any, res: any) => {
         return;
       }
       req.flash('success', 'Art piece updated successfully!');
-      res.redirect("admin/arts");
+      res.redirect("/admin/arts");
     })
     .catch((err) => {
       console.log(err);

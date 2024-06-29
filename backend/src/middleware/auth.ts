@@ -7,7 +7,6 @@ declare module 'express-session' {
   }
 
 export const ensureAuthenticated = (req: Request, res: Response, next: NextFunction) => {
-  console.log(req.session.user);
   if (req.session.user?.username) {
     return next();
   }
