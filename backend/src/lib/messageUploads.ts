@@ -11,7 +11,7 @@ const handleError = (cb: (error: Error | null, destination?: string) => void, er
 
 const storage = multer.diskStorage({
   destination: (req: Request, file: Express.Multer.File, cb) => {
-    cb(null, 'D:/WebServer/main/daria-portfolio-site/Content/messageUploads');
+    cb(null, 'public/messageUploads');
   },
   filename: (req: Request, file: Express.Multer.File, cb) => {
     const uniqueSuffix = uuidv4() + path.extname(file.originalname);
