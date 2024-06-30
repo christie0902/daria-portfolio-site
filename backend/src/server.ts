@@ -1,4 +1,5 @@
 import express from "express";
+import cors from "cors";
 import dotenv from "dotenv";
 import methodOverride from 'method-override';
 import { resolve } from "path";
@@ -56,10 +57,26 @@ app.set("view engine", "ejs");
 app.set("views", resolve(__dirname, "views"));
 console.log(resolve(__dirname, "views"));
 
+
 // Middleware
+app.use(cors({
+  origin: [
+      "http://www.daria.levitsky.info",
+      "http://daria.levitsky.info",
+      "https://www.daria.levitsky.info",
+      "https://daria.levitsky.info",
+      //"http://daria-server.levitsky.info",
+      //"http://www.daria-server.levitsky.info",
+      //"https://daria-server.levitsky.info",
+      //"https://www.daria-server.levitsky.info",
+      "http://localhost:3100"
+  ],
+  credentials: true
+}));
 app.use(methodOverride('_method'));
 app.use(express.json());
 app.use(express.static("public"));
+// app.use(express.static(path.join((__dirname, 'public'))));
 app.use(express.urlencoded({ extended: true }));
 
 /* 
@@ -68,6 +85,9 @@ app.use(express.static(path.join(__dirname, '../views'))); */
 
 // Routes
 app.get("/admin", (req, res) => {
+  res.redirect("/admin/arts");
+});
+app.get("/", (req, res) => {
   res.redirect("/admin/arts");
 });
 

@@ -9,6 +9,9 @@ async function copyViewsFolder() {
     // Copy the views folder to dist
     await fs.copy('src/views', 'dist/views');
     
+    // Copy the public folder to dist
+    await fs.copy('public', 'dist/public');
+    
     //console.log('Views folder copied successfully!');
   } catch (err) {
     console.error('Error copying views folder:', err);

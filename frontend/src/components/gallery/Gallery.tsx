@@ -15,6 +15,7 @@ const Gallery: React.FC = () => {
   const [itemsPerPage, setItemsPerPage] = useState(8);
   const [loading, setLoading] = useState(true);
   const { theme } = useContext(ThemeContext);
+  const serverURL = 'https://daria-server.levitsky.info';
 
   useEffect(() => {
     const handleResize = () => {
@@ -36,7 +37,14 @@ const Gallery: React.FC = () => {
     const fetchArts = async () => {
       try {
         const response = await fetch(
-          `/api/arts?category=${selectedTab}&page=${currentPage}&pageSize=${itemsPerPage}`
+          `${serverURL}/api/arts?category=${selectedTab}&page=${currentPage}&pageSize=${itemsPerPage}`,
+          {
+            method: 'GET',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            credentials: 'include' 
+          }
         );
         if (!response.ok) {
           throw new Error("Fail to fetch");

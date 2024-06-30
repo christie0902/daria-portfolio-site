@@ -21,6 +21,7 @@ const Contact = () => {
   const [successMessage, setSuccessMessage] = useState<string>("");
   const [errorMessage, setErrorMessage] = useState<string>("");
   const { theme } = useContext(ThemeContext);
+  const serverURL = 'https://daria-server.levitsky.info';
 
   useEffect(() => {
     setReference(elemRef.current);
@@ -55,7 +56,7 @@ const Contact = () => {
 
     const formData = new FormData(event.currentTarget);
     try {
-      const response = await fetch("/api/contact", {
+      const response = await fetch(`${serverURL}/api/contact`, {
         method: "POST",
         body: formData,
       });

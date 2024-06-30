@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import './projectDetails.scss';
+import "./projectDetails.scss";
 import { Art } from "../../store/types.ts";
 
 interface ProjectDetailsModalProps {
@@ -7,15 +7,25 @@ interface ProjectDetailsModalProps {
   onClose: () => void;
 }
 
-const ProjectDetailsModal: React.FC<ProjectDetailsModalProps> = ({ id, onClose }) => {
+const ProjectDetailsModal: React.FC<ProjectDetailsModalProps> = ({
+  id,
+  onClose,
+}) => {
   const [art, setArt] = useState<Art | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
+  const serverURL = "https://daria-server.levitsky.info";
 
   useEffect(() => {
     const fetchArtDetails = async () => {
       try {
-        const response = await fetch(`/api/details/${id}`);
+        const response = await fetch(`${serverURL}/api/details/${id}`, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          credentials: "include",
+        });
         if (!response.ok) {
           throw new Error("Failed to fetch art details");
         }
@@ -43,7 +53,9 @@ const ProjectDetailsModal: React.FC<ProjectDetailsModalProps> = ({ id, onClose }
   return (
     <div className="modal">
       <div className="modal-content">
-        <button className="close-button" onClick={onClose}>X</button>
+        <button className="close-button" onClick={onClose}>
+          X
+        </button>
         {art && (
           <>
             <h2>{art.title}</h2>
@@ -70,8 +82,11 @@ const ProjectDetailsModal: React.FC<ProjectDetailsModalProps> = ({ id, onClose }
                   <td>Images:</td>
                   <td>
                     {art.images.map((image, index) => (
-                      <img key={index} src={`/uploads/${image}`} alt={`Image ${index}`} />
-                    
+                      <img
+                        key={index}
+                        src={`/uploads/${image}`}
+                        alt={`Image ${index}`}
+                      />
                     ))}
                   </td>
                 </tr>
@@ -83,6 +98,5 @@ const ProjectDetailsModal: React.FC<ProjectDetailsModalProps> = ({ id, onClose }
     </div>
   );
 };
-
 
 export default ProjectDetailsModal;
