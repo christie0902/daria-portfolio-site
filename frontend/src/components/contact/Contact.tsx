@@ -8,6 +8,7 @@ import {
 import "./contact.scss";
 import LazyLoader from "../../lib/utilityComponents/LazyLoader";
 import ThemeContext from "../../lib/utilityComponents/themeContext";
+import imageScaler from "../../lib/utilityComponents/ImageScaler";
 
 /* interface AttachmentPreview {
   src: string;
@@ -53,8 +54,8 @@ const Contact = () => {
   //Handle message submission
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
-    const formData = new FormData(event.currentTarget);
+    console.log(event);    
+    const formData = new FormData(event.currentTarget);   
     try {
       const response = await fetch(`${serverURL}/api/contact`, {
         method: "POST",
@@ -109,11 +110,11 @@ const Contact = () => {
                   <textarea name="message" id="message" />
                 </div>
                 <div className="contact-attachment">
-                  <label htmlFor="attachment">Attach image: </label>
+                  <label htmlFor="attachment">Attach image (max size 1024 x 1024): </label>
 
                   <input
                     type="file"
-                    name="attachments"
+                    name="image"
                     id="attachments"
                     multiple
                     onChange={handleAttachmentChange}
@@ -133,7 +134,9 @@ const Contact = () => {
              
             </div>
             <div className="contact-photo">
-              <img src="acrylic4.jpg" alt="contact" />
+              <img src={
+                imageScaler('https://res.cloudinary.com/dcwrof2zr/image/upload/v1720362398/acrylic4_hjzqmk.jpg', 30)
+                } alt="contact" />
               <div className="contact-info" >
                 <p className={`${theme === "dark" ? "dark-mode" : ""}`}>Email: daria@levitsky.info</p>
               </div>

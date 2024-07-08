@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import LazyLoader from "../../lib/utilityComponents/LazyLoader";
 import "./about.scss";
 import ThemeContext from "../../lib/utilityComponents/themeContext";
+import imageScaler from "../../lib/utilityComponents/ImageScaler";
 
 interface AboutProps {
   reference: HTMLDivElement | null;
@@ -129,13 +130,17 @@ const About: React.FC<AboutProps> = ({ reference }) => {
               <div>
                 <div className="art-container sculpture">
                   <p className="art-text sculpture">Sculpture</p>
-                  <img className="art-img" src="acrylic3.jpg" alt="sculpture" />
+                  <img className="art-img" src={
+                    imageScaler('https://res.cloudinary.com/dcwrof2zr/image/upload/v1720362349/acrylic3_mmolvx.jpg',30)
+                    } alt="sculpture" />
                 </div>
                 <div className="art-container digital">
                   <p className="art-text digital">Digital Art</p>
                   <img
                     className="art-img"
-                    src="acrylic2.jpg"
+                    src={
+                      imageScaler('https://res.cloudinary.com/dcwrof2zr/image/upload/v1720362367/acrylic2_r6zj1x.jpg',30)
+                    }
                     alt="digital art"
                   />
                 </div>
@@ -143,7 +148,9 @@ const About: React.FC<AboutProps> = ({ reference }) => {
                   <p className="art-text photography">Photography</p>
                   <img
                     className="art-img"
-                    src="acrylic1.jpg"
+                    src={
+                      imageScaler('https://res.cloudinary.com/dcwrof2zr/image/upload/v1720362356/acrylic1_qebfn4.jpg',30)
+                    }
                     alt="photography"
                   />
                 </div>
@@ -151,7 +158,9 @@ const About: React.FC<AboutProps> = ({ reference }) => {
                   <p className="art-text sketching">Sketch & Painting</p>
                   <img
                     className="art-img"
-                    src="acrylic4.jpg"
+                    src={
+                      imageScaler('https://res.cloudinary.com/dcwrof2zr/image/upload/v1720362398/acrylic4_hjzqmk.jpg',30)
+                    }
                     alt="sketch and painting"
                   />
                 </div>

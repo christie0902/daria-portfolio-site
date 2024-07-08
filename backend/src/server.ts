@@ -61,14 +61,15 @@ console.log(resolve(__dirname, "views"));
 // Middleware
 app.use(cors({
   origin: [
+      "http://localhost:5173",
       "http://www.daria.levitsky.info",
       "http://daria.levitsky.info",
       "https://www.daria.levitsky.info",
       "https://daria.levitsky.info",
-      //"http://daria-server.levitsky.info",
-      //"http://www.daria-server.levitsky.info",
-      //"https://daria-server.levitsky.info",
-      //"https://www.daria-server.levitsky.info",
+      "http://daria-server.levitsky.info",
+      "http://www.daria-server.levitsky.info",
+      "https://daria-server.levitsky.info",
+      "https://www.daria-server.levitsky.info",
       "http://localhost:3100"
   ],
   credentials: true

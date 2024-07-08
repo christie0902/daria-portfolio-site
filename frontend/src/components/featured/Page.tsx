@@ -16,7 +16,7 @@ interface PageProps {
     return (
       <div className="page-content" ref={ref} >
         <h1 className={`${theme === 'dark' ? 'dark-mode' : ''}`}>{title}</h1>
-        <img src={`https://daria-server.levitsky.info/uploads/${img}`} alt={title} />
+        <img src={img} alt={title} />
         
         <p className={`${theme === 'dark' ? 'dark-mode' : ''}`}>{des}</p><button onClick={()=> showDetails(art)}>See details</button>
       </div>

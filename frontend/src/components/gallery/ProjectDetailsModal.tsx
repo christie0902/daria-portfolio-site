@@ -84,7 +84,7 @@ const ProjectDetailsModal: React.FC<ProjectDetailsModalProps> = ({
                     {art.images.map((image, index) => (
                       <img
                         key={index}
-                        src={`https://daria-server.levitsky.info/uploads/${image}`}
+                        src={image}
                         alt={`Image ${index}`}
                       />
                     ))}

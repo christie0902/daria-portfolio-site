@@ -18,7 +18,7 @@ const Hero = () => {
       </div>
       <div className="left-section">
         <video className="background-video" autoPlay loop muted>
-          <source src="hero-video.mp4" type="video/mp4" />
+          <source src="https://res.cloudinary.com/dcwrof2zr/video/upload/v1720349610/hero-video_x5kmjl.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
         <div className="navbar">
@@ -60,7 +60,7 @@ const Hero = () => {
       <div className="right-section">
         <div className="video-container">
           <video className="video" autoPlay loop muted>
-            <source src="hero-video.mp4" type="video/mp4" />
+            <source src="https://res.cloudinary.com/dcwrof2zr/video/upload/v1720349610/hero-video_x5kmjl.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
           <div className="video-overlay"></div>

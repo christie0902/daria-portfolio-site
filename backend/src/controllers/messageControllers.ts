@@ -1,10 +1,34 @@
 import Message from "../models/message";
 import { Request, Response } from 'express';
 
+/* 
 interface MulterRequest extends Request {
   files?: Express.Multer.File[];
 }
+ */
 
+const saveMessage = async (req: Request, res: Response) => {
+  const newMessage = new Message(req.body);
+
+  try {
+    const { name, email, message } = req.body;
+    if (!name || !email|| !message) {
+      return res.status(400).send("Name, email and message are required");
+    }
+
+    if (req.files && Array.isArray(req.files) && req.files.length > 0) {
+      newMessage.attachments = req.files.map(file => file.path);
+    }
+
+    await newMessage.save();
+
+    res.status(201).json({ message: 'Message sent successfully' });
+  } catch (error) {
+    console.error('Error saving message:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+}
+/* 
 const storeMessage = async (req: Request, res: Response) => {
   const multerReq = req as MulterRequest;
   const newMessage = new Message(multerReq.body);
@@ -27,6 +51,7 @@ const storeMessage = async (req: Request, res: Response) => {
     res.status(500).json({ error: 'Internal server error' });
   }
 }
+*/
 
 const loadMessages = async (req: any, res: any) => {
     try {
@@ -72,7 +97,8 @@ const updateNote = async (req: any, res: any) => {
     }
 }
 export default {
-    storeMessage,
+  /* storeMessage, */
+    saveMessage,
     loadMessages,
     updateNote,
     deleteMessage

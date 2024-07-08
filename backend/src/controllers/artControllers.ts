@@ -28,7 +28,7 @@ const index = async (req: any, res: any) => {
     }
 
     const [arts, totalArts] = await Promise.all([
-      Art.find(query).sort({ createdAt: -1 }).skip(skip).limit(limit),
+      Art.find(query).skip(skip).limit(limit),
       Art.countDocuments(query),
     ]);
 
@@ -60,9 +60,10 @@ const add_art = (req: any, res: any) => {
 };
 
 // POST ART FUNCTION
-const post_art = async (req: Request, res: Response) => {
-  const multerReq = req as MulterRequest;
-  const { description, title, category, medium, dimension, featured } = multerReq.body;
+const post_art = async (req: any, res: Response) => {
+  /* const multerReq = req as MulterRequest; */
+  const { description, title, category, medium, dimension, featured } = req.body;
+  const files: any[] | undefined = req.files;
   const errors: { [key: string]: string } = {};
   const user = req.session.user;
 
@@ -75,12 +76,12 @@ const post_art = async (req: Request, res: Response) => {
   if (!category) {
     errors["category"] = "* Category is required.";
   }
-  if (!multerReq.files || multerReq.files.length === 0) {
+  if (!files || files.length === 0) {
     errors["images"] = "* At least one image is required.";
   }
 
   if (Object.keys(errors).length > 0) {
-    return res.render("create", { title: "Add Art", errors: errors, formData: multerReq.body, user: user });
+    return res.render("create", { title: "Add Art", errors: errors, formData: req.body, user: user });
   }
 
   if (featured !== "yes" && featured !== "no") {
@@ -88,8 +89,8 @@ const post_art = async (req: Request, res: Response) => {
   }
 
   let images: string[] = [];
-  if (multerReq.files) {
-    images = multerReq.files.map((file: Express.Multer.File) => file.filename);
+  if (files) {
+    images = files.map((file) => file.path);
   }
 
   const art = new Art({

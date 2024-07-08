@@ -25,7 +25,7 @@
             <td>
               <% message.attachments.forEach(attachment => { %>
               <img
-                src="/messageUploads/<%= attachment %>"
+                src="<%= attachment %>"
                 alt="Attachment"
                 class="attachment-image"
                 class="attachment-image"
@@ -79,7 +79,7 @@
             const noteForm = row.querySelector(".note-form");
             const editButton = row.querySelector(".edit-button");
 
-            noteText.style.display = "none";
+            noteText.style.display  = "none";
             noteForm.style.display = "block";
             editButton.style.display = "none";
           });
