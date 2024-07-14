@@ -64,4 +64,36 @@ router.get('/logout', (req, res) => {
   });
 });
 
+// Edit username and password route
+router.post('/login/edit', async (req, res) => {
+  const { 'current-username': currentUsername, 'new-username': newUsername, 'current-password': currentPassword, 'new-password': newPassword } = req.body;
+
+  try {
+    const user = await User.findOne({ username: currentUsername });
+
+    if (!user) {
+      req.flash('error', 'Current username or password is incorrect');
+      return res.redirect('/login/edit');
+    }
+
+    const isMatch = await bcrypt.compare(currentPassword, user.password);
+
+    if (isMatch) {
+      user.username = newUsername;
+      user.password = await bcrypt.hash(newPassword, 10);
+      await user.save();
+
+      req.flash('success', 'Login information updated successfully');
+      return res.redirect('/login/edit');
+    } else {
+      req.flash('error', 'Current username or password is incorrect');
+      return res.redirect('/login/edit');
+    }
+  } catch (error) {
+    console.error('Error updating login information:', error);
+    req.flash('error', 'Something went wrong');
+    res.redirect('/login/edit');
+  }
+});
+
 export default router;

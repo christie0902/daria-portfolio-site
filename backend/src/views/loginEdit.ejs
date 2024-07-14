@@ -7,37 +7,37 @@
   <title>Account Edit</title>
 </head>
 <body>
-    <div class="loginEdit-container">
-        <h2>Edit Login Info</h2>
-        <% if (error) { %>
-          <p class="error-message"><%= error %></p>
-        <% } %>
-        <% if (success) { %>
-          <p class="success-message"><%= success %></p>
-        <% } %>
-        <form action="/login/edit" method="POST">
-          <div>
-            <label for="current-username">Current Username</label>
-            <input type="text" id="current-username" name="current-username" class="login-input" required>
-          </div>
-          <div>
-            <label for="new-username">New Username</label>
-            <input type="text" id="new-username" name="new-username" class="login-input" required>
-          </div>
-          <br><br>
-          <div>
-            <label for="current-password">Current Password</label>
-            <input type="password" id="current-password" name="current-password" class="login-input" required>
-          </div>
-          <div>
-            <label for="new-password">Current Password</label>
-            <input type="password" id="new-password" name="new-password" class="login-input" required>
-          </div>
-          <br><br>
-          <button type="submit" class="login-button">Submit</button>
-        </form>
-
-        <a href="/login">Back to Login Page</a>
+  <div class="loginEdit-container">
+    <h2>Edit Login Info</h2>
+    <% if (error && error.length > 0) { %>
+      <p class="error-message"><%= error %></p>
+    <% } %>
+    <% if (success && success.length > 0) { %>
+      <p class="success-message"><%= success %></p>
+    <% } %>
+    <form action="/login/edit" method="POST">
+      <div>
+        <label for="current-username">Current Username</label>
+        <input type="text" id="current-username" name="current-username" class="login-input" required>
       </div>
+      <div>
+        <label for="new-username">New Username</label>
+        <input type="text" id="new-username" name="new-username" class="login-input" required>
+      </div>
+      <br><br>
+      <div>
+        <label for="current-password">Current Password</label>
+        <input type="password" id="current-password" name="current-password" class="login-input" required>
+      </div>
+      <div>
+        <label for="new-password">New Password</label>
+        <input type="password" id="new-password" name="new-password" class="login-input" required>
+      </div>
+      <br><br>
+      <button type="submit" class="login-button">Submit</button>
+    </form>
+
+    <a href="/login">Back to Login Page</a>
+  </div>
 </body>
 </html>
