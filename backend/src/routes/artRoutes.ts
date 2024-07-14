@@ -24,7 +24,8 @@ router.post("/", cloudinaryMsgPicUploader, (req: Request, res: Response) => artC
 //router.post("/", upload.array('images', 10), (req: Request, res: Response) => artControllers.post_art(req, res));
 router.put("/:id", artControllers.update_art);
 router.get("/:id", artControllers.art_details);
-router.delete("/:id",artControllers.art_delete);
-
+router.delete('/:id', artControllers.art_soft_delete);
+router.post('/recover/:id', artControllers.art_recover);
+router.delete('/permanent/:id', artControllers.art_hard_delete);
 
 export default router;

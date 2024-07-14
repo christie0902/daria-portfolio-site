@@ -30,6 +30,10 @@ const artSchema = new mongoose.Schema({
     featured: {
         type: Boolean,
         default: false
+    },
+    deleted: {
+        type: Boolean,
+        default: false
     }
 });
 
