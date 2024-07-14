@@ -73,6 +73,11 @@ const Gallery: React.FC = () => {
   const paginate = (pageNumber: number) => {
     setCurrentPage(pageNumber);
   };
+
+  const changeTab = (selectedTab: string) => {
+    setSelectedTab(selectedTab);
+    setCurrentPage(1);
+  }
   
 
   return (
@@ -81,7 +86,7 @@ const Gallery: React.FC = () => {
       <div className="tabs">
         <button
           className={`tab-button ${selectedTab === "all" ? "selected" : ""} ${theme === "dark" ? "dark-mode" : ""}`}
-          onClick={() => setSelectedTab("all")}
+          onClick={() => changeTab("all")}
         >
           All
         </button>
@@ -89,7 +94,7 @@ const Gallery: React.FC = () => {
           className={`tab-button ${
             selectedTab === "digital" ? "selected" : ""
           } ${theme === "dark" ? "dark-mode" : ""}`}
-          onClick={() => setSelectedTab("digital")}
+          onClick={() => changeTab("digital")}
         >
           Digital Art
         </button>
@@ -97,7 +102,7 @@ const Gallery: React.FC = () => {
           className={`tab-button ${
             selectedTab === "sketch-painting" ? "selected" : ""
           } ${theme === "dark" ? "dark-mode" : ""}`}
-          onClick={() => setSelectedTab("sketch-painting")}
+          onClick={() => changeTab("sketch-painting")}
         >
           Sketch & Painting
         </button>
@@ -105,7 +110,7 @@ const Gallery: React.FC = () => {
           className={`tab-button ${
             selectedTab === "photography" ? "selected" : ""
           } ${theme === "dark" ? "dark-mode" : ""}`}
-          onClick={() => setSelectedTab("photography")}
+          onClick={() => changeTab("photography")}
         >
           Photography
         </button>
@@ -113,7 +118,7 @@ const Gallery: React.FC = () => {
           className={`tab-button ${
             selectedTab === "sculpture" ? "selected" : ""
           } ${theme === "dark" ? "dark-mode" : ""}`}
-          onClick={() => setSelectedTab("sculpture")}
+          onClick={() => changeTab("sculpture")}
         >
           Sculpture
         </button>
