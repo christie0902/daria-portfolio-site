@@ -14,7 +14,7 @@ const index = async (req: any, res: any): Promise<void> => {
         const totalCount = await Art.countDocuments(query);
         const totalPages = Math.ceil(totalCount / pageSize); 
 
-        const result = await Art.find(query)
+        const result = await Art.find(query, {deleted:false})
                                 .skip(skip)
                                 .limit(pageSize)
                                 // .sort({ createdAt: -1 });
@@ -29,7 +29,7 @@ const index = async (req: any, res: any): Promise<void> => {
 
 const featuredArt = async (req: any, res: any): Promise<void> => {
     try {
-        const result = await Art.find({featured: true}).sort({ createdAt: -1});
+        const result = await Art.find({featured: true}, {deleted:false}).sort({ createdAt: -1});
         res.json(result);
     } catch (err) {
         console.log(err);
