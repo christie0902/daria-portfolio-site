@@ -1,5 +1,7 @@
 $font-main: "IBM Plex Sans", sans-serif;
 $font-text: "Inika", serif;
+$small-screen: 1024px;
+$big-screen: 1024px;
 
 .about-container {
   display: flex;
@@ -14,13 +16,13 @@ $font-text: "Inika", serif;
     color: white;
   }
 
-  @media (max-width: 1024px) {
+  @media (max-width: $big-screen) {
     flex-direction: column;
     align-items: center;
     gap: 5%;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: $small-screen) {
     height: 100%;
   }
 
@@ -33,7 +35,7 @@ $font-text: "Inika", serif;
     justify-content: space-between;
     width: 40vw;
 
-    @media (max-width: 1024px) {
+    @media (max-width: $big-screen) {
       width: 90%;
     }
 
@@ -50,7 +52,7 @@ $font-text: "Inika", serif;
         position: relative;
         animation: slideDown 1s forwards;
 
-        @media (max-width: 768px) {
+        @media (max-width: $small-screen) {
           font-size: 3rem;
         }
       }
@@ -75,12 +77,12 @@ $font-text: "Inika", serif;
           &.dark-mode {
             color: rgb(247, 230, 230);
           }
-          @media (max-width: 768px) {
+          @media (max-width: $small-screen) {
             font-size: 0.9em;
           }
         }
         .text-lowercase {
-          @media (max-width: 768px) {
+          @media (max-width: $small-screen) {
             font-size: 0.9em;
           }
         
@@ -101,7 +103,7 @@ $font-text: "Inika", serif;
         &.dark-mode {
           color: rgb(247, 230, 230);
         }
-        @media (max-width: 768px) {
+        @media (max-width: $small-screen) {
           font-size: 1.5rem;
           margin-block: 10%;
         }
@@ -110,7 +112,7 @@ $font-text: "Inika", serif;
         display: flex;
         flex-wrap: wrap;
         gap: 5%;
-        @media (max-width: 768px) {
+        @media (max-width: $small-screen) {
           flex-direction: column;
           justify-content: center;
           align-items: center;
@@ -122,14 +124,14 @@ $font-text: "Inika", serif;
           width: 45%;
           font-family: $font-text;
 
-          @media (max-width: 768px) {
+          @media (max-width: $small-screen) {
             width: 100%;
           }
           .service-number {
             border-bottom: 2px solid black;
             padding-bottom: 5px;
             font-size: 1.3rem;
-            @media (max-width: 768px) {
+            @media (max-width: $small-screen) {
               padding-bottom: 0px;
             }
             &.dark-mode {
@@ -211,7 +213,7 @@ $font-text: "Inika", serif;
           }
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: $small-screen) {
           display: none;
         }
       }
@@ -343,7 +345,7 @@ $font-text: "Inika", serif;
 //     }
 //   }
 
-@media (max-width: 1024px) {
+@media (max-width: $big-screen) {
   .about-container {
     .art-display {
       .art-container {
