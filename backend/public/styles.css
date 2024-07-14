@@ -552,6 +552,7 @@ th {
 .login-container input[type="text"],
 .login-container input[type="password"] {
     margin-bottom: 15px;
+    margin-left: 5px;
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -567,8 +568,68 @@ th {
     font-size: 1rem;
     cursor: pointer;
     transition: background-color 0.3s, color 0.3s;
+    margin-bottom: 10px;
 }
 
 .login-container button[type="submit"]:hover {
+    background-color: #555;
+}
+
+
+/* Log in Info Edit Page */
+.loginEdit-container {
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    height: 90vh;
+    width: 50%;
+    margin-block: 5vh;
+    margin-inline: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.loginEdit-container h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.loginEdit-container form {
+    display: flex;
+    flex-direction: column;
+}
+
+.loginEdit-container label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.loginEdit-container input[type="text"],
+.loginEdit-container input[type="password"] {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.loginEdit-container button[type="submit"] {
+    padding: 10px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    margin-bottom: 10px;
+}
+
+.loginEdit-container button[type="submit"]:hover {
     background-color: #555;
 }

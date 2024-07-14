@@ -47,6 +47,11 @@ router.post('/login', async (req, res) => {
     }
   });
 
+// Edit username and password form
+router.get('/login/edit', (req, res)=> {
+  res.render('loginEdit');
+})
+
 // Logout route
 router.get('/logout', (req, res) => {
   req.session.destroy((err) => {
