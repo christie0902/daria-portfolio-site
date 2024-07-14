@@ -1,5 +1,5 @@
 import Art from "../models/art";
-import { Request, Response } from 'express';
+import { Request, Response } from "express";
 
 interface MulterRequest extends Request {
   files?: Express.Multer.File[];
@@ -42,7 +42,7 @@ const index = async (req: any, res: any) => {
       featured: featured,
       currentPage: page,
       totalPages: totalPages,
-      user: user
+      user: user,
     });
   } catch (err) {
     console.error(err);
@@ -50,19 +50,24 @@ const index = async (req: any, res: any) => {
   }
 };
 
-
 // ADD ART FORM
 const add_art = (req: any, res: any) => {
   const formData = {};
   const errors = {};
   const user = req.session.user;
-  res.render("create", { title: "Add Art", formData: formData, errors: errors, user: user });
+  res.render("create", {
+    title: "Add Art",
+    formData: formData,
+    errors: errors,
+    user: user,
+  });
 };
 
 // POST ART FUNCTION
 const post_art = async (req: any, res: Response) => {
   /* const multerReq = req as MulterRequest; */
-  const { description, title, category, medium, dimension, featured } = req.body;
+  const { description, title, category, medium, dimension, featured } =
+    req.body;
   const files: any[] | undefined = req.files;
   const errors: { [key: string]: string } = {};
   const user = req.session.user;
@@ -81,7 +86,12 @@ const post_art = async (req: any, res: Response) => {
   }
 
   if (Object.keys(errors).length > 0) {
-    return res.render("create", { title: "Add Art", errors: errors, formData: req.body, user: user });
+    return res.render("create", {
+      title: "Add Art",
+      errors: errors,
+      formData: req.body,
+      user: user,
+    });
   }
 
   if (featured !== "yes" && featured !== "no") {
@@ -100,12 +110,12 @@ const post_art = async (req: any, res: Response) => {
     dimension,
     description,
     images,
-    featured: featured === "yes"
+    featured: featured === "yes",
   });
 
   try {
     await art.save();
-    req.flash('success', 'Art piece added successfully!');
+    req.flash("success", "Art piece added successfully!");
     res.redirect("/admin/arts");
   } catch (err) {
     console.error("Error saving art:", err);
@@ -113,7 +123,41 @@ const post_art = async (req: any, res: Response) => {
   }
 };
 
-const art_delete = (req: any, res: any) => {
+// const art_delete = (req: any, res: any) => {
+//   const id = req.params.id;
+//   Art.findByIdAndDelete(id)
+//     .then((result) => {
+//       if (!result) {
+//         res.status(404).send("Art not found");
+//         return;
+//       }
+//       req.flash('success', 'Art piece deleted successfully!');
+//       res.redirect("/admin/arts");
+//     })
+//     .catch((err) => {
+//       console.log(err);
+//       res.status(500).send("Internal Server Error");
+//     });
+// };
+
+const art_soft_delete = (req: any, res: any) => {
+  const id = req.params.id;
+  Art.findByIdAndUpdate(id, { deleted: true })
+    .then((result) => {
+      if (!result) {
+        res.status(404).send("Art not found");
+        return;
+      }
+      req.flash("success", "Art piece deleted!");
+      res.redirect("/admin/arts");
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).send("Internal Server Error");
+    });
+};
+
+const art_hard_delete = (req: any, res: any) => {
   const id = req.params.id;
   Art.findByIdAndDelete(id)
     .then((result) => {
@@ -121,7 +165,24 @@ const art_delete = (req: any, res: any) => {
         res.status(404).send("Art not found");
         return;
       }
-      req.flash('success', 'Art piece deleted successfully!');
+      req.flash("success", "Art piece permanently deleted!");
+      res.redirect("/admin/arts");
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).send("Internal Server Error");
+    });
+};
+
+const art_recover = (req: any, res: any) => {
+  const id = req.params.id;
+  Art.findByIdAndUpdate(id, { deleted: false })
+    .then((result) => {
+      if (!result) {
+        res.status(404).send("Art not found");
+        return;
+      }
+      req.flash("success", "Art piece recovered!");
       res.redirect("/admin/arts");
     })
     .catch((err) => {
@@ -157,7 +218,7 @@ const update_art = (req: any, res: any) => {
         res.status(404).send("Art not found");
         return;
       }
-      req.flash('success', 'Art piece updated successfully!');
+      req.flash("success", "Art piece updated successfully!");
       res.redirect("/admin/arts");
     })
     .catch((err) => {
@@ -171,6 +232,8 @@ export default {
   art_details,
   add_art,
   post_art,
-  art_delete,
+  art_soft_delete,
+  art_hard_delete,
+  art_recover,
   update_art,
 };

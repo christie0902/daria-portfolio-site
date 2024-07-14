@@ -499,6 +499,15 @@ th {
     background-color: #d32f2f;
   }
 
+  .recover {
+    background-color: #1b5e20;
+    margin-block: 10px;
+  }
+
+  .permanent-delete {
+    background-color: red;
+  }
+
   .error-message {
     color: red;
     font-size: 14px;
