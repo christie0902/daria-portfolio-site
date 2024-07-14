@@ -82,7 +82,7 @@ const Contact = () => {
           <div className={`contact-section ${theme === "dark" ? "dark-mode" : ""}`}>
             <div className="contact-left-section">
               <div className="contact-title">
-                <h3>Daria Alexander</h3>
+                <h3>Daria Levitsky</h3>
                 <h1>
                   WORK <br />
                   WITH ME
@@ -138,7 +138,7 @@ const Contact = () => {
                 imageScaler('https://res.cloudinary.com/dcwrof2zr/image/upload/v1720362398/acrylic4_hjzqmk.jpg', 30)
                 } alt="contact" />
               <div className="contact-info" >
-                <p className={`${theme === "dark" ? "dark-mode" : ""}`}>Email: daria@levitsky.info</p>
+                <p className={`${theme === "dark" ? "dark-mode" : ""}`}>Email: daria.levitsky@gmail.com</p>
               </div>
             </div>
           </div>

@@ -27,7 +27,7 @@ const Hero = () => {
           <Navigation/>
         </div>
         <div className="titles">
-          <h2 className={`${theme === 'dark' ? 'dark-mode' : ''}`}>DARIA ALEXANDER</h2>
+          <h2 className={`${theme === 'dark' ? 'dark-mode' : ''}`}>DARIA LEVITSKY</h2>
           <h1>CREATIVE.</h1>
         </div>
         <div className="portfolio-link">
