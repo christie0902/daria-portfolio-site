@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import "./projectDetails.scss";
 import { Art } from "../../store/types.ts";
+import ThemeContext from "../../lib/utilityComponents/themeContext";
 
 interface ProjectDetailsModalProps {
   id: string;
@@ -11,6 +12,8 @@ const ProjectDetailsModal: React.FC<ProjectDetailsModalProps> = ({
   id,
   onClose,
 }) => {
+  const { theme } = useContext(ThemeContext);
+
   const [art, setArt] = useState<Art | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
@@ -51,15 +54,15 @@ const ProjectDetailsModal: React.FC<ProjectDetailsModalProps> = ({
   }
 
   return (
-    <div className="modal">
-      <div className="modal-content">
-        <button className="close-button" onClick={onClose}>
+    <div className='modal'>
+      <div className={`modal-content ${theme === 'dark' ? 'dark-mode' : ''}`}>
+        <button className={`close-button ${theme === 'dark' ? 'dark-mode' : ''}`}onClick={onClose}>
           X
         </button>
         {art && (
           <>
-            <h2>{art.title}</h2>
-            <p>{art.description}</p>
+            <h2 className={`${theme === 'dark' ? 'dark-mode' : ''}`}>{art.title}</h2>
+            <p className={`${theme === 'dark' ? 'dark-mode' : ''}`}>{art.description}</p>
             <table className="details-table">
               <tbody>
                 <tr>

@@ -28,6 +28,10 @@ $font-text: "Inika", serif;
   animation: slideIn 0.3s ease-out;
   display: flex;
   flex-direction: column;
+
+  &.dark-mode {
+    background-color: black;
+  }
 }
 
 .modal-content > * {
@@ -53,18 +57,27 @@ $font-text: "Inika", serif;
 
 .close-button:hover {
   color: #000;
+  &.dark-mode {
+    color: white;
+  }
 }
 
 h2 {
   margin-top: 0;
   font-size: 24px;
   color: #333;
+  &.dark-mode {
+    color: white;
+  }
 }
 
 p {
   font-size: 16px;
   color: #666;
   line-height: 1.5;
+  &.dark-mode {
+    color: rgb(253, 245, 245);
+  }
 }
 
 hr {
