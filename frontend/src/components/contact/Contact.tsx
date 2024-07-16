@@ -110,7 +110,7 @@ const Contact = () => {
                   <textarea name="message" id="message" />
                 </div>
                 <div className="contact-attachment">
-                  <label htmlFor="attachment">Attach image (max size 1024 x 1024): </label>
+                  <label htmlFor="attachment">Attach image: </label>
 
                   <input
                     type="file"

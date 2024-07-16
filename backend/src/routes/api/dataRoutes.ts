@@ -12,8 +12,7 @@ const cloudinaryMsgPicUploader = multer({
     cloudinary, 
     //@ts-ignore   //HACKY: TS not recognizing correct types for cloudinary API
     params: {folder: "portfolio", resource_type: "image"},
-  }),
-  limits: { fileSize: 1024 * 1024 }
+  })
 }).array("image")
 
 const router = express.Router();
