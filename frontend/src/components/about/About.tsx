@@ -31,20 +31,23 @@ const About: React.FC<AboutProps> = ({ reference }) => {
                       theme === "dark" ? "dark-mode" : ""
                     }`}
                   >
-                    Welcome to my creative corner! I'm a freelance artist
-                    passionate about bringing imagination to life through art.
+                    I love the creative process, and am open to lots of
+                    different styles and mediums. Let's make something!
+                    I have been drawing since I could hold a crayon, and I am
+                    always trying to improve. I have fun learning new ways to
+                    make art, and look forward to using my skills to make your
+                    ideas a reality.
                   </p>
-                  <p
+                  {/* <p
                     className={`text-lowercase ${
                       theme === "dark" ? "dark-mode" : ""
                     }`}
                   >
-                    With a love for colors, textures, and storytelling, I
-                    specialize in [mention your specialties, e.g., acrylic
-                    paintings, digital illustrations, etc.]. Join me on this
-                    artistic journey as we explore the beauty of expression
-                    together.
-                  </p>
+                    I have been drawing since I could hold a crayon, and I am
+                    always trying to improve. I have fun learning new ways to
+                    make art, and look forward to using my skills to make your
+                    ideas a reality.
+                  </p> */}
                 </div>
               </div>
 
@@ -61,7 +64,11 @@ const About: React.FC<AboutProps> = ({ reference }) => {
                     >
                       01
                     </p>
-                    {theme==="dark" ? <img src="\painting-icon-white.png" alt="painting-icon" /> : <img src="\painting-icon-black.png" alt="painting-icon" />}
+                    {theme === "dark" ? (
+                      <img src="\painting-icon-white.png" alt="painting-icon" />
+                    ) : (
+                      <img src="\painting-icon-black.png" alt="painting-icon" />
+                    )}
                     <p
                       className={`service-title ${
                         theme === "dark" ? "dark-mode" : ""
@@ -78,8 +85,12 @@ const About: React.FC<AboutProps> = ({ reference }) => {
                     >
                       02
                     </p>
-                    {theme==="dark" ? <img src="\digital-icon-white.png" alt="painting-icon" /> : <img src="\digital-icon-black.png" alt="painting-icon" />}
-                    
+                    {theme === "dark" ? (
+                      <img src="\digital-icon-white.png" alt="painting-icon" />
+                    ) : (
+                      <img src="\digital-icon-black.png" alt="painting-icon" />
+                    )}
+
                     <p
                       className={`service-title ${
                         theme === "dark" ? "dark-mode" : ""
@@ -96,7 +107,11 @@ const About: React.FC<AboutProps> = ({ reference }) => {
                     >
                       03
                     </p>
-                    {theme==="dark" ?  <img src="\camera-icon-white.png" alt="painting-icon" /> :  <img src="\camera-icon-black.png" alt="painting-icon" />}
+                    {theme === "dark" ? (
+                      <img src="\camera-icon-white.png" alt="painting-icon" />
+                    ) : (
+                      <img src="\camera-icon-black.png" alt="painting-icon" />
+                    )}
                     <p
                       className={`service-title ${
                         theme === "dark" ? "dark-mode" : ""
@@ -113,7 +128,17 @@ const About: React.FC<AboutProps> = ({ reference }) => {
                     >
                       04
                     </p>
-                    {theme==="dark" ?   <img src="\sculpture-icon-white.png" alt="painting-icon" /> :   <img src="\sculpture-icon-black.png" alt="painting-icon" />}
+                    {theme === "dark" ? (
+                      <img
+                        src="\sculpture-icon-white.png"
+                        alt="painting-icon"
+                      />
+                    ) : (
+                      <img
+                        src="\sculpture-icon-black.png"
+                        alt="painting-icon"
+                      />
+                    )}
                     <p
                       className={`service-title ${
                         theme === "dark" ? "dark-mode" : ""
@@ -130,27 +155,34 @@ const About: React.FC<AboutProps> = ({ reference }) => {
               <div>
                 <div className="art-container sculpture">
                   <p className="art-text sculpture">Sculpture</p>
-                  <img className="art-img" src={
-                    imageScaler('https://res.cloudinary.com/dcwrof2zr/image/upload/v1720362349/acrylic3_mmolvx.jpg',30)
-                    } alt="sculpture" />
+                  <img
+                    className="art-img"
+                    src={imageScaler(
+                      "https://res.cloudinary.com/dcwrof2zr/image/upload/v1721160994/signal-2024-07-16-161349_w2q15f.jpg",
+                      30
+                    )}
+                    alt="sculpture"
+                  />
                 </div>
                 <div className="art-container digital">
                   <p className="art-text digital">Digital Art</p>
                   <img
                     className="art-img"
-                    src={
-                      imageScaler('https://res.cloudinary.com/dcwrof2zr/image/upload/v1720362367/acrylic2_r6zj1x.jpg',30)
-                    }
+                    src={imageScaler(
+                      "https://res.cloudinary.com/dcwrof2zr/image/upload/v1720367902/e7914ff0-5745-44d5-9281-59f9ac349127_gzifio.png",
+                      30
+                    )}
                     alt="digital art"
-                  />
+                    />
                 </div>
                 <div className="art-container photography">
                   <p className="art-text photography">Photography</p>
                   <img
                     className="art-img"
-                    src={
-                      imageScaler('https://res.cloudinary.com/dcwrof2zr/image/upload/v1720362356/acrylic1_qebfn4.jpg',30)
-                    }
+                    src={imageScaler(
+                      "https://res.cloudinary.com/dcwrof2zr/image/upload/v1720362350/img010_hzojbm.jpg",
+                      30
+                    )}
                     alt="photography"
                   />
                 </div>
@@ -158,14 +190,14 @@ const About: React.FC<AboutProps> = ({ reference }) => {
                   <p className="art-text sketching">Sketch & Painting</p>
                   <img
                     className="art-img"
-                    src={
-                      imageScaler('https://res.cloudinary.com/dcwrof2zr/image/upload/v1720362398/acrylic4_hjzqmk.jpg',30)
-                    }
+                    src={imageScaler(
+                      "https://res.cloudinary.com/dcwrof2zr/image/upload/v1720362364/img001_mykyve.jpg",
+                      30
+                    )}
                     alt="sketch and painting"
                   />
                 </div>
               </div>
-    
             </div>
           </div>
         </LazyLoader>

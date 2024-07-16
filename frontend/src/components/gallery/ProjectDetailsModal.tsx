@@ -78,10 +78,6 @@ const ProjectDetailsModal: React.FC<ProjectDetailsModalProps> = ({
                   <td>{art.dimension || "N/A"}</td>
                 </tr>
                 <tr>
-                  <td>Featured:</td>
-                  <td>{art.featured ? "Yes" : "No"}</td>
-                </tr>
-                <tr>
                   <td>Images:</td>
                   <td>
                     {art.images.map((image, index) => (

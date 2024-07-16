@@ -71,7 +71,7 @@ $big-screen: 1024px;
         font-family: $font-text;
         animation: slideInLeft 1s forwards;
         .text-uppercase {
-          text-transform: uppercase;
+          //text-transform: uppercase;
           font-size: 1.1rem;
 
           &.dark-mode {
