@@ -28,7 +28,7 @@ const Hero = () => {
         </div>
         <div className="titles">
           <h2 className={`${theme === 'dark' ? 'dark-mode' : ''}`}>DARIA LEVITSKY</h2>
-          <h1>CREATIVE.</h1>
+          <h1>Artist</h1>
         </div>
         <div className="portfolio-link">
           <a href="#Featured" className={`link ${theme === 'dark' ? 'dark-mode' : ''}`}>
@@ -50,7 +50,7 @@ const Hero = () => {
           </a>
         </div>
         <div className="title-role" >
-          <p className={`${theme === 'dark' ? 'dark-mode' : ''}`}>ARTIST, ILLUSTRATOR & DESIGNER</p>
+          <p className={`${theme === 'dark' ? 'dark-mode' : ''}`}>ILLUSTRATOR & DESIGNER</p>
         </div>
         <div className="title-small">
           <p className={`${theme === 'dark' ? 'dark-mode' : ''}`}>WELCOME TO MY ART WORLD</p>

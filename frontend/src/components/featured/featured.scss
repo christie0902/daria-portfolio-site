@@ -1,7 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Yatra+One&display=swap");
-
-$font-main: "IBM Plex Sans", sans-serif;
-$font-text: "Inika", serif;
+@import "../../lib/SCSS/fonts";
 
 .feature-section {
   display: flex;
@@ -81,6 +78,7 @@ $font-text: "Inika", serif;
   }
   .section-title {
     animation: slideDown 1s linear;
+    font-weight: 300;
   }
 
   .feature-container {
@@ -102,7 +100,7 @@ $font-text: "Inika", serif;
       position: absolute;
       top: 15%;
       left: 0;
-      color: rgb(104, 105, 8);
+      color:  #000000;//🅿
       &.dark-mode {
         color: rgb(245, 236, 185);
       }
@@ -114,6 +112,9 @@ $font-text: "Inika", serif;
       left: 10%;
       animation: moveRight 0.8s linear infinite;
       animation-direction: alternate;
+      &.dark-mode {
+        color: rgb(245, 236, 185);
+      }
     }
   }
 
@@ -185,7 +186,8 @@ $font-text: "Inika", serif;
       &:hover {
         cursor: pointer;
         background-color: none;
-        color: rgb(6, 78, 6);
+        color: '#818891';
+        border-radius: 6px;
       }
     }
   }
@@ -276,13 +278,13 @@ $font-text: "Inika", serif;
   }
 
   button:hover {
-    background-color: #f5f2dc;
+    background-color: #818891;
     cursor: pointer;
   }
 
   .back button {
     margin-top: 50%;
-    background-color: #f5f2dc;
+    background-color: #f0f0f0;
     color: rgb(0, 0, 0);
     border: none;
     padding: 20px 30px;
@@ -292,7 +294,7 @@ $font-text: "Inika", serif;
     font-weight: bold;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
     &:hover {
-      background-color: #0d381a;
+      background-color: #818891;
       cursor: pointer;
     }
     & a {

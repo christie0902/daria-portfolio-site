@@ -1,5 +1,4 @@
-$font-main: "IBM Plex Sans", sans-serif;
-$font-text: "Inika", serif;
+@import "../../lib/SCSS/fonts";
 
 .gallery-section {
   display: flex;
@@ -7,6 +6,7 @@ $font-text: "Inika", serif;
   justify-content: center;
   align-items: center;
   height: 100vh;
+
   
   &.dark-mode {
     background-color: rgb(14, 13, 13);
@@ -16,7 +16,10 @@ $font-text: "Inika", serif;
   @media (max-width: 768px) {
     height: 100vh;
   }
-
+  
+  .section-title {
+    font-weight: 300;
+  }
 
   // Pagination styles within the .gallery-section
   .pagination {
@@ -40,6 +43,7 @@ $font-text: "Inika", serif;
         button {
           background-color: #ffffff;
           border: 1px solid #ccc;
+          border-radius: 6px;
           color: #333;
           padding: 8px 12px;
           font-size: 14px;
@@ -47,7 +51,7 @@ $font-text: "Inika", serif;
           transition: background-color 0.3s, color 0.3s, border-color 0.3s;
 
           &:hover {
-            background-color: #f0f0f0;
+            background-color: #818891;
           }
 
           &.active {
@@ -56,7 +60,7 @@ $font-text: "Inika", serif;
             border-color: #007bff;
 
             &:hover {
-              background-color: #0056b3;
+              background-color: #818891;
             }
           }
         }
@@ -82,7 +86,7 @@ $font-text: "Inika", serif;
 
       &:hover {
         text-decoration: overline;
-        color: gray;
+        color: #818891;
         cursor: pointer;
       }
       &.selected {
@@ -184,6 +188,7 @@ $font-text: "Inika", serif;
         width: 50%;
         transform: translate(-50%, -50%);
         background-color: rgba(232, 241, 235, 0.5);
+        border-radius: 10px;
         backdrop-filter: blur(10px);
         padding: 10px 20px;
         font-size: 1.5rem;

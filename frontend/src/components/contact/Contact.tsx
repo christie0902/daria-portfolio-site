@@ -84,8 +84,7 @@ const Contact = () => {
               <div className="contact-title">
                 {/* <h3>Daria Levitsky</h3> */}
                 <h1>
-                  WORK <br />
-                  WITH ME
+                  Work with me
                 </h1>
               </div>
               {successMessage && (

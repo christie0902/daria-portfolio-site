@@ -1,5 +1,5 @@
-$font-main: "IBM Plex Sans", sans-serif;
-$font-text: "Inika", serif;
+@import "../../lib/SCSS/fonts";
+
 
 .hero {
   display: flex;
@@ -78,11 +78,13 @@ $font-text: "Inika", serif;
       }
       h1 {
         margin-block: 10px;
-        font-size: 9vw;
-        font-family: $font-main;
+        margin-left: 10vw;
+        font-size: 8vw;
+        font-weight: 400;
+        font-family: $font-text;
         animation: slideInRight 1s forwards;
         // -webkit-text-stroke: 0.5px white;
-        text-shadow: 4px 2px 4px rgba(163, 152, 152, 1);
+        text-shadow: 4px 2px 4px rgb(97, 90, 90);
       }
     }
     .portfolio-link {
@@ -115,7 +117,7 @@ $font-text: "Inika", serif;
       text-align: right;
       right: 10%;
       width: 350px;
-      font-family: $font-main;
+      font-family: $font-text;
       font-weight: 400;
       font-size: 1.5rem;
       opacity: 0;

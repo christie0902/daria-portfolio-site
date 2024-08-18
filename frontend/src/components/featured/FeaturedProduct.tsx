@@ -17,7 +17,7 @@ const FeaturedProduct = () => {
     <div className={`feature-section ${theme === "dark" ? "dark-mode" : ""}`} ref={elemRef}>
       {reference && (
         <LazyLoader targetElement={reference}>
-          <h1 className="section-title">FEATURED ART</h1>
+          <h1 className="section-title">Featured Art</h1>
           <div className="guide">
             <p className={`guide-text ${theme === "dark" ? "dark-mode" : ""}`}>Flip to explore!</p>
             {theme === 'dark' ? <img className="guide-img" src="arrow-dark-mode.png" alt="arrow" /> : <img className="guide-img" src="arrow.png" alt="arrow" />}

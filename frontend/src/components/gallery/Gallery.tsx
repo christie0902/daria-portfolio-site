@@ -82,7 +82,7 @@ const Gallery: React.FC = () => {
 
   return (
     <div className={`gallery-section ${theme === "dark" ? "dark-mode" : ""}`}>
-      <h1 className="section-title">MY WORK</h1>
+      <h1 className="section-title">My Work</h1>
       <div className="tabs">
         <button
           className={`tab-button ${selectedTab === "all" ? "selected" : ""} ${theme === "dark" ? "dark-mode" : ""}`}

@@ -1,5 +1,5 @@
-$font-main: "IBM Plex Sans", sans-serif;
-$font-text: "Inika", serif;
+@import "../../lib/SCSS/fonts";
+
 $small-screen: 1024px;
 $big-screen: 1024px;
 
@@ -46,8 +46,8 @@ $big-screen: 1024px;
       .about-title {
         font-size: 6rem;
         text-align: left;
-        font-family: $font-main;
-        font-weight: bold;
+        font-family: $font-text;
+        font-weight: 300;
         line-height: 95%;
         position: relative;
         animation: slideDown 1s forwards;
@@ -98,7 +98,7 @@ $big-screen: 1024px;
       animation: slideInBottom 1s forwards;
 
       h2 {
-        font-family: $font-main;
+        font-family: $font-text;
         margin: 0;
         &.dark-mode {
           color: rgb(247, 230, 230);

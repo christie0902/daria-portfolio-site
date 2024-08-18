@@ -21,9 +21,8 @@ const About: React.FC<AboutProps> = ({ reference }) => {
             <div className="left-container">
               <div className="title-container">
                 <div className="about-title">
-                  ABOUT
-                  <br />
-                  ME
+                  About
+                  Me
                 </div>
                 <div className="text-container">
                   <p
