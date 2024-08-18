@@ -93,7 +93,7 @@ $font-text: "Inika", serif;
     position: absolute;
     width: 300px;
     height: 100px;
-    left: 30%;
+    left: calc(50% - 300px);
     top: 30%;
     .guide-text {
       font-family: $font-text;
@@ -198,12 +198,14 @@ $font-text: "Inika", serif;
   .cover-page {
     padding: 20px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
     text-align: center;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     position: relative;
-    background-image: url("https://res.cloudinary.com/dcwrof2zr/image/upload/v1720362823/cover-green-beige_tixkbk.png");
+    //background-image: url("https://res.cloudinary.com/dcwrof2zr/image/upload/v1720362823/cover-green-beige_tixkbk.png");
+    background-image: url("https://res.cloudinary.com/dcwrof2zr/image/upload/v1723995472/folio_hkinxe.jpg");
     background-position: center;
     background-size: cover;
     // background-color: rgb(69, 204, 102);
@@ -226,6 +228,10 @@ $font-text: "Inika", serif;
       top: 50%;
       left: 70%;
       transform: translateX(-50%);
+    }
+
+    &.back {
+      background-image: url("https://res.cloudinary.com/dcwrof2zr/image/upload/v1723995714/Back_tfqwm1.jpg");
     }
 
     &:hover {

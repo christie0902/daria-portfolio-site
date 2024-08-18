@@ -101,8 +101,8 @@ const Book: React.FC = () => {
           >
             {/* Cover Page Open */}
             <div className="my-page cover-page front">
-              <img src="\name.png" alt="logo" />
-              <h1>Art Book</h1>
+              {/* <img src="\name.png" alt="logo" />
+              <h1>Art Book</h1> */}
             </div>
 
             {featuredArts?.map((art, index) => (
