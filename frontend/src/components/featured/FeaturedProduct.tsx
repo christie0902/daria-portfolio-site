@@ -7,6 +7,7 @@ import ThemeContext from "../../lib/utilityComponents/themeContext";
 const FeaturedProduct = () => {
   const elemRef = useRef(null);
   const [reference, setReference] = useState(null);
+  const [clicked, setClicked] = useState(false);
   const { theme } = useContext(ThemeContext);
 
   useEffect(() => {
@@ -18,11 +19,14 @@ const FeaturedProduct = () => {
       {reference && (
         <LazyLoader targetElement={reference}>
           <h1 className="section-title">Featured Art</h1>
-          <div className="guide">
+         <div 
+          className="guide" 
+          style={{opacity:!clicked? 1:0, zIndex: 10}}
+         >
             <p className={`guide-text ${theme === "dark" ? "dark-mode" : ""}`}>Flip to explore!</p>
             {theme === 'dark' ? <img className="guide-img" src="arrow-dark-mode.png" alt="arrow" /> : <img className="guide-img" src="arrow.png" alt="arrow" />}
           </div>
-          <div className="feature-container">
+          <div className="feature-container" onClick={()=> !clicked && setClicked(true)}>
             <Book />
           </div>
         </LazyLoader>
