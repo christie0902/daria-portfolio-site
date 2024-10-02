@@ -100,7 +100,7 @@
       position: absolute;
       top: 15%;
       left: 0;
-      color:  #000000;//🅿
+      color: #000000; //🅿
       &.dark-mode {
         color: rgb(245, 236, 185);
       }
@@ -148,7 +148,7 @@
     height: 100%;
     padding: 10px;
     font-family: $font-text;
-    
+
     h1 {
       &.dark-mode {
         color: rgb(0, 0, 0);
@@ -186,7 +186,7 @@
       &:hover {
         cursor: pointer;
         background-color: none;
-        color: '#818891';
+        color: "#818891";
         border-radius: 6px;
       }
     }
@@ -340,28 +340,31 @@
     transform: translateY(0);
   }
 }
-
+/* 
 @media only screen and (max-width: 768px) and (min-width: 480px) {
-  .book-container {
-    margin-top: 0vh;
-    gap: 80px;
-  }
-  .guide {
-    width: 300px;
-    height: 100px;
-    left: 10%;
-    top: 30%;
-  }
-}
 
-@media only screen and (max-width: 480px) {
+    .book-container {
+      margin-top: 0vh;
+      gap: 80px;
+    }
+    .guide {
+      width: 300px;
+      height: 100px;
+      left: 10%;
+      top: 30%;
+    }
+ 
+}
+ */
+@media only screen and (max-width: 820px) {
   .feature-section {
     justify-content: space-between;
     padding-top: 20%;
     .book-container {
-      margin-top: 25%;
+      margin-top: 10vh;
+      height: 50vh;
     }
-    .book{
+    .book {
       padding: 0;
     }
 
